@@ -3,7 +3,7 @@
   font-style: italic;
   font-weight: var(--weight-light);
   font-size: clamp(20px, 2.4vw, 26px);
-  line-height: 1.5;
+  line-height: var(--lh-lede);
   margin: 0;
 }
 

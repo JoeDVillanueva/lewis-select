@@ -2,7 +2,7 @@
   background: var(--color-navy);
   color: var(--color-text-on-dark);
   text-align: center;
-  padding-block: 100px;
+  padding-block: 80px;
 }
 
 .inner {
@@ -39,9 +39,9 @@
   color: var(--color-text-on-dark-muted);
   max-width: 560px;
   margin: 0 auto 40px;
-  line-height: 1.9;
+  line-height: var(--lh-body);
 }
 
 @media (max-width: 720px) {
-  .band { padding-block: 72px; }
+  .band { padding-block: 56px; }
 }

@@ -5,16 +5,17 @@
   line-height: var(--lh-body);
   letter-spacing: 0.02em;
   margin: 0;
+  max-width: 680px;
 }
 
-.body + .body { margin-top: 1.4em; }
+.body + .body { margin-top: 14px; }
 
 .default { color: var(--color-text); }
 .muted   { color: var(--color-warm-gray); }
 .dark    { color: var(--color-text-on-dark-muted); line-height: var(--lh-body); }
 .darkSoft{ color: var(--color-text-on-dark-soft); }
 
-.long { line-height: var(--lh-loose); }
+.long { line-height: var(--lh-body); }
 .small { font-size: var(--text-body-sm); }
 .tiny  { font-size: var(--text-small); }
 

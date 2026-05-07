@@ -22,6 +22,7 @@
 
   --color-rule:               #D8D0C2;
   --color-rule-dark:          rgba(184, 149, 90, 0.20);
+  --color-rule-on-dark:       rgba(184, 149, 90, 0.22);   /* v3.2: rule color used at section boundaries that touch navy. */
   --color-rule-on-navy:       rgba(255, 255, 255, 0.07);
   --color-rule-on-navy-strong:rgba(255, 255, 255, 0.18);
 
@@ -34,11 +35,12 @@
   --font-display: var(--font-cormorant), Georgia, serif;
   --font-body:    var(--font-dm-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
 
-  /* Display scale */
-  --text-h1:         clamp(56px, 7.2vw, 90px);
-  --text-section:    clamp(38px, 4.4vw, 56px);
+  /* Display scale (v3.2: tightened upper end to bring headline-to-body ratio closer to fidesops) */
+  --text-h1:         clamp(52px, 6.4vw, 76px);
+  --text-section:    clamp(32px, 3.6vw, 46px);
+  --text-hook:       clamp(26px, 2.6vw, 34px);    /* Hook component — explicitly NOT section-title sized */
   --text-h3:         clamp(22px, 2.2vw, 28px);
-  --text-blockquote: clamp(26px, 3.2vw, 36px);
+  --text-blockquote: clamp(24px, 2.8vw, 32px);
   --text-stat:       48px;
 
   /* Body */
@@ -58,7 +60,8 @@
   --lh-tight:        1.05;
   --lh-snug:         1.15;
   --lh-blockquote:   1.55;
-  --lh-body:         1.85;
+  --lh-body:         1.6;       /* v3.2: tightened from 1.85 — primary body */
+  --lh-lede:         1.7;       /* v3.2: reserved for <Lede> and <Blockquote> */
   --lh-loose:        1.95;
 
   --ls-tight:        -0.005em;
@@ -171,3 +174,17 @@ ul, ol { list-style: none; }
 
 /* Section anchor scroll offset for sticky nav */
 section[id] { scroll-margin-top: var(--nav-height); }
+
+/* ── Section-boundary hairlines (v3.2) ──
+   Every transition between top-level sections in <main> gets a 0.5px rule.
+   Cream/cream uses --color-rule (warm beige). Cream/navy or navy/* uses
+   --color-rule-on-dark (faint gold). The first section on a page gets none. */
+main > * + * {
+  border-top: 0.5px solid var(--color-rule);
+}
+main > .on-navy {
+  border-top-color: var(--color-rule-on-dark);
+}
+main > .on-navy + * {
+  border-top-color: var(--color-rule-on-dark);
+}

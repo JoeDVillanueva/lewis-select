@@ -1,4 +1,17 @@
-# Lewis Select — Marketing Site Build Spec  ·  v3.1
+# Lewis Select — Marketing Site Build Spec  ·  v3.2
+
+> **v3.2 — tighten the rhythm (post second deploy).** Comparing Lewis Select against fidesops.com (the reference for "crisp"), the key gap is density-within-sections and rhythm-between-sections. Lewis has generous padding everywhere, generous line-height inside paragraphs, an oversized section title relative to body, and a Hook line that's set at full section-title scale. fidesops uses tighter type leading inside sections, smaller section titles relative to body, shorter section padding, and crisper section boundaries. The fixes below tighten Lewis's rhythm without changing layout structure or content.
+>
+> - **Section padding:** desktop `100px → 80px` top/bottom; mobile `64px → 56px`. Sections were eating too much vertical real estate.
+> - **Body line-height:** `1.7 → 1.6` for primary body. Reserve `1.7` for blockquotes and leads only. Tighter leading reads as more confident.
+> - **Section title scale:** `clamp(38px, 4.4vw, 56px)` → `clamp(32px, 3.6vw, 46px)`. Brings the headline-to-body ratio from ~3.3× down to ~2.7× — closer to fidesops's proportions and lets the body content carry weight too.
+> - **Hero h1 cap:** clamp max `90px → 76px`. Still commanding, no longer overpowering.
+> - **The Hook line:** explicitly NOT section-title-sized. New token `--text-hook` at `clamp(26px, 2.6vw, 34px)`. The "If this sounds familiar…" line should function as a transitional question, not a banner.
+> - **Card paddings:** `<Pillars />` cells `36×32 → 28×28`; `<Differentiators />` items shed ~20% internal vertical spacing. Bodies inside cards keep 17px but with `line-height: 1.55`.
+> - **Reading column:** enforce `max-width: 680px` on body paragraphs inside content sections (was implicit, now explicit). Display lines can stretch to 820px.
+> - **Section dividers:** every section transition gets a 0.5px hairline (`--color-rule` on cream/cream transitions, `--color-rule-on-dark` on cream/navy). Sharpens the section start and end.
+>
+> Apply these to tokens and component CSS. Copy and IA do not change.
 
 > **v3.1 fixes (post first deploy).**
 > - **Body color on cream:** `--color-warm-gray` darkened from `#6B6560` to `#4A443F` to fix faint paragraph copy on the homepage. Primary body text **always uses `--color-text`**, never `--color-warm-gray`. Warm-gray is reserved for genuinely secondary content (footer brand paragraph, captions). See §4.1.
@@ -151,12 +164,14 @@ All tokens live in `src/app/globals.css` as CSS variables. Components reference 
   --font-body:    var(--font-dm-sans), system-ui, sans-serif;
 
   /* Type scale — clamp() for fluid sizing.
-     v3 bumped sizes for legibility (audience skews 50+). Body weight stays at 300 — the heritage feel comes from the light weight, so size is the lever to pull, not weight. */
-  --text-h1:           clamp(56px, 7.2vw, 90px);    /* hero, page header */
-  --text-section:      clamp(38px, 4.4vw, 56px);    /* section title */
+     v3 bumped sizes for legibility (audience skews 50+). v3.2 tightened the upper end of the
+     scale so headline-to-body ratios match the fidesops reference. Body weight stays at 300. */
+  --text-h1:           clamp(52px, 6.4vw, 76px);    /* hero, page header (v3.2: max 90→76) */
+  --text-section:      clamp(32px, 3.6vw, 46px);    /* section title (v3.2: smaller, ~2.7× body) */
+  --text-hook:         clamp(26px, 2.6vw, 34px);    /* NEW v3.2 — gold italic Hook line, NOT section-title size */
   --text-h3:           clamp(22px, 2.2vw, 28px);    /* sub-section heads inside long-form */
-  --text-blockquote:   clamp(26px, 3.2vw, 36px);    /* pull quotes, philosophy band */
-  --text-stat:         48px;                        /* hero stat numerals (if used) */
+  --text-blockquote:   clamp(24px, 2.8vw, 32px);    /* pull quotes, philosophy band (v3.2: tightened) */
+  --text-stat:         44px;                        /* hero stat numerals (if used) */
 
   /* Body */
   --text-body:         17px;     /* primary body — every paragraph */
@@ -196,8 +211,10 @@ All tokens live in `src/app/globals.css` as CSS variables. Components reference 
 **Type rules.**
 
 - Display: Cormorant Garamond. Default weight 300. Italics are common — used for emphasized words inside headlines (set in `--color-gold-light`), section blockquotes, and sig lines. Italic in `*asterisks*` in `CONTENT.md` marks display lines (set in display serif, italic).
-- Body: DM Sans, weight 300, **17px** (`--text-body`). Long-form line-height 1.7. **Color: `--color-text` (#1A1714).** Do not use `--color-warm-gray` for primary body copy on cream — that token is reserved for secondary/caption content. The lightness is central to the register — do not bump to 400 by default. The size bump in v3 is the readability lever.
-- **Hook (rhetorical line above the empathy block):** Cormorant Garamond, weight 400, italic, `--text-section` size (`clamp(38px, 4.4vw, 56px)`), **gold (`--color-gold`)**. Used once on the homepage in place of the conventional eyebrow. The line `*If this sounds familiar…*` reads as a question hook, not a label. New `<Hook />` UI primitive in §6.2.
+- Body: DM Sans, weight 300, **17px** (`--text-body`). **Line-height 1.6** for primary body (v3.2 tightened from 1.7). Reserve 1.7 only for `<Lede>` and `<Blockquote>` components. **Color: `--color-text` (#1A1714).** Do not use `--color-warm-gray` for primary body copy on cream. The lightness of weight 300 is central to the register — do not bump to 400 by default. Size + leading are the legibility levers.
+- Body paragraph spacing: `margin-bottom: 14px` between paragraphs (was 24px). Tighter rhythm reads as more confident.
+- Body reading column: **`max-width: 680px`** on every primary body container. Headlines and leads can stretch to `--display-max` (820px). Body should not.
+- **Hook (rhetorical line above the empathy block):** Cormorant Garamond, weight 400, italic, **`--text-hook` size** (`clamp(26px, 2.6vw, 34px)`), **gold (`--color-gold`)**. v3.2 explicitly sized DOWN from section-title scale — the Hook is a transitional question, not a banner. Used once on the homepage in place of the conventional eyebrow. The line `*If this sounds familiar…*` reads as a question hook. See `<Hook />` UI primitive in §6.2.
 - Eyebrow: DM Sans, weight **400**, uppercase, letter-spacing 0.34em, **12px** (`--text-eyebrow`). Color `--color-gold` on cream, `--color-gold-light` on navy. Always preceded by a 30px gold hairline (see tiiny `.section-label::before`).
 - CTA buttons: 11–12px DM Sans, weight 400, uppercase, letter-spacing 0.25em. Three variants:
   - Primary (gold fill, white text): `background: var(--color-gold); color: white; padding: 16px 40px;`
@@ -225,7 +242,9 @@ All tokens live in `src/app/globals.css` as CSS variables. Components reference 
 }
 ```
 
-Section padding is `100px 56px` desktop (`--space-9`) and `64px 24px` mobile (`--space-8` / `--space-5`), top and bottom. The tiiny site uses these values verbatim.
+Section padding (v3.2): **`80px 56px` desktop** (top/bottom 80px, side 56px) and **`56px 24px` mobile**. Tightened from v3's `100px / 64px` because sections were eating too much vertical real estate. Sections that need more weight (hero, page headers) can use `120px 56px` explicitly.
+
+Every cream → cream and cream → navy section transition gets a **0.5px hairline** (`--color-rule` on cream, `--color-rule-on-dark` on navy). Sharper section boundaries are the single biggest visual delta from fidesops.
 
 ### 4.4 Layout tokens
 
@@ -284,7 +303,7 @@ Each component below maps to `CONTENT.md` section types. Components are pure ser
 ### 6.2 UI primitives
 
 - `<Eyebrow>` — small uppercase label, gold, with leading 30–40px hairline. 12px DM Sans weight 400, letter-spacing 0.34em. Use everywhere a section label appears.
-- `<Hook>` — rhetorical-question line. Italic Cormorant Garamond, weight 400, `--text-section` size, gold (`--color-gold`). Stands alone (no preceding eyebrow). Used on the homepage Empathy block: `<Hook>If this sounds familiar…</Hook>`. v3.1.
+- `<Hook>` — rhetorical-question line. Italic Cormorant Garamond, weight 400, **`--text-hook` size** (`clamp(26px, 2.6vw, 34px)` — v3.2 explicitly NOT section-title sized), gold (`--color-gold`). Stands alone (no preceding eyebrow). Used on the homepage Empathy block: `<Hook>If this sounds familiar…</Hook>`. v3.1; sized down v3.2.
 - `<Display as="h1|h2|p">` — Cormorant Garamond display. Accepts `italic` boolean and supports embedded italic spans (for the gold-italic words inside headlines).
 - `<Lede>` — italic Cormorant sub-headline.
 - `<Body>` — DM Sans body, weight 300, 17px. Variants: `default` (ink on cream), `dark` (white on navy), `dark-muted` (`--color-text-on-dark-muted` / `#B5C6E0` on navy), `muted` (`--color-warm-gray` on cream).
@@ -298,10 +317,10 @@ Each component below maps to `CONTENT.md` section types. Components are pure ser
 | `<Nav />` | every page | sticky on scroll, navy bg with backdrop blur, slight height shrink + border darken on scroll. See tiiny `nav.scrolled`. |
 | `<Footer />` | every page | navy surface, four columns desktop / two columns mobile, gold column titles, gold hover. |
 | `<Hero />` | Home, page headers (Approach, About, Conversation page) | full-bleed navy. Optional hero photo treatment (right-aligned, masked-fade, low opacity, mix-blend-mode luminosity — see tiiny `.hero-photo`). |
-| `<PhilosophyBand />` | Home | cream surface, centered italic Cormorant blockquote, gold uppercase attribution underneath. |
+| `<PhilosophyBand />` | Home | cream surface, centered italic Cormorant blockquote (`--text-blockquote`), gold uppercase attribution underneath. **v3.2 tightening:** section padding `64px 56px` (less than other sections — this is a transitional moment, not a long read). Quote `max-width: 760px` centered. Reserve generous breath ABOVE the band, less below. Add a 0.5px hairline at the bottom of the band to mark the transition into the empathy block. |
 | `<EmpathyBlock />` | Home | cream surface, eyebrow + two body paragraphs. |
-| `<Differentiators />` | Home | navy surface, 1.3fr / 1fr two-column grid. Left column has eyebrow, section title, intro body. Right column has four numbered items separated by hairlines. See tiiny `#why` for layout. |
-| `<Pillars />` | Home | cream surface. **Layout (v3.1, explicit):** desktop = CSS grid, `grid-template-columns: repeat(3, 1fr)`, gap 0, with **0.5px hairline borders between cells** (use `border-right` on cells 1 and 2, no border on cell 3). Mobile (<720px) = single column with hairline `border-bottom` between rows instead. Each cell: padding 36px 32px, top-aligned content. Inside each cell, in order: number (italic Cormorant gold, ~22px) above a small gap, then title (Cormorant 22px navy, weight 400), then body (DM Sans **17px** weight 300, line-height 1.7, color `--color-text`). Section title above the grid: "Care for your health today. *Stewardship of your health for the years ahead.*" |
+| `<Differentiators />` | Home | navy surface, 1.3fr / 1fr two-column grid. Left column has eyebrow, section title, intro body. Right column has four numbered items separated by hairlines. See tiiny `#why` for layout. **v3.2 tightening:** each item's vertical padding 30px → 22px, body line-height 1.6 → 1.55, body max-width capped at 480px to keep the column tight. |
+| `<Pillars />` | Home | cream surface. **Layout (v3.1, tightened in v3.2):** desktop = CSS grid, `grid-template-columns: repeat(3, 1fr)`, gap 0, with **0.5px hairline borders between cells** (`border-right` on cells 1 and 2, no border on cell 3). Mobile (<720px) = single column with hairline `border-bottom` between rows. Each cell: **padding 28px 28px** (v3.2: tightened from 36×32), top-aligned content. Inside each cell, in order: number (italic Cormorant gold, ~22px) above a small gap, then title (Cormorant 22px navy, weight 400), then body (DM Sans **17px** weight 300, **line-height 1.55**, color `--color-text`). Section title above the grid: "Care for your health today. *Stewardship of your health for the years ahead.*" |
 | `<PillarFull />` | Approach | **three** items with subhead (italic Cormorant) + body + "What this replaces" tag treated as a gold left-edge banner. Pillar 3 has multi-paragraph body. |
 | `<PullQuote />` | Home, About | navy surface, italic Cormorant quote (clamp(26px, 3.2vw, 36px)) + gold uppercase attribution. Used twice on the homepage (the "fastest medicine" line) and once on the About page (the "knowing and caring for my patients" line). |
 | `<AboutBlock />` | Home | cream surface, eyebrow + display + body + sig line + CTA. Optional small portrait at right. |

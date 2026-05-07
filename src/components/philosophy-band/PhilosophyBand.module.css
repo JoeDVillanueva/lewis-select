@@ -1,11 +1,11 @@
 .band {
   background: var(--color-cream);
   text-align: center;
-  border-top: 1px solid var(--color-gold-pale);
+  border-bottom: 0.5px solid var(--color-rule);
 }
 
 .inner {
-  padding: 72px 0;
+  padding: 64px 0;
   max-width: 760px;
   margin: 0 auto;
 }
@@ -33,5 +33,5 @@
 }
 
 @media (max-width: 720px) {
-  .inner { padding: 56px 0; }
+  .inner { padding: 56px 0; padding-inline: 24px; }
 }

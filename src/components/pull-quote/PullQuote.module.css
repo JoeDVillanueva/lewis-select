@@ -3,7 +3,7 @@
   color: var(--color-text-on-dark);
   position: relative;
   overflow: hidden;
-  padding-block: 100px;
+  padding-block: 80px;
 }
 
 .watermark {
@@ -50,6 +50,6 @@
 }
 
 @media (max-width: 720px) {
-  .band { padding-block: 72px; }
+  .band { padding-block: 56px; }
   .watermark { font-size: 220px; }
 }
