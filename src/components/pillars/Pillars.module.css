@@ -1,5 +1,5 @@
 .intro {
-  max-width: 560px;
+  max-width: 720px;
   margin-bottom: 56px;
 }
 
@@ -17,52 +17,57 @@
   color: var(--color-gold);
 }
 
-.grid {
+.introBody {
+  max-width: 640px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  border-top: 0.5px solid var(--color-rule);
+}
+
+.item {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  border: 0.5px solid var(--color-rule);
-}
-
-.cell {
-  padding: 40px 36px;
-  border-right: 0.5px solid var(--color-rule);
+  grid-template-columns: 80px 1fr;
+  gap: 32px;
+  padding: 40px 0;
   border-bottom: 0.5px solid var(--color-rule);
-  background: transparent;
-  transition: background 0.3s;
 }
-
-.cell:hover { background: var(--color-cream-dark); }
-
-/* 3-up grid (6 items): right border off on every 3rd, bottom off on last row.
-   Inline grid handles 7 items by spanning the last cell. */
-.grid > .cell:nth-child(3n) { border-right: none; }
 
 .num {
   font-family: var(--font-display);
-  font-size: 13px;
+  font-style: italic;
+  font-size: 24px;
   font-weight: var(--weight-light);
   color: var(--color-gold);
-  letter-spacing: 0.1em;
-  margin-bottom: 24px;
+  letter-spacing: 0.05em;
+  line-height: 1;
+  padding-top: 6px;
 }
 
 .head {
   font-family: var(--font-display);
-  font-size: 22px;
-  font-weight: var(--weight-regular);
+  font-size: 26px;
+  font-weight: var(--weight-light);
   color: var(--color-navy);
   line-height: 1.2;
   margin-bottom: 14px;
 }
 
 .body {
-  font-size: 13px;
-  font-weight: var(--weight-thin);
-  line-height: var(--lh-body);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: var(--weight-light);
+  line-height: var(--lh-loose);
   color: var(--color-warm-gray);
+  max-width: 720px;
+}
+
+.ctaRow {
+  margin-top: 48px;
 }
 
 @media (max-width: 720px) {
-  .grid { grid-template-columns: 1fr; }
-  .grid > .cell { border-right: none; }
+  .item { grid-template-columns: 1fr; gap: 12px; padding: 32px 0; }
 }

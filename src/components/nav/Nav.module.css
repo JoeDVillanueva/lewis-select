@@ -67,11 +67,11 @@
   display: block;
   font-family: var(--font-body);
   font-style: normal;
-  font-size: 8px;
-  font-weight: var(--weight-thin);
-  letter-spacing: 0.35em;
+  font-size: var(--text-nav-tagline);
+  font-weight: var(--weight-light);
+  letter-spacing: 0.30em;
   text-transform: uppercase;
-  color: var(--color-text-on-dark-soft);
+  color: var(--color-text-on-dark-muted);
   margin-top: 3px;
 }
 
@@ -89,11 +89,11 @@
 .links a {
   position: relative;
   padding-bottom: 3px;
-  font-size: 10px;
-  font-weight: var(--weight-light);
+  font-size: var(--text-nav-link);
+  font-weight: var(--weight-regular);
   letter-spacing: var(--ls-eyebrow-tight);
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.50);
+  color: rgba(255, 255, 255, 0.65);
   transition: color 0.2s;
 }
 
@@ -107,7 +107,7 @@
 }
 
 .links a:hover {
-  color: rgba(255, 255, 255, 0.90);
+  color: var(--color-white);
 }
 .links a:hover::after { right: 0; }
 
@@ -145,8 +145,8 @@
 .mobileMenu.open { display: flex; }
 
 .mobileMenu a {
-  font-size: 11px;
-  font-weight: var(--weight-light);
+  font-size: var(--text-nav-link);
+  font-weight: var(--weight-regular);
   letter-spacing: 0.20em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.65);

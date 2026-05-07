@@ -11,7 +11,7 @@ import styles from "./page.module.css";
 export const metadata: Metadata = siteMetadata({
   title: "Start a Conversation — Lewis Select",
   description:
-    "There is no application form. The next step is a conversation with Dr. Lewis — by phone or in person.",
+    "The next step is a conversation with Dr. Lewis — by phone or in person.",
   path: "/start-a-conversation",
 });
 

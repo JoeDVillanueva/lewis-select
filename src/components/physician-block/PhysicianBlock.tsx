@@ -41,18 +41,6 @@ export function PhysicianBlock() {
               <Eyebrow>{about.network.eyebrow}</Eyebrow>
               <p className={styles.bodyP}>{about.network.body}</p>
             </div>
-
-            <div className={styles.credentials}>
-              <Eyebrow>{about.credentials.eyebrow}</Eyebrow>
-              {about.credentials.rows.map((row) => (
-                <div key={row.label} className={styles.cred}>
-                  <span className={styles.credLabel}>{row.label}</span>
-                  <span className={styles.credValue}>{row.value}</span>
-                </div>
-              ))}
-            </div>
-
-            <p className={styles.sig}>{about.sigLine}</p>
           </div>
         </div>
       </Section>

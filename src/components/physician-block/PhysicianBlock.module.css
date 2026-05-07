@@ -90,52 +90,6 @@
   max-width: 640px;
 }
 
-.credentials {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  border-top: 0.5px solid var(--color-rule);
-  padding-top: 32px;
-  margin-top: 48px;
-  max-width: 640px;
-}
-
-.cred {
-  padding: 14px 0;
-  border-bottom: 0.5px solid var(--color-rule);
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 24px;
-}
-.cred:last-child { border-bottom: none; }
-
-.credLabel {
-  font-size: 9px;
-  font-weight: var(--weight-light);
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--color-gold);
-  flex: 0 0 auto;
-}
-
-.credValue {
-  font-size: 13px;
-  font-weight: var(--weight-thin);
-  color: var(--color-navy);
-  text-align: right;
-}
-
-.sig {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-weight: var(--weight-light);
-  font-size: 24px;
-  color: var(--color-navy);
-  margin-top: 56px;
-  max-width: 640px;
-}
-
 @media (max-width: 720px) {
   .inner { grid-template-columns: 1fr; gap: 48px; }
 }

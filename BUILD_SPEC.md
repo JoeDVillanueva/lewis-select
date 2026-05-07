@@ -1,13 +1,15 @@
-# Lewis Select — Marketing Site Build Spec  ·  v2
+# Lewis Select — Marketing Site Build Spec  ·  v3
+
+> **v3 changelog.** Type sizes bumped for the senior audience (body 14 → 17px, eyebrow 10 → 12px, etc.). Nav and footer small caps bumped to match. Muted text on navy changed from `rgba(255,255,255,0.40)` to `#B5C6E0` (a pale blue) for legibility. Primary text on navy is now pure white. Approach page collapses from 7 pillars to 3. Homepage "Everything in one practice" reframed as "Care today. Stewardship for the years ahead." with the same 3 pillars. About page picks up a new navy pull-quote moment. Closing CTA drops the "no application form" line. Approach header changes to "Stewarding Health for the Hill Country."
 
 This document is the build specification for the Lewis Select marketing website. Hand it to Claude Code in a fresh project repository alongside `CONTENT.md`, `Lewis Select tiiny site.html` (visual reference), `Lewis_Logo.svg`, and `Lewis_Logo_mark.svg`. Claude Code should be able to scaffold the project, implement every component and page, and produce a deployable build with no further direction.
 
 Companion files in this folder:
 
 - `CONTENT.md` — all user-facing copy, page by page
-- `Lewis Select tiiny site.html` — **visual reference**: match this register (navy + warm gold, Cormorant Garamond + DM Sans, hairlines, light weights, heavy letter-spacing on uppercase). Treat it as the canonical aesthetic, not a layout template.
+- `Lewis Select tiiny site.html` — **visual reference for register**: navy + warm gold + cream palette, Cormorant Garamond + DM Sans pairing, hairline rules, light weights, gold-italic words inside display headlines. Treat it as the canonical aesthetic, not a layout template.
+- `Lewis_Select_Moodboard.html` — **visual reference for sizes and dark-text color**: the v3 type sizes (body 17px, eyebrow 12px, etc.) and the lighter blue `#B5C6E0` for muted text on navy are demonstrated with live specimens including nav and footer at the new sizes. When a token value seems ambiguous, this file is the tie-breaker.
 - `Lewis_Logo.svg`, `Lewis_Logo_mark.svg` — brand marks
-- `Lewis_Select_Moodboard.html` — superseded; the tiiny site replaces it.
 
 ---
 
@@ -120,8 +122,8 @@ All tokens live in `src/app/globals.css` as CSS variables. Components reference 
   --color-text:        #1A1714;   /* near-black ink */
   --color-rule:        #D8D0C2;   /* warm hairline on cream/white */
   --color-rule-dark:   rgba(184,149,90,0.20);   /* gold hairline on navy */
-  --color-text-on-dark:       #F5F1EA;          /* off-white on navy */
-  --color-text-on-dark-muted: rgba(255,255,255,0.40);
+  --color-text-on-dark:       #FFFFFF;          /* pure white — primary text on navy */
+  --color-text-on-dark-muted: #B5C6E0;          /* pale blue — secondary text on navy */
 }
 ```
 
@@ -141,16 +143,27 @@ All tokens live in `src/app/globals.css` as CSS variables. Components reference 
   --font-display: var(--font-cormorant), Georgia, serif;
   --font-body:    var(--font-dm-sans), system-ui, sans-serif;
 
-  /* Type scale — clamp() for fluid sizing */
-  --text-h1:        clamp(52px, 7vw, 86px);     /* hero */
-  --text-section:   clamp(34px, 4vw, 50px);     /* section title */
-  --text-h3:        clamp(20px, 2vw, 24px);
-  --text-blockquote:clamp(22px, 3vw, 30px);
-  --text-stat:      44px;                       /* hero stat numerals */
-  --text-body:      14px;
-  --text-body-sm:   13px;
-  --text-small:     12px;
-  --text-eyebrow:   9px;                        /* very small, heavy letter-spacing */
+  /* Type scale — clamp() for fluid sizing.
+     v3 bumped sizes for legibility (audience skews 50+). Body weight stays at 300 — the heritage feel comes from the light weight, so size is the lever to pull, not weight. */
+  --text-h1:           clamp(56px, 7.2vw, 90px);    /* hero, page header */
+  --text-section:      clamp(38px, 4.4vw, 56px);    /* section title */
+  --text-h3:           clamp(22px, 2.2vw, 28px);    /* sub-section heads inside long-form */
+  --text-blockquote:   clamp(26px, 3.2vw, 36px);    /* pull quotes, philosophy band */
+  --text-stat:         48px;                        /* hero stat numerals (if used) */
+
+  /* Body */
+  --text-body:         17px;     /* primary body — every paragraph */
+  --text-body-sm:      15px;     /* footer brand paragraph, captions */
+  --text-small:        14px;     /* smallest body */
+
+  /* Small-caps / uppercase elements (eyebrow + nav + footer) */
+  --text-eyebrow:      12px;     /* gold uppercase eyebrow above every headline */
+  --text-nav-link:     12px;     /* nav links (Approach, Dr. Lewis) */
+  --text-nav-cta:      11px;     /* "Start a conversation" ghost button in nav */
+  --text-nav-tagline:  10px;     /* "PRIVATE CONCIERGE MEDICINE" tagline beneath wordmark */
+  --text-footer-title: 12px;     /* gold column titles in footer */
+  --text-footer-link:  15px;     /* footer column links */
+  --text-footer-bottom:12px;     /* footer copyright + privacy bottom bar */
 
   /* Line heights */
   --lh-tight:   1.05;     /* h1 */
@@ -159,10 +172,10 @@ All tokens live in `src/app/globals.css` as CSS variables. Components reference 
   --lh-body:    1.85;     /* body — generous, magazine-paced */
   --lh-loose:   1.95;     /* physician body, long-form */
 
-  /* Letter spacing */
+  /* Letter spacing — pulled back slightly with v3's larger sizes so the characters don't space out */
   --ls-tight:        -0.005em;  /* h1 (slight) */
-  --ls-eyebrow:      0.38em;    /* section labels */
-  --ls-eyebrow-tight:0.20em;    /* nav links, smaller eyebrows */
+  --ls-eyebrow:      0.34em;    /* section labels (was 0.38em — pulled back with size bump) */
+  --ls-eyebrow-tight:0.20em;    /* nav links */
   --ls-button:       0.25em;    /* CTAs */
   --ls-uppercase:    0.30em;    /* generic uppercase small caps */
 
@@ -176,13 +189,16 @@ All tokens live in `src/app/globals.css` as CSS variables. Components reference 
 **Type rules.**
 
 - Display: Cormorant Garamond. Default weight 300. Italics are common — used for emphasized words inside headlines (set in `--color-gold-light`), section blockquotes, and sig lines. Italic in `*asterisks*` in `CONTENT.md` marks display lines (set in display serif, italic).
-- Body: DM Sans. Default weight 200 (yes, that light). Step up to 300 for headings inside body, 400 only when bolder emphasis is needed.
-- Eyebrow: DM Sans, weight 300, uppercase, letter-spacing 0.38em (or 0.30em for narrower contexts), 9px size. Color `--color-gold` on cream, `--color-gold` on navy too. Always preceded by a 30–40px gold hairline (see tiiny `.section-label::before`).
-- CTA buttons: 10px DM Sans, weight 300, uppercase, letter-spacing 0.25em. Two variants:
+- Body: DM Sans, weight 300, **17px** (`--text-body`). Long-form line-height 1.7. The lightness is central to the register — do not bump to 400 by default. The size bump in v3 is the readability lever.
+- Eyebrow: DM Sans, weight **400**, uppercase, letter-spacing 0.34em, **12px** (`--text-eyebrow`). Color `--color-gold` on cream, `--color-gold-light` on navy. Always preceded by a 30px gold hairline (see tiiny `.section-label::before`).
+- CTA buttons: 11–12px DM Sans, weight 400, uppercase, letter-spacing 0.25em. Three variants:
   - Primary (gold fill, white text): `background: var(--color-gold); color: white; padding: 16px 40px;`
-  - Ghost (text + bottom hairline): `color: rgba(255,255,255,0.45); border-bottom: 0.5px solid rgba(255,255,255,0.2);`
+  - Ghost (gold border + gold text): `border: 0.5px solid var(--color-gold); color: var(--color-gold); padding: 12px 22px;` — used in the nav.
   - Navy fill (cream sections only): `background: var(--color-navy); color: white;`
-- Body text uses `font-weight: 200`. This is unusual but central to the register — do not bump to 400 by default.
+- Nav links: DM Sans, weight 400, uppercase, letter-spacing 0.20em, **12px** (`--text-nav-link`). Color `rgba(255,255,255,0.65)`; hover → white. Underline reveals from left on hover.
+- Footer column titles: DM Sans, weight 400, uppercase, letter-spacing 0.30em, **12px** (`--text-footer-title`), gold.
+- Footer column links: DM Sans, weight 300, **15px** (`--text-footer-link`), `--color-text-on-dark-muted`. Hover → gold.
+- Footer bottom bar: DM Sans, weight 300, letter-spacing 0.10em, **12px** (`--text-footer-bottom`), `--color-text-on-dark-muted`.
 
 ### 4.3 Spacing scale
 
@@ -262,7 +278,7 @@ Each component below maps to `CONTENT.md` section types. Components are pure ser
 - `<Eyebrow>` — small uppercase label, gold, with leading 30–40px hairline. Use everywhere a section label appears.
 - `<Display as="h1|h2|p">` — Cormorant Garamond display. Accepts `italic` boolean and supports embedded italic spans (for the gold-italic words inside headlines).
 - `<Lede>` — italic Cormorant sub-headline.
-- `<Body>` — DM Sans body. Variants: `default` (200 weight), `dark` (on navy, light/40% opacity), `muted` (warm gray on cream).
+- `<Body>` — DM Sans body, weight 300, 17px. Variants: `default` (ink on cream), `dark` (white on navy), `dark-muted` (`--color-text-on-dark-muted` / `#B5C6E0` on navy), `muted` (`--color-warm-gray` on cream).
 - `<Cta variant="primary | navy | ghost">` — see §4.2.
 - `<Rule weight="hairline | gold-edge" />` — 0.5px hairline. `gold-edge` variant is the 2px gold left-border treatment used on banners (see tiiny `.mem-not-included`, `.emr-banner`).
 
@@ -276,9 +292,9 @@ Each component below maps to `CONTENT.md` section types. Components are pure ser
 | `<PhilosophyBand />` | Home | cream surface, centered italic Cormorant blockquote, gold uppercase attribution underneath. |
 | `<EmpathyBlock />` | Home | cream surface, eyebrow + two body paragraphs. |
 | `<Differentiators />` | Home | navy surface, 1.3fr / 1fr two-column grid. Left column has eyebrow, section title, intro body. Right column has four numbered items separated by hairlines. See tiiny `#why` for layout. |
-| `<Pillars />` | Home | cream surface, 3-column grid (or 4×2) with hairline borders between cells. Each pillar = number, title, body. See tiiny `.membership-grid`. |
-| `<PillarFull />` | Approach | seven items with subhead + body + "What this replaces" tag treated as a gold left-edge banner. |
-| `<PullQuote />` | Home | navy surface, italic Cormorant quote with subtle huge-numeral background watermark (see tiiny `.founding-bg` pattern). |
+| `<Pillars />` | Home | cream surface, 3 numbered items with hairline rules between them. Each pillar = number (italic Cormorant gold), title (Cormorant), body (DM Sans 17px). Section title above frames the pair: "Care today. Stewardship for the years ahead." See tiiny `.membership-grid` for layout reference, but with 3 cells, not 6. |
+| `<PillarFull />` | Approach | **three** items with subhead (italic Cormorant) + body + "What this replaces" tag treated as a gold left-edge banner. Pillar 3 has multi-paragraph body. |
+| `<PullQuote />` | Home, About | navy surface, italic Cormorant quote (clamp(26px, 3.2vw, 36px)) + gold uppercase attribution. Used twice on the homepage (the "fastest medicine" line) and once on the About page (the "knowing and caring for my patients" line). |
 | `<AboutBlock />` | Home | cream surface, eyebrow + display + body + sig line + CTA. Optional small portrait at right. |
 | `<WhoItsFor />` | Home | cream surface, eyebrow + display + body + CTA. |
 | `<ClosingCTA />` | every page except `/start-a-conversation` | navy surface, eyebrow + italic Cormorant headline (Dr. Lewis quote pattern), body, primary gold CTA. |
@@ -287,19 +303,22 @@ Each component below maps to `CONTENT.md` section types. Components are pure ser
 
 ### 6.4 Nav specifics
 
-- Logo at left (Lewis_Logo.svg), wordmark next to mark with a small tagline beneath: "PRIVATE CONCIERGE MEDICINE" in 8px DM Sans, letter-spacing 0.35em, gold-pale.
-- Right-side links: Approach, Dr. Lewis. (Two links — fewer than the previous spec since pages were dropped.)
-- "Start a conversation" as a gold-bordered ghost CTA (right-most) — see tiiny `.nav-cta`.
+- Logo mark + wordmark at left. Wordmark: 22px Cormorant Garamond, weight 300, italic on "Select" in `--color-gold-light`. Beneath the wordmark, a tagline: "PRIVATE CONCIERGE MEDICINE" in **`--text-nav-tagline` (10px)** DM Sans, weight 300, letter-spacing 0.30em, `--color-text-on-dark-muted`.
+- Right-side links: Approach, Dr. Lewis. **`--text-nav-link` (12px)** DM Sans, weight 400, uppercase, letter-spacing 0.20em, `rgba(255,255,255,0.65)`. Hover → white. Underline reveals from left.
+- "Start a conversation" as a gold-bordered ghost CTA (right-most). **`--text-nav-cta` (11px)** DM Sans, weight 400, uppercase, letter-spacing 0.22em. `border: 0.5px solid var(--color-gold); color: var(--color-gold); padding: 12px 22px;` Hover fills gold with white text.
 - Mobile: hamburger opens a mobile menu beneath the nav with the same links + CTA.
-- Sticky on scroll. Background: `rgba(15,39,68,0.97)` with `backdrop-filter: blur(12px)`. After 24px of scroll, height shrinks 76px → 64px and border-bottom darkens.
+- Sticky on scroll. Background: `rgba(15,39,68,0.97)` with `backdrop-filter: blur(12px)`. After 24px of scroll, height shrinks 80px → 64px and border-bottom darkens.
 
 ### 6.5 Footer specifics
 
 Always navy. Four columns desktop, two columns mobile. See `CONTENT.md` §Footer for content.
 
-- Column titles: gold, 9px, weight 300, letter-spacing 0.30em, uppercase.
-- Column links: rgba(255,255,255,0.35), 12px, weight 200, letter-spacing 0.04em. Hover → gold.
-- Bottom bar separated by a 0.5px rgba(255,255,255,0.07) rule. Copyright at left, privacy link at right, both 10px / weight 200 / rgba(255,255,255,0.20).
+- Wordmark: 24px Cormorant Garamond, weight 300, italic "Select" in `--color-gold-light`.
+- Tagline beneath wordmark: 10px DM Sans, weight 300, letter-spacing 0.30em, uppercase, `--color-text-on-dark-muted`.
+- Brand paragraph: **`--text-body-sm` (15px)** DM Sans, weight 300, line-height 1.7, `--color-text-on-dark-muted`.
+- Column titles: gold, **`--text-footer-title` (12px)**, weight 400, letter-spacing 0.30em, uppercase.
+- Column links: **`--text-footer-link` (15px)** DM Sans, weight 300, `--color-text-on-dark-muted`, letter-spacing 0.02em. Hover → gold.
+- Bottom bar separated by a 0.5px `rgba(255,255,255,0.10)` rule. Copyright at left, privacy link at right, both **`--text-footer-bottom` (12px)** DM Sans, weight 300, letter-spacing 0.10em, `--color-text-on-dark-muted`.
 
 ---
 
@@ -384,34 +403,39 @@ Each page is composed of these components in order. Copy comes from `CONTENT.md`
 
 1. `<Nav />`
 2. `<Hero />` — navy
-3. `<PhilosophyBand />` — cream
+3. `<PhilosophyBand />` — cream  (the stewardship blockquote from Dr. Lewis)
 4. `<EmpathyBlock />` — cream
-5. `<Differentiators />` — navy
-6. `<Pillars heading="Everything in one practice" />` — cream
-7. `<PullQuote />` — navy
+5. `<Differentiators />` — navy  (the four wedges, unchanged from v2)
+6. `<Pillars heading="Care today. Stewardship for the years ahead." count="3" />` — cream  (v3: collapsed from 7 items to 3, framing near-term + longevity)
+7. `<PullQuote />` — navy  ("The fastest medicine in the world…")
 8. `<AboutBlock />` — cream
 9. `<WhoItsFor />` — cream
-10. `<ClosingCTA />` — navy
+10. `<ClosingCTA />` — navy  (drops "no application form" line)
 11. `<Footer />` — navy
 
 ### 8.2 `/approach`
 
 1. `<Nav />`
-2. `<Hero variant="page-header" />` — navy ("Hill Country Stewardship Medicine.")
-3. Three commitments block (eyebrow + section title + 3 numbered items, cream surface)
-4. `<PillarFull />` × 7 — alternating cream/white surfaces (or all cream with internal hairlines)
-5. `<ClosingCTA />` — navy
-6. `<Footer />` — navy
+2. `<Hero variant="page-header" />` — navy ("Stewarding Health for the Hill Country.")  *(v3 header)*
+3. `<PillarFull />` × **3** — alternating cream/white surfaces  *(v3: collapsed from 7 to 3)*
+   - 01 Direct 24/7 access to your doctor
+   - 02 Same-day acute response, care coordination, and advocacy
+   - 03 Vision and stewardship of your long-term health
+4. `<ClosingCTA />` — navy
+5. `<Footer />` — navy
+
+   *(v3: removed the "three commitments" block from v2 — redundant with the new 3-pillar structure.)*
 
 ### 8.3 `/about`
 
 1. `<Nav />`
 2. `<Hero variant="page-header" />` — navy ("Dr. Kevin Lewis, *DO*.")
 3. `<PhysicianBlock />` — cream (portrait + bio + Driftwood + network sub-sections)
-4. Credentials list — cream
-5. Sig line — cream
-6. `<ClosingCTA />` — navy
-7. `<Footer />` — navy
+4. **`<PullQuote />`** — navy  *(v3: NEW — "Knowing and caring for my patients personally and helping them steward their long-term health is my top priority. It's the heart of good medicine.")*
+5. Credentials list — cream
+6. Sig line — cream
+7. `<ClosingCTA />` — navy
+8. `<Footer />` — navy
 
 ### 8.4 `/start-a-conversation`
 

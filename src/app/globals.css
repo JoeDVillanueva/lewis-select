@@ -25,8 +25,8 @@
   --color-rule-on-navy:       rgba(255, 255, 255, 0.07);
   --color-rule-on-navy-strong:rgba(255, 255, 255, 0.18);
 
-  --color-text-on-dark:       #F5F1EA;
-  --color-text-on-dark-muted: rgba(255, 255, 255, 0.50); /* AA-safe; replaces 0.40 */
+  --color-text-on-dark:       #FFFFFF;        /* primary text on navy — pure white */
+  --color-text-on-dark-muted: #B5C6E0;        /* secondary text on navy — pale blue */
   --color-text-on-dark-soft:  rgba(255, 255, 255, 0.35);
   --color-text-on-dark-faint: rgba(255, 255, 255, 0.25);
 
@@ -34,15 +34,26 @@
   --font-display: var(--font-cormorant), Georgia, serif;
   --font-body:    var(--font-dm-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
 
-  --text-h1:         clamp(52px, 7vw, 86px);
-  --text-section:    clamp(34px, 4vw, 50px);
-  --text-h3:         clamp(20px, 2vw, 24px);
-  --text-blockquote: clamp(22px, 3vw, 30px);
-  --text-stat:       44px;
-  --text-body:       14px;
-  --text-body-sm:    13px;
-  --text-small:      12px;
-  --text-eyebrow:    9px;
+  /* Display scale */
+  --text-h1:         clamp(56px, 7.2vw, 90px);
+  --text-section:    clamp(38px, 4.4vw, 56px);
+  --text-h3:         clamp(22px, 2.2vw, 28px);
+  --text-blockquote: clamp(26px, 3.2vw, 36px);
+  --text-stat:       48px;
+
+  /* Body */
+  --text-body:       17px;
+  --text-body-sm:    15px;
+  --text-small:      14px;
+
+  /* Small-caps / uppercase elements */
+  --text-eyebrow:        12px;
+  --text-nav-link:       12px;
+  --text-nav-cta:        11px;
+  --text-nav-tagline:    10px;
+  --text-footer-title:   12px;
+  --text-footer-link:    15px;
+  --text-footer-bottom:  12px;
 
   --lh-tight:        1.05;
   --lh-snug:         1.15;
@@ -51,7 +62,7 @@
   --lh-loose:        1.95;
 
   --ls-tight:        -0.005em;
-  --ls-eyebrow:      0.38em;
+  --ls-eyebrow:      0.34em;
   --ls-eyebrow-tight:0.20em;
   --ls-button:       0.25em;
   --ls-uppercase:    0.30em;

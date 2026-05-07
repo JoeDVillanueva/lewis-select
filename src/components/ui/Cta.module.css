@@ -1,8 +1,8 @@
 .cta {
   display: inline-block;
   font-family: var(--font-body);
-  font-size: 10px;
-  font-weight: var(--weight-light);
+  font-size: 12px;
+  font-weight: var(--weight-regular);
   letter-spacing: var(--ls-button);
   text-transform: uppercase;
   text-decoration: none;
@@ -55,11 +55,11 @@
 
 /* Gold-bordered ghost — used for the nav CTA */
 .bordered {
-  font-size: 9px;
+  font-size: var(--text-nav-cta);
   letter-spacing: 0.22em;
   border: 0.5px solid var(--color-gold);
   color: var(--color-gold);
-  padding: 11px 22px;
+  padding: 12px 22px;
 }
 .bordered:hover {
   background: var(--color-gold);

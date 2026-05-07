@@ -44,11 +44,15 @@
 }
 
 .body {
-  font-size: 14px;
-  font-weight: var(--weight-thin);
+  font-size: var(--text-body);
+  font-weight: var(--weight-light);
   line-height: var(--lh-loose);
   color: var(--color-warm-gray);
   max-width: 720px;
+  margin-bottom: 1.4em;
+}
+
+.body:last-of-type {
   margin-bottom: 24px;
 }
 

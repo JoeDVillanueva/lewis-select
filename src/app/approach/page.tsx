@@ -12,7 +12,7 @@ import styles from "./page.module.css";
 export const metadata: Metadata = siteMetadata({
   title: "Approach — Lewis Select",
   description:
-    "Hill Country Stewardship Medicine. Time, continuity, and foresight — the three commitments behind Lewis Select.",
+    "Stewarding Health for the Hill Country. Three pillars — direct access, acute response, and a written plan for the years ahead.",
   path: "/approach",
 });
 
@@ -22,7 +22,7 @@ export default function ApproachPage() {
       <Hero
         variant="page-header"
         eyebrow={approach.header.eyebrow}
-        headline={<em>Hill Country Stewardship Medicine.</em>}
+        headline={<em>Stewarding Health for the Hill Country.</em>}
         body={
           <>
             <p style={{ marginBottom: 16 }}>{approach.header.body1}</p>
@@ -33,30 +33,14 @@ export default function ApproachPage() {
 
       <Band tone="cream">
         <Section>
-          <div className={styles.commitments}>
-            <Eyebrow>{approach.commitments.eyebrow}</Eyebrow>
-            <h2 className={styles.title}>{approach.commitments.title}</h2>
-            <Body variant="muted" long className={styles.intro}>
-              {approach.commitments.intro}
-            </Body>
-            <ol className={styles.cmtGrid}>
-              {approach.commitments.items.map((it) => (
-                <li key={it.n} className={styles.cmtItem}>
-                  <span className={styles.cmtNum}>{it.n}</span>
-                  <h3 className={styles.cmtHead}>{it.title}</h3>
-                  <p className={styles.cmtBody}>{it.body}</p>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </Section>
-      </Band>
-
-      <Band tone="cream">
-        <Section>
           <div className={styles.pillarsHeader}>
             <Eyebrow>{approach.pillars.eyebrow}</Eyebrow>
-            <h2 className={styles.title}>{approach.pillars.title}</h2>
+            <h2 className={styles.title}>
+              Care today. <em>Stewardship for the years ahead.</em>
+            </h2>
+            <Body variant="muted" long className={styles.intro}>
+              {approach.pillars.intro}
+            </Body>
           </div>
           <PillarFull items={approach.pillars.items} />
         </Section>

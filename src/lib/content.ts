@@ -27,7 +27,7 @@ export const closingCta = {
   eyebrow: "The next step",
   attribution: "— Dr. Kevin Lewis",
   body:
-    "There is no application form. If your family is considering a different kind of medical practice, the next step is a conversation with Dr. Lewis — by phone or in person.",
+    "If your family is considering a different kind of medical practice, the next step is a conversation with Dr. Lewis — by phone or in person.",
   ctaLabel: "Start a conversation",
   ctaHref: "/start-a-conversation",
 };
@@ -85,15 +85,29 @@ export const home = {
   },
   pillars: {
     eyebrow: "What's included",
+    intro:
+      "Lewis Select has three pillars. The first two are about today — how fast you can reach your doctor, how fast specialists answer when you need them, how a hospital admission gets handled. The third is about decades — the science, the data, and the written plan that turn medicine from reaction into stewardship.",
     items: [
-      { n: "01", title: "Direct 24/7 access.", body: "Text or call Dr. Lewis directly, any day, any hour. No answering service. No covering physician. No stranger on call." },
-      { n: "02", title: "Annual Executive Physical.", body: "Ninety unhurried minutes. ECG, imaging, results reviewed in person. The visit is paced like a conversation, not a checklist." },
-      { n: "03", title: "100+ biomarker panel.", body: "Cardiovascular, metabolic, hormonal, nutritional, and early-cancer markers — five to ten times the depth of a typical private-practice panel." },
-      { n: "04", title: "Annual Health Blueprint.", body: "A written, bound document for each member of the family — your year of health, on paper, in plain language." },
-      { n: "05", title: "Continuous wearable monitoring.", body: "Apple Watch or Oura, watched quietly, with proactive outreach when the data shifts." },
-      { n: "06", title: "Warm specialist referrals.", body: "A twenty-five-year Austin specialist network, reached physician-to-physician by phone." },
-      { n: "07", title: "Acute response and care coordination.", body: "Hospital admissions, ER advocacy, pre-travel consults, longitudinal records — all handled by one phone call." },
+      {
+        n: "01",
+        title: "Direct 24/7 access to your doctor.",
+        body:
+          "Text or call Dr. Lewis directly, any day, any hour. The doctor who knows your family on Tuesday is the doctor who answers on Sunday at nine. No answering service. No covering physician.",
+      },
+      {
+        n: "02",
+        title: "Same-day acute response, with care coordination and advocacy.",
+        body:
+          "When something serious happens, you make one phone call. Dr. Lewis is on the phone within minutes — calling specialists by name from a network he has personally worked with for twenty-five years, coordinating with the hospital, advocating for you. Same-day or next-day specialist placement is the norm, not the exception.",
+      },
+      {
+        n: "03",
+        title: "Vision and stewardship of your long-term health.",
+        body:
+          "The longest, healthiest version of your life does not happen by accident. Lewis Select gives you the plan: a 100+ biomarker panel twice a year, ninety unhurried minutes for an annual executive physical, continuous wearable monitoring, and a written, bound Health Blueprint Dr. Lewis writes for each member of your family every year — tying your data, your history, and your conversations together into a clear plan for the year ahead.",
+      },
     ],
+    cta: { label: "Read the full approach", href: "/approach" },
   },
   pullQuote: {
     quote: "The fastest medicine in the world is the medicine that already knows you.",
@@ -124,82 +138,42 @@ export const approach = {
       "Stewardship is an old word. It used to describe what a physician did for a family — kept watch, year after year, knowing the children, the parents, the parents' parents. The doctor was the steward of the family's health, in the same way a rancher was the steward of the land.",
     body2: "Modern medicine has lost the word. Lewis Select is built around getting it back.",
   },
-  commitments: {
-    eyebrow: "The commitments",
-    title: "Three commitments. Nothing more.",
-    intro:
-      "Stewardship medicine, as Dr. Lewis practices it, has three commitments. None of these are technologies. They are the choices a small practice can make and a large one cannot.",
-    items: [
-      { n: "01", title: "Time.", body: "The unhurried appointment, the read-through-the-night, the call returned the same day." },
-      { n: "02", title: "Continuity.", body: "The same physician, year after year, who knows your family the way a neighbor knows it." },
-      { n: "03", title: "Foresight.", body: "A written plan for the year ahead, drawn from your data, your history, and the conversations you have had together." },
-    ],
-  },
   pillars: {
     eyebrow: "The program",
-    title: "Seven things, in one practice, for one annual fee.",
+    intro:
+      "Lewis Select stands on three pillars. Two address what most families fear most about modern medicine: that you cannot reach your doctor when you need her, and that when something goes wrong the system will not act fast enough. The third addresses something most practices don't even attempt — a real plan for the long arc of your health.",
     items: [
       {
         n: "01",
-        title: "Direct 24/7 access to Dr. Lewis.",
+        title: "Direct 24/7 access to your doctor.",
         subhead: "One number. Seven days. The same physician.",
         body:
-          "Membership begins with Dr. Lewis's mobile number. Text him, call him, or reach him by video — any day, any hour. There is no answering service, no triage nurse, no covering doctor. If you wake at 2 a.m. unsure whether your child has appendicitis, you reach Dr. Lewis. If you develop chest pain at the airport in Houston, you reach Dr. Lewis. If you have a question that does not need a visit, you text and you get an answer. The boundary between \"office hours\" and \"after hours\" has been removed.",
+          "Membership begins with Dr. Lewis's mobile number. Text him, call him, or reach him by video — any day, any hour. There is no answering service, no triage nurse, no covering doctor. The doctor who knows your family on Tuesday is the doctor who answers on Sunday at nine. The boundary between \"office hours\" and \"after hours\" has been removed.",
         replaces:
           "The hold music, the Friday-evening triage line, the weekend ER trip that did not need to happen.",
       },
       {
         n: "02",
-        title: "The Annual Executive Physical.",
-        subhead: "Ninety unhurried minutes. In person. Once a year.",
-        body:
-          "Each year, you spend ninety minutes — sometimes longer — with Dr. Lewis for a full physical. ECG, imaging when indicated, a complete review of your year, and an in-person walk-through of your bloodwork and Health Blueprint. The visit is paced like a conversation, not a checklist. By the time you leave, you understand what is going on with your body and what you should do about it.",
+        title: "Same-day acute response, care coordination, and advocacy.",
+        subhead: "One phone call. Everything else is handled.",
+        bodyParagraphs: [
+          "When something serious happens — a hospital admission, an ER visit, an injury on a trip, a specialist needed this week — you make one phone call. Dr. Lewis is on the phone within minutes.",
+          "He calls a specialist by name from a network he has personally worked with for twenty-five years; same-day or next-day placement is the norm, not the exception. He coordinates with the hospital, advocates for you with the specialists, and ensures the records flow back to your file. Pre-travel consults are part of membership. Longitudinal record-keeping — every test, every consult, every prescription — is centralized.",
+        ],
         replaces:
-          "The fifteen-minute physical, the lab results emailed without a call, the question you forgot to ask.",
+          "The three-week wait for a referral, the hours of triage and paperwork that fall on you in a moment when neither of you should be doing them, the sense that you are introducing yourself from scratch every time.",
       },
       {
         n: "03",
-        title: "A 100+ biomarker panel.",
-        subhead: "Five to ten times the lab depth of a typical practice.",
-        body:
-          "Twice a year, you give blood. We run a panel of more than one hundred biomarkers — cardiovascular, metabolic, hormonal, nutritional, inflammatory, and early-cancer signals — calibrated against the latest longevity science. The point is not numbers for the sake of numbers. The point is to find risk while it is still cheap to fix, and to give your Health Blueprint something concrete to act on.",
+        title: "Vision and stewardship of your long-term health.",
+        subhead: "A written plan for the years ahead.",
+        bodyParagraphs: [
+          "The longest, healthiest version of your life does not happen by accident. It happens with a plan — drawn from real data, refined every year, acted on consistently. Lewis Select gives you that plan.",
+          "Each year, you spend ninety unhurried minutes with Dr. Lewis for a full executive physical. Twice a year, we run a 100+ biomarker panel — five to ten times the depth of a typical practice — measuring cardiovascular, metabolic, hormonal, nutritional, inflammatory, and early-cancer signals against the latest longevity science. Your wearable data — Apple Watch, Oura, Whoop — is watched quietly, with proactive outreach when something shifts.",
+          "All of it synthesizes into your annual Health Blueprint: a written, bound document Dr. Lewis writes for each member of your family, every year. It says exactly what your year of health should look like, in plain language, for adults and dependents alike. You take it home. You come back to it in June. Your spouse can read it. Your specialists can read it. You do not have to remember anything.",
+        ],
         replaces:
-          "The annual cholesterol screen and the assumption that \"normal\" is the same as \"optimal.\"",
-      },
-      {
-        n: "04",
-        title: "The annual Health Blueprint.",
-        subhead: "A written, bound plan for the year ahead.",
-        body:
-          "Dr. Lewis writes a Blueprint for each adult and dependent in your family, every year. It synthesizes your physical, your bloodwork, your wearable trends, your family history, and the conversations you have had together into a clear plan for the next twelve months — what to keep doing, what to change, what to watch, what to test next, and why. The Blueprint is bound, printed, and personally delivered. It is yours to keep, share with your spouse, hand to a specialist on a flight, or read again in June when something feels off.",
-        replaces: "The vague impression you leave the doctor's office with.",
-      },
-      {
-        n: "05",
-        title: "Continuous wearable monitoring.",
-        subhead: "Your data, watched quietly, with proactive outreach when it shifts.",
-        body:
-          "Your Apple Watch, Oura ring, or Whoop band feeds into Dr. Lewis's monitoring system through a secure connection. When something changes — resting heart rate creeps up, heart-rate variability drops for a sustained period, sleep efficiency falls — Dr. Lewis sees it and reaches out. Not in a panic. With a question, a context, and a recommendation.",
-        replaces:
-          "The reactive model where the patient calls the doctor only after something is already wrong.",
-      },
-      {
-        n: "06",
-        title: "Warm specialist referrals.",
-        subhead: "A twenty-five-year network, called by name.",
-        body:
-          "When you need a cardiologist, an oncologist, an orthopedic surgeon, a fertility specialist, or any other expertise outside Dr. Lewis's primary care, you do not get a list of names and a phone number. Dr. Lewis calls a specialist he has personally worked with — by phone, physician-to-physician — explains what is going on, and arranges the visit. He briefs the specialist before. He follows up after. When you walk in, the specialist already knows you. Same-day or next-day placement is the norm, not the exception.",
-        replaces:
-          "The referral printed on a slip, the three-week wait, the sense that you are introducing yourself from scratch every time.",
-      },
-      {
-        n: "07",
-        title: "Acute response and care coordination.",
-        subhead: "One phone call. Everything else is handled.",
-        body:
-          "When something serious happens — a hospital admission, an ER visit, an injury on a trip — Dr. Lewis is on the phone within minutes. He coordinates with the hospital, advocates for you with the specialists, and ensures the records flow back to your file. Pre-travel consults are part of membership. Longitudinal record-keeping — every test, every consult, every prescription — is centralized. You make one phone call. Everything else is handled.",
-        replaces:
-          "The hours of triage and paperwork that fall on you and your family in a moment when neither of you should be doing them.",
+          "The annual cholesterol screen and the assumption that \"normal\" is the same as \"optimal.\" The vague impression you leave the doctor's office with. The reactive model where the patient calls the doctor only after something is already wrong.",
       },
     ],
   },
@@ -230,6 +204,11 @@ export const about = {
     body:
       "Over twenty-five years of practice, Dr. Lewis has built a specialist network across Austin that spans every major discipline — cardiology, oncology, orthopedics, neurology, endocrinology, gastroenterology, fertility, dermatology, and beyond. These are physicians he has personally worked with, sent patients to, and exchanged calls with for years. Membership in Lewis Select gives you access to this network the way Dr. Lewis accesses it himself: by phone, by name, in real time.",
   },
+  pullQuote: {
+    quote:
+      "Knowing and caring for my patients personally and helping them steward their long-term health is my top priority. It's the heart of good medicine.",
+    attribution: "Dr. Kevin Lewis",
+  },
   credentials: {
     eyebrow: "On the record",
     rows: [
@@ -253,7 +232,7 @@ export const conversation = {
   personalNote: {
     eyebrow: "From Dr. Lewis",
     body:
-      "Lewis Select is built one family at a time. There is no application form, and there are no quick-decision pathways. The next step, if you are considering us, is a phone call with Dr. Lewis. The call is the same one we begin every member relationship with. We will use it to understand what you are looking for, to answer your questions plainly, and to determine together whether this practice is the right fit for your family.",
+      "Lewis Select is built one family at a time. The next step, if you are considering us, is a phone call with Dr. Lewis. The call is the same one we begin every member relationship with. We will use it to understand what you are looking for, to answer your questions plainly, and to determine together whether this practice is the right fit for your family.",
     smallNote:
       "Lewis Select is direct-pay; no insurance is billed for membership. Membership is by invitation.",
   },
@@ -279,5 +258,12 @@ export const conversation = {
 
 export type CtaSpec = { label: string; href: string };
 export type Item = { n: string; title: string; body: string };
-export type PillarItem = Item & { subhead: string; replaces: string };
+export type PillarItem = {
+  n: string;
+  title: string;
+  subhead: string;
+  body?: string;
+  bodyParagraphs?: string[];
+  replaces: string;
+};
 export type RichString = ReactNode;

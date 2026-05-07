@@ -15,7 +15,7 @@
   grid-template-columns: 1.4fr 1fr 1fr 1fr;
   gap: 56px;
   padding-bottom: 48px;
-  border-bottom: 0.5px solid var(--color-rule-on-navy);
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.10);
 }
 
 .brand {}
@@ -32,25 +32,25 @@
 .wordmark em { font-style: italic; color: var(--color-gold-light); }
 
 .tagline {
-  font-size: 9px;
-  font-weight: var(--weight-thin);
+  font-size: var(--text-nav-tagline);
+  font-weight: var(--weight-light);
   letter-spacing: var(--ls-uppercase);
   text-transform: uppercase;
-  color: var(--color-text-on-dark-faint);
+  color: var(--color-text-on-dark-muted);
   margin-bottom: 24px;
 }
 
 .brandPara {
-  font-size: 12px;
-  font-weight: var(--weight-thin);
-  color: rgba(255, 255, 255, 0.30);
-  line-height: 1.8;
-  max-width: 280px;
+  font-size: var(--text-body-sm);
+  font-weight: var(--weight-light);
+  color: var(--color-text-on-dark-muted);
+  line-height: 1.7;
+  max-width: 320px;
 }
 
 .colTitle {
-  font-size: 9px;
-  font-weight: var(--weight-light);
+  font-size: var(--text-footer-title);
+  font-weight: var(--weight-regular);
   letter-spacing: var(--ls-uppercase);
   text-transform: uppercase;
   color: var(--color-gold);
@@ -65,10 +65,10 @@
 
 .list li a,
 .list li {
-  font-size: 12px;
-  font-weight: var(--weight-thin);
-  color: rgba(255, 255, 255, 0.35);
-  letter-spacing: 0.04em;
+  font-size: var(--text-footer-link);
+  font-weight: var(--weight-light);
+  color: var(--color-text-on-dark-muted);
+  letter-spacing: 0.02em;
   transition: color 0.2s;
 }
 
@@ -84,10 +84,10 @@
 }
 
 .bottom a, .bottom span {
-  font-size: 10px;
-  font-weight: var(--weight-thin);
-  color: rgba(255, 255, 255, 0.20);
-  letter-spacing: 0.12em;
+  font-size: var(--text-footer-bottom);
+  font-weight: var(--weight-light);
+  color: var(--color-text-on-dark-muted);
+  letter-spacing: 0.10em;
 }
 
 .bottom a:hover { color: var(--color-gold); }

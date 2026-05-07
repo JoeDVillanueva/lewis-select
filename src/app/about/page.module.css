@@ -1,0 +1,44 @@
+.credentials {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.cred {
+  padding: 14px 0;
+  border-bottom: 0.5px solid var(--color-rule);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 24px;
+}
+
+.cred:first-of-type { border-top: 0.5px solid var(--color-rule); }
+.cred:last-of-type { border-bottom: 0.5px solid var(--color-rule); }
+
+.credLabel {
+  font-family: var(--font-body);
+  font-size: var(--text-eyebrow);
+  font-weight: var(--weight-regular);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  flex: 0 0 auto;
+}
+
+.credValue {
+  font-family: var(--font-body);
+  font-size: var(--text-body-sm);
+  font-weight: var(--weight-light);
+  color: var(--color-navy);
+  text-align: right;
+}
+
+.sig {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: var(--weight-light);
+  font-size: 28px;
+  color: var(--color-navy);
+  margin-top: 56px;
+  line-height: 1.3;
+}

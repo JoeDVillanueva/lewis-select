@@ -54,10 +54,12 @@ export default function HomePage() {
         eyebrow={home.pillars.eyebrow}
         heading={
           <>
-            Everything a true physician relationship <em>should be.</em>
+            Care today. <em>Stewardship for the years ahead.</em>
           </>
         }
+        intro={home.pillars.intro}
         items={home.pillars.items}
+        cta={home.pillars.cta}
       />
 
       <PullQuote

@@ -8,20 +8,27 @@ type Props = {
 export function PillarFull({ items }: Props) {
   return (
     <ol className={styles.list}>
-      {items.map((it) => (
-        <li key={it.n} className={styles.item}>
-          <span className={styles.num}>{it.n}</span>
-          <div>
-            <h3 className={styles.title}>{it.title}</h3>
-            <p className={styles.subhead}>{it.subhead}</p>
-            <p className={styles.body}>{it.body}</p>
-            <div className={styles.replacesBanner}>
-              <p className={styles.replacesLabel}>What this replaces</p>
-              <p className={styles.replacesBody}>{it.replaces}</p>
+      {items.map((it) => {
+        const paragraphs = it.bodyParagraphs ?? (it.body ? [it.body] : []);
+        return (
+          <li key={it.n} className={styles.item}>
+            <span className={styles.num}>{it.n}</span>
+            <div>
+              <h3 className={styles.title}>{it.title}</h3>
+              <p className={styles.subhead}>{it.subhead}</p>
+              {paragraphs.map((p, i) => (
+                <p key={i} className={styles.body}>
+                  {p}
+                </p>
+              ))}
+              <div className={styles.replacesBanner}>
+                <p className={styles.replacesLabel}>What this replaces</p>
+                <p className={styles.replacesBody}>{it.replaces}</p>
+              </div>
             </div>
-          </div>
-        </li>
-      ))}
+          </li>
+        );
+      })}
     </ol>
   );
 }
