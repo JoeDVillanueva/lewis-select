@@ -1,0 +1,99 @@
+.footer {
+  background: var(--color-navy);
+  color: var(--color-text-on-dark);
+  padding: 60px 56px 36px;
+  border-top: 0.5px solid var(--color-rule-dark);
+}
+
+.inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+
+.top {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 56px;
+  padding-bottom: 48px;
+  border-bottom: 0.5px solid var(--color-rule-on-navy);
+}
+
+.brand {}
+
+.wordmark {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: var(--weight-light);
+  color: var(--color-text-on-dark);
+  letter-spacing: 0.05em;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.wordmark em { font-style: italic; color: var(--color-gold-light); }
+
+.tagline {
+  font-size: 9px;
+  font-weight: var(--weight-thin);
+  letter-spacing: var(--ls-uppercase);
+  text-transform: uppercase;
+  color: var(--color-text-on-dark-faint);
+  margin-bottom: 24px;
+}
+
+.brandPara {
+  font-size: 12px;
+  font-weight: var(--weight-thin);
+  color: rgba(255, 255, 255, 0.30);
+  line-height: 1.8;
+  max-width: 280px;
+}
+
+.colTitle {
+  font-size: 9px;
+  font-weight: var(--weight-light);
+  letter-spacing: var(--ls-uppercase);
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 20px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.list li a,
+.list li {
+  font-size: 12px;
+  font-weight: var(--weight-thin);
+  color: rgba(255, 255, 255, 0.35);
+  letter-spacing: 0.04em;
+  transition: color 0.2s;
+}
+
+.list li a:hover { color: var(--color-gold); }
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 28px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.bottom a, .bottom span {
+  font-size: 10px;
+  font-weight: var(--weight-thin);
+  color: rgba(255, 255, 255, 0.20);
+  letter-spacing: 0.12em;
+}
+
+.bottom a:hover { color: var(--color-gold); }
+
+@media (max-width: 720px) {
+  .footer { padding: 48px 24px 28px; }
+  .top { grid-template-columns: 1fr 1fr; gap: 40px; }
+  .brand { grid-column: 1 / -1; }
+}

@@ -1,0 +1,61 @@
+.commitments { max-width: 1080px; }
+
+.title {
+  font-family: var(--font-display);
+  font-size: var(--text-section);
+  font-weight: var(--weight-light);
+  line-height: var(--lh-snug);
+  color: var(--color-navy);
+  margin: 8px 0 28px;
+}
+
+.title em { font-style: italic; color: var(--color-gold); }
+
+.intro { max-width: 640px; margin-bottom: 56px; }
+
+.cmtGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border-top: 0.5px solid var(--color-rule);
+}
+
+.cmtItem {
+  padding: 40px 36px 0 0;
+  border-right: 0.5px solid var(--color-rule);
+}
+
+.cmtItem:last-child { border-right: none; padding-right: 0; }
+
+.cmtNum {
+  font-family: var(--font-display);
+  font-size: 14px;
+  color: var(--color-gold);
+  letter-spacing: 0.1em;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.cmtHead {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: var(--weight-light);
+  color: var(--color-navy);
+  margin-bottom: 12px;
+}
+
+.cmtBody {
+  font-size: 13px;
+  font-weight: var(--weight-thin);
+  line-height: var(--lh-body);
+  color: var(--color-warm-gray);
+  max-width: 280px;
+}
+
+.pillarsHeader { margin-bottom: 56px; max-width: 720px; }
+
+@media (max-width: 720px) {
+  .cmtGrid { grid-template-columns: 1fr; }
+  .cmtItem { border-right: none; padding: 32px 0 0 0; border-top: 0.5px solid var(--color-rule); }
+  .cmtItem:first-child { border-top: none; padding-top: 0; }
+}

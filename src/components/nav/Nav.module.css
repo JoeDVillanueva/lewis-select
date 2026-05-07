@@ -1,0 +1,169 @@
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--nav-height);
+  padding: 0 56px;
+  background: rgba(15, 39, 68, 0.97);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 0.5px solid var(--color-rule-dark);
+  transition: height 0.3s, background 0.3s, border-color 0.3s;
+}
+
+.nav.scrolled {
+  height: var(--nav-height-scrolled);
+  background: rgba(15, 39, 68, 0.99);
+  border-bottom-color: rgba(184, 149, 90, 0.30);
+}
+
+/* Spacer pushes the page content below the fixed nav. */
+.spacer {
+  height: var(--nav-height);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  color: var(--color-text-on-dark);
+}
+
+.markWrap {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.markWrap svg,
+.markWrap img {
+  width: 100%;
+  height: 100%;
+  /* Brand mark renders in terracotta on cream — invert to a pale tint on navy. */
+  filter: brightness(0) invert(1) opacity(0.85);
+}
+
+.wordmark {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: var(--weight-light);
+  letter-spacing: 0.06em;
+  line-height: 1;
+  color: var(--color-text-on-dark);
+}
+
+.wordmark em {
+  font-style: italic;
+  color: var(--color-gold-light);
+}
+
+.wordmark span {
+  display: block;
+  font-family: var(--font-body);
+  font-style: normal;
+  font-size: 8px;
+  font-weight: var(--weight-thin);
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--color-text-on-dark-soft);
+  margin-top: 3px;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 38px;
+}
+
+.links {
+  display: flex;
+  gap: 38px;
+}
+
+.links a {
+  position: relative;
+  padding-bottom: 3px;
+  font-size: 10px;
+  font-weight: var(--weight-light);
+  letter-spacing: var(--ls-eyebrow-tight);
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.50);
+  transition: color 0.2s;
+}
+
+.links a::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 100%; bottom: 0;
+  height: 0.5px;
+  background: var(--color-gold);
+  transition: right 0.3s;
+}
+
+.links a:hover {
+  color: rgba(255, 255, 255, 0.90);
+}
+.links a:hover::after { right: 0; }
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.6);
+  transition: transform 0.2s;
+}
+
+.mobileMenu {
+  display: none;
+  position: fixed;
+  top: var(--nav-height);
+  left: 0; right: 0;
+  background: rgba(15, 39, 68, 0.98);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 24px 28px 32px;
+  border-bottom: 0.5px solid var(--color-rule-dark);
+  z-index: 99;
+  flex-direction: column;
+  gap: 20px;
+}
+.mobileMenu.open { display: flex; }
+
+.mobileMenu a {
+  font-size: 11px;
+  font-weight: var(--weight-light);
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.mobileMenu .mobileCta {
+  margin-top: 8px;
+  align-self: flex-start;
+}
+
+@media (max-width: 720px) {
+  .nav { padding: 0 24px; }
+  .links { display: none; }
+  .right > .navCta { display: none; }
+  .hamburger { display: flex; }
+}
+
+/* Push the scrolled mobile menu down with the nav */
+.nav.scrolled + .mobileMenu.open,
+.nav.scrolled ~ .mobileMenu.open { top: var(--nav-height-scrolled); }

@@ -1,0 +1,22 @@
+.body {
+  font-family: var(--font-body);
+  font-weight: var(--weight-thin);
+  font-size: var(--text-body);
+  line-height: var(--lh-body);
+  letter-spacing: 0.02em;
+  margin: 0;
+}
+
+.body + .body { margin-top: 1.4em; }
+
+.default { color: var(--color-text); }
+.muted   { color: var(--color-warm-gray); }
+.dark    { color: var(--color-text-on-dark-muted); line-height: var(--lh-body); }
+.darkSoft{ color: var(--color-text-on-dark-soft); }
+
+.long { line-height: var(--lh-loose); }
+.small { font-size: var(--text-body-sm); }
+.tiny  { font-size: var(--text-small); }
+
+.body em { font-style: italic; }
+.body strong { font-weight: var(--weight-regular); }

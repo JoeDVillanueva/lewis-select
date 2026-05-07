@@ -1,0 +1,15 @@
+.inner {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 80px;
+  align-items: start;
+  max-width: var(--container-max);
+}
+
+.body p {
+  max-width: 540px;
+}
+
+@media (max-width: 720px) {
+  .inner { grid-template-columns: 1fr; gap: 32px; }
+}

@@ -1,0 +1,11 @@
+.lede {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: var(--weight-light);
+  font-size: clamp(20px, 2.4vw, 26px);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.onCream { color: var(--color-navy); }
+.onNavy  { color: var(--color-text-on-dark); }

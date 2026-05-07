@@ -1,0 +1,31 @@
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: var(--text-eyebrow);
+  font-weight: var(--weight-light);
+  color: var(--color-gold);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-eyebrow);
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.eyebrow::before {
+  content: "";
+  display: block;
+  width: 30px;
+  height: 0.5px;
+  background: var(--color-gold);
+  flex: 0 0 30px;
+}
+
+.tight {
+  letter-spacing: var(--ls-uppercase);
+}
+
+.center {
+  justify-content: center;
+}
+
+.noRule::before { display: none; }

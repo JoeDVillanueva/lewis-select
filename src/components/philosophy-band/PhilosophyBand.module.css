@@ -1,0 +1,37 @@
+.band {
+  background: var(--color-cream);
+  text-align: center;
+  border-top: 1px solid var(--color-gold-pale);
+}
+
+.inner {
+  padding: 72px 0;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.quote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: var(--weight-light);
+  font-size: var(--text-blockquote);
+  line-height: var(--lh-blockquote);
+  color: var(--color-navy);
+  margin: 0;
+}
+
+.attribution {
+  display: block;
+  margin-top: 24px;
+  font-family: var(--font-body);
+  font-style: normal;
+  font-size: 9px;
+  font-weight: var(--weight-thin);
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+@media (max-width: 720px) {
+  .inner { padding: 56px 0; }
+}

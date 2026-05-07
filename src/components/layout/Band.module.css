@@ -1,0 +1,9 @@
+.band {
+  width: 100%;
+  position: relative;
+}
+.cream { background: var(--color-cream); color: var(--color-text); }
+.navy  { background: var(--color-navy);  color: var(--color-text-on-dark); }
+.white { background: var(--color-white); color: var(--color-text); }
+
+.band.navy { /* used by focus ring on dark */ }

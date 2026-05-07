@@ -1,0 +1,19 @@
+.rule {
+  display: block;
+  width: 100%;
+  height: 0;
+  border: 0;
+  border-top: 0.5px solid var(--color-rule);
+}
+
+.onNavy { border-top-color: var(--color-rule-on-navy); }
+.onNavyStrong { border-top-color: var(--color-rule-on-navy-strong); }
+.gold { border-top-color: var(--color-gold); }
+
+/* gold-edge variant: 2px gold left border (used as a banner edge, not a horizontal rule) */
+.goldEdge {
+  border-top: 0;
+  border-left: 2px solid var(--color-gold);
+  height: auto;
+  width: auto;
+}

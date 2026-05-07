@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Lewis Select — wordless mark
+
+  Motif: Texas live oak. A quiet emblem of Hill Country heritage,
+  longevity, and stewardship.
+
+  Construction: an asymmetric lobed canopy, a tapered trunk with two
+  low horizontal branches characteristic of a mature live oak, all
+  rendered as a single clean silhouette in deep terracotta on cream.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Lewis Select">
+  <defs>
+    <style>
+      .bg   { fill: #FBF7EE; }
+      .mark { fill: #8A3B2F; }
+      .rule { fill: none; stroke: #8A3B2F; stroke-width: 1.1; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="400" height="400"/>
+
+  <!-- Quiet circular enclosure -->
+  <circle class="rule" cx="200" cy="200" r="152"/>
+
+  <!-- Canopy: asymmetric cluster of soft lobes, wider than tall -->
+  <g class="mark">
+    <circle cx="200" cy="178" r="56"/>
+    <circle cx="156" cy="188" r="46"/>
+    <circle cx="244" cy="190" r="48"/>
+    <circle cx="126" cy="172" r="32"/>
+    <circle cx="272" cy="174" r="34"/>
+    <circle cx="178" cy="142" r="36"/>
+    <circle cx="222" cy="140" r="38"/>
+    <circle cx="200" cy="122" r="24"/>
+    <circle cx="150" cy="220" r="30"/>
+    <circle cx="250" cy="220" r="28"/>
+    <circle cx="200" cy="224" r="34"/>
+  </g>
+
+  <!-- Trunk + low horizontal limbs: single closed path so the branches
+       read as part of the tree, not floating wisps -->
+  <path class="mark" d="
+    M 188 220
+    C 186 232, 184 240, 180 246
+    C 162 246, 142 248, 124 252
+    C 144 250, 164 252, 180 254
+    C 178 262, 174 274, 172 290
+    L 170 308
+    C 170 314, 172 318, 176 320
+    L 224 320
+    C 228 318, 230 314, 230 308
+    L 228 290
+    C 226 274, 222 262, 220 254
+    C 236 252, 256 250, 276 252
+    C 258 248, 238 246, 220 246
+    C 216 240, 214 232, 212 220
+    Z"/>
+
+  <!-- Hairline ground line -->
+  <rect class="mark" x="150" y="328" width="100" height="1.4" rx="0.7"/>
+</svg>

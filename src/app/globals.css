@@ -1,0 +1,162 @@
+/* ================================================================
+   Lewis Select — global tokens + base styles
+   All component CSS must reference these variables. No raw hex.
+================================================================ */
+
+:root {
+  /* ── Color ── */
+  --color-navy:               #0F2744;
+  --color-navy-mid:           #1A3A5C;
+  --color-navy-light:         #243F64;
+
+  --color-gold:               #B8955A;
+  --color-gold-light:         #D4B47A;
+  --color-gold-pale:          #F0E4CC;
+
+  --color-cream:              #F6F3EE;
+  --color-cream-dark:         #EDE8DF;
+
+  --color-white:              #FFFFFF;
+  --color-warm-gray:          #6B6560;
+  --color-text:               #1A1714;
+
+  --color-rule:               #D8D0C2;
+  --color-rule-dark:          rgba(184, 149, 90, 0.20);
+  --color-rule-on-navy:       rgba(255, 255, 255, 0.07);
+  --color-rule-on-navy-strong:rgba(255, 255, 255, 0.18);
+
+  --color-text-on-dark:       #F5F1EA;
+  --color-text-on-dark-muted: rgba(255, 255, 255, 0.50); /* AA-safe; replaces 0.40 */
+  --color-text-on-dark-soft:  rgba(255, 255, 255, 0.35);
+  --color-text-on-dark-faint: rgba(255, 255, 255, 0.25);
+
+  /* ── Typography ── */
+  --font-display: var(--font-cormorant), Georgia, serif;
+  --font-body:    var(--font-dm-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --text-h1:         clamp(52px, 7vw, 86px);
+  --text-section:    clamp(34px, 4vw, 50px);
+  --text-h3:         clamp(20px, 2vw, 24px);
+  --text-blockquote: clamp(22px, 3vw, 30px);
+  --text-stat:       44px;
+  --text-body:       14px;
+  --text-body-sm:    13px;
+  --text-small:      12px;
+  --text-eyebrow:    9px;
+
+  --lh-tight:        1.05;
+  --lh-snug:         1.15;
+  --lh-blockquote:   1.55;
+  --lh-body:         1.85;
+  --lh-loose:        1.95;
+
+  --ls-tight:        -0.005em;
+  --ls-eyebrow:      0.38em;
+  --ls-eyebrow-tight:0.20em;
+  --ls-button:       0.25em;
+  --ls-uppercase:    0.30em;
+
+  --weight-thin:     200;
+  --weight-light:    300;
+  --weight-regular:  400;
+
+  /* ── Spacing ── */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  24px;
+  --space-6:  32px;
+  --space-7:  48px;
+  --space-8:  64px;
+  --space-9:  100px;
+  --space-10: 120px;
+
+  /* ── Layout ── */
+  --container-max: 1200px;
+  --reading-max:    720px;
+  --display-max:    820px;
+
+  --radius:         0px;
+  --shadow:         none;
+
+  --bp-mobile:      720px;
+  --bp-desktop:     1080px;
+
+  --nav-height:     76px;
+  --nav-height-scrolled: 64px;
+}
+
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: var(--weight-thin);
+  font-size: var(--text-body);
+  line-height: var(--lh-body);
+  color: var(--color-text);
+  background: var(--color-white);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img, svg { display: block; max-width: 100%; }
+
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: none; cursor: pointer; }
+
+ul, ol { list-style: none; }
+
+::selection { background: var(--color-gold); color: var(--color-white); }
+
+/* ── Focus ── */
+:focus-visible {
+  outline: 1px solid var(--color-gold);
+  outline-offset: 2px;
+}
+
+.on-navy :focus-visible {
+  outline-color: var(--color-gold-light);
+}
+
+/* ── Skip link ── */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: var(--space-2);
+  z-index: 10000;
+  background: var(--color-navy);
+  color: var(--color-text-on-dark);
+  padding: var(--space-3) var(--space-4);
+  font-family: var(--font-body);
+  font-size: var(--text-eyebrow);
+  font-weight: var(--weight-light);
+  letter-spacing: var(--ls-uppercase);
+  text-transform: uppercase;
+}
+.skip-link:focus {
+  left: var(--space-4);
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ── Page padding helper for content under sticky nav ── */
+.has-fixed-nav { padding-top: 0; }
+
+/* Section anchor scroll offset for sticky nav */
+section[id] { scroll-margin-top: var(--nav-height); }

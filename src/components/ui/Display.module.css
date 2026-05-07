@@ -1,0 +1,35 @@
+.display {
+  font-family: var(--font-display);
+  font-weight: var(--weight-light);
+  letter-spacing: var(--ls-tight);
+  margin: 0;
+}
+
+.h1 {
+  font-size: var(--text-h1);
+  line-height: var(--lh-tight);
+}
+
+.section {
+  font-size: var(--text-section);
+  line-height: var(--lh-snug);
+}
+
+.h3 {
+  font-size: var(--text-h3);
+  line-height: 1.2;
+}
+
+.italic { font-style: italic; }
+
+.onCream { color: var(--color-navy); }
+.onNavy  { color: var(--color-text-on-dark); }
+
+/* Inline italic spans inside display headlines render in --color-gold-light.
+   Authors should write <span class="g">...</span> or use the convenience
+   <em> mapping in the JSX below. */
+.display em,
+.display .g {
+  font-style: italic;
+  color: var(--color-gold-light);
+}

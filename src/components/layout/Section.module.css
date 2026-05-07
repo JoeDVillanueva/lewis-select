@@ -1,0 +1,12 @@
+.section {
+  padding-block: 100px;
+}
+
+@media (max-width: 720px) {
+  .section { padding-block: 64px; }
+}
+
+.tight { padding-block: 72px; }
+@media (max-width: 720px) {
+  .tight { padding-block: 48px; }
+}

@@ -1,0 +1,7 @@
+.note { max-width: 720px; }
+.noteBody { margin-bottom: 32px; }
+.smallNote { color: var(--color-warm-gray); font-style: italic; }
+
+.formSection > * + * { margin-top: 32px; }
+
+.next { max-width: 640px; }

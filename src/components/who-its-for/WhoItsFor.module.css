@@ -1,0 +1,16 @@
+.inner {
+  max-width: 720px;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: var(--text-section);
+  font-weight: var(--weight-light);
+  line-height: var(--lh-snug);
+  color: var(--color-navy);
+  margin: 14px 0 28px;
+}
+
+.title em { font-style: italic; color: var(--color-gold); }
+
+.body { margin-bottom: 32px; max-width: 640px; }
