@@ -19,7 +19,7 @@ export default function NotFound() {
             Page not found.
           </h1>
           <div style={{ marginBottom: 32 }}>
-            <Body variant="muted" long>
+            <Body long>
               The page you're looking for isn't here. The home page or the conversation form is
               probably what you wanted.
             </Body>

@@ -1,6 +1,13 @@
-# Lewis Select — Marketing Site Build Spec  ·  v3
+# Lewis Select — Marketing Site Build Spec  ·  v3.1
 
-> **v3 changelog.** Type sizes bumped for the senior audience (body 14 → 17px, eyebrow 10 → 12px, etc.). Nav and footer small caps bumped to match. Muted text on navy changed from `rgba(255,255,255,0.40)` to `#B5C6E0` (a pale blue) for legibility. Primary text on navy is now pure white. Approach page collapses from 7 pillars to 3. Homepage "Everything in one practice" reframed as "Care today. Stewardship for the years ahead." with the same 3 pillars. About page picks up a new navy pull-quote moment. Closing CTA drops the "no application form" line. Approach header changes to "Stewarding Health for the Hill Country."
+> **v3.1 fixes (post first deploy).**
+> - **Body color on cream:** `--color-warm-gray` darkened from `#6B6560` to `#4A443F` to fix faint paragraph copy on the homepage. Primary body text **always uses `--color-text`**, never `--color-warm-gray`. Warm-gray is reserved for genuinely secondary content (footer brand paragraph, captions). See §4.1.
+> - **Three-pillar grid layout (homepage):** explicit grid spec added — 3 equal-width columns on desktop with hairline rules between, single column on mobile. See §6.3 `<Pillars />` and §8.1.
+> - **"If this sounds familiar" treatment:** no longer an eyebrow. Now a gold italic Cormorant Garamond line at section-title size, treated as the empathy block's rhetorical hook. New `<Hook />` UI primitive added. See §4.2 type rules and §6.2.
+> - **About page body size:** all body copy on `/about` uses `--text-body` (17px) — no smaller variant inside `<PhysicianBlock />`. Bio is long-form reading and gets the same treatment as the rest of the site. See §6.3.
+> - **Section-title copy:** "Care today. Stewardship for the years ahead." → "Care for your health today. Stewardship of your health for the years ahead." (both Home and Approach.)
+
+> **v3 changelog (initial post-tiiny restyle).** Type sizes bumped for the senior audience (body 14 → 17px, eyebrow 10 → 12px). Nav and footer small caps bumped to match. Muted text on navy changed to `#B5C6E0` (pale blue). Primary text on navy is now pure white. Approach collapses from 7 pillars to 3. Homepage "Everything in one practice" reframed as the three-pillar block. About page picks up a navy pull-quote. Closing CTA drops "no application form." Approach header changes to "Stewarding Health for the Hill Country."
 
 This document is the build specification for the Lewis Select marketing website. Hand it to Claude Code in a fresh project repository alongside `CONTENT.md`, `Lewis Select tiiny site.html` (visual reference), `Lewis_Logo.svg`, and `Lewis_Logo_mark.svg`. Claude Code should be able to scaffold the project, implement every component and page, and produce a deployable build with no further direction.
 
@@ -118,8 +125,8 @@ All tokens live in `src/app/globals.css` as CSS variables. Components reference 
 
   /* Neutrals */
   --color-white:       #FFFFFF;
-  --color-warm-gray:   #6B6560;   /* body text on cream */
-  --color-text:        #1A1714;   /* near-black ink */
+  --color-warm-gray:   #4A443F;   /* secondary text only — captions, footer brand paragraph. NOT primary body. (v3.1: darkened from #6B6560 for legibility.) */
+  --color-text:        #1A1714;   /* near-black ink — primary body color, used on every long-form paragraph */
   --color-rule:        #D8D0C2;   /* warm hairline on cream/white */
   --color-rule-dark:   rgba(184,149,90,0.20);   /* gold hairline on navy */
   --color-text-on-dark:       #FFFFFF;          /* pure white — primary text on navy */
@@ -189,7 +196,8 @@ All tokens live in `src/app/globals.css` as CSS variables. Components reference 
 **Type rules.**
 
 - Display: Cormorant Garamond. Default weight 300. Italics are common — used for emphasized words inside headlines (set in `--color-gold-light`), section blockquotes, and sig lines. Italic in `*asterisks*` in `CONTENT.md` marks display lines (set in display serif, italic).
-- Body: DM Sans, weight 300, **17px** (`--text-body`). Long-form line-height 1.7. The lightness is central to the register — do not bump to 400 by default. The size bump in v3 is the readability lever.
+- Body: DM Sans, weight 300, **17px** (`--text-body`). Long-form line-height 1.7. **Color: `--color-text` (#1A1714).** Do not use `--color-warm-gray` for primary body copy on cream — that token is reserved for secondary/caption content. The lightness is central to the register — do not bump to 400 by default. The size bump in v3 is the readability lever.
+- **Hook (rhetorical line above the empathy block):** Cormorant Garamond, weight 400, italic, `--text-section` size (`clamp(38px, 4.4vw, 56px)`), **gold (`--color-gold`)**. Used once on the homepage in place of the conventional eyebrow. The line `*If this sounds familiar…*` reads as a question hook, not a label. New `<Hook />` UI primitive in §6.2.
 - Eyebrow: DM Sans, weight **400**, uppercase, letter-spacing 0.34em, **12px** (`--text-eyebrow`). Color `--color-gold` on cream, `--color-gold-light` on navy. Always preceded by a 30px gold hairline (see tiiny `.section-label::before`).
 - CTA buttons: 11–12px DM Sans, weight 400, uppercase, letter-spacing 0.25em. Three variants:
   - Primary (gold fill, white text): `background: var(--color-gold); color: white; padding: 16px 40px;`
@@ -275,7 +283,8 @@ Each component below maps to `CONTENT.md` section types. Components are pure ser
 
 ### 6.2 UI primitives
 
-- `<Eyebrow>` — small uppercase label, gold, with leading 30–40px hairline. Use everywhere a section label appears.
+- `<Eyebrow>` — small uppercase label, gold, with leading 30–40px hairline. 12px DM Sans weight 400, letter-spacing 0.34em. Use everywhere a section label appears.
+- `<Hook>` — rhetorical-question line. Italic Cormorant Garamond, weight 400, `--text-section` size, gold (`--color-gold`). Stands alone (no preceding eyebrow). Used on the homepage Empathy block: `<Hook>If this sounds familiar…</Hook>`. v3.1.
 - `<Display as="h1|h2|p">` — Cormorant Garamond display. Accepts `italic` boolean and supports embedded italic spans (for the gold-italic words inside headlines).
 - `<Lede>` — italic Cormorant sub-headline.
 - `<Body>` — DM Sans body, weight 300, 17px. Variants: `default` (ink on cream), `dark` (white on navy), `dark-muted` (`--color-text-on-dark-muted` / `#B5C6E0` on navy), `muted` (`--color-warm-gray` on cream).
@@ -292,13 +301,13 @@ Each component below maps to `CONTENT.md` section types. Components are pure ser
 | `<PhilosophyBand />` | Home | cream surface, centered italic Cormorant blockquote, gold uppercase attribution underneath. |
 | `<EmpathyBlock />` | Home | cream surface, eyebrow + two body paragraphs. |
 | `<Differentiators />` | Home | navy surface, 1.3fr / 1fr two-column grid. Left column has eyebrow, section title, intro body. Right column has four numbered items separated by hairlines. See tiiny `#why` for layout. |
-| `<Pillars />` | Home | cream surface, 3 numbered items with hairline rules between them. Each pillar = number (italic Cormorant gold), title (Cormorant), body (DM Sans 17px). Section title above frames the pair: "Care today. Stewardship for the years ahead." See tiiny `.membership-grid` for layout reference, but with 3 cells, not 6. |
+| `<Pillars />` | Home | cream surface. **Layout (v3.1, explicit):** desktop = CSS grid, `grid-template-columns: repeat(3, 1fr)`, gap 0, with **0.5px hairline borders between cells** (use `border-right` on cells 1 and 2, no border on cell 3). Mobile (<720px) = single column with hairline `border-bottom` between rows instead. Each cell: padding 36px 32px, top-aligned content. Inside each cell, in order: number (italic Cormorant gold, ~22px) above a small gap, then title (Cormorant 22px navy, weight 400), then body (DM Sans **17px** weight 300, line-height 1.7, color `--color-text`). Section title above the grid: "Care for your health today. *Stewardship of your health for the years ahead.*" |
 | `<PillarFull />` | Approach | **three** items with subhead (italic Cormorant) + body + "What this replaces" tag treated as a gold left-edge banner. Pillar 3 has multi-paragraph body. |
 | `<PullQuote />` | Home, About | navy surface, italic Cormorant quote (clamp(26px, 3.2vw, 36px)) + gold uppercase attribution. Used twice on the homepage (the "fastest medicine" line) and once on the About page (the "knowing and caring for my patients" line). |
 | `<AboutBlock />` | Home | cream surface, eyebrow + display + body + sig line + CTA. Optional small portrait at right. |
 | `<WhoItsFor />` | Home | cream surface, eyebrow + display + body + CTA. |
 | `<ClosingCTA />` | every page except `/start-a-conversation` | navy surface, eyebrow + italic Cormorant headline (Dr. Lewis quote pattern), body, primary gold CTA. |
-| `<PhysicianBlock />` | About | cream surface, two-column: portrait (left, 1fr) + content (right, 1.6fr). Credentials list in a styled label/value table with hairlines. See tiiny `#physician`. |
+| `<PhysicianBlock />` | About | cream surface, two-column: portrait (left, 1fr) + content (right, 1.6fr). All bio body text uses `--text-body` (**17px**) DM Sans weight 300, color `--color-text`, line-height 1.7. **Do not use a smaller variant for the bio.** Sub-section eyebrows (In his own place, Driftwood, The network) follow the standard 12px gold eyebrow pattern. Credentials list in a styled label/value table with hairlines. See tiiny `#physician`. |
 | `<ConversationForm />` | Start a Conversation | client component, see §7. |
 
 ### 6.4 Nav specifics
@@ -404,9 +413,9 @@ Each page is composed of these components in order. Copy comes from `CONTENT.md`
 1. `<Nav />`
 2. `<Hero />` — navy
 3. `<PhilosophyBand />` — cream  (the stewardship blockquote from Dr. Lewis)
-4. `<EmpathyBlock />` — cream
+4. `<EmpathyBlock />` — cream  *(uses `<Hook>If this sounds familiar…</Hook>` instead of an eyebrow; v3.1)*
 5. `<Differentiators />` — navy  (the four wedges, unchanged from v2)
-6. `<Pillars heading="Care today. Stewardship for the years ahead." count="3" />` — cream  (v3: collapsed from 7 items to 3, framing near-term + longevity)
+6. `<Pillars heading="Care for your health today. Stewardship of your health for the years ahead." count="3" />` — cream  (v3.1: 3-column grid on desktop with hairline rules between cells; single column on mobile)
 7. `<PullQuote />` — navy  ("The fastest medicine in the world…")
 8. `<AboutBlock />` — cream
 9. `<WhoItsFor />` — cream

@@ -19,7 +19,7 @@ export function AboutBlock({ eyebrow, heading, body, sigLine, cta }: Props) {
           <div>
             <Eyebrow>{eyebrow}</Eyebrow>
             <h2 className={styles.title}>{heading}</h2>
-            <Body variant="muted" long className={styles.body}>
+            <Body long className={styles.body}>
               {body}
             </Body>
             <p className={styles.sig}>{sigLine}</p>

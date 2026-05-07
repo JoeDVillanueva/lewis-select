@@ -71,13 +71,13 @@
 }
 
 .sub {
-  font-size: 14px;
-  font-weight: var(--weight-thin);
+  font-size: var(--text-body);
+  font-weight: var(--weight-light);
   color: var(--color-text-on-dark-muted);
-  line-height: 1.9;
-  max-width: 520px;
+  line-height: 1.7;
+  max-width: 580px;
   margin: 32px 0 52px;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
 }
 
 .actions {

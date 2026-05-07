@@ -17,7 +17,7 @@ export function WhoItsFor({ eyebrow, heading, body, cta }: Props) {
         <div className={styles.inner}>
           <Eyebrow>{eyebrow}</Eyebrow>
           <h2 className={styles.title}>{heading}</h2>
-          <Body variant="muted" long className={styles.body}>
+          <Body long className={styles.body}>
             {body}
           </Body>
           <Cta href={cta.href} variant="navy">

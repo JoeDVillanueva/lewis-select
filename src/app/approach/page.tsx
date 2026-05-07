@@ -36,9 +36,9 @@ export default function ApproachPage() {
           <div className={styles.pillarsHeader}>
             <Eyebrow>{approach.pillars.eyebrow}</Eyebrow>
             <h2 className={styles.title}>
-              Care today. <em>Stewardship for the years ahead.</em>
+              Care for your health today. <em>Stewardship of your health for the years ahead.</em>
             </h2>
-            <Body variant="muted" long className={styles.intro}>
+            <Body long className={styles.intro}>
               {approach.pillars.intro}
             </Body>
           </div>

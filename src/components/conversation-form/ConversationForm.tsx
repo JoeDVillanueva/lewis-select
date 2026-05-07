@@ -72,7 +72,7 @@ export function ConversationForm({ fallbackPhone, fallbackEmail }: Props = {}) {
       <div className={styles.success} aria-live="polite">
         <Eyebrow>{conversation.success.eyebrow}</Eyebrow>
         <p className={styles.successHead}>Thank you. Dr. Lewis will be in touch.</p>
-        <Body variant="muted" long>
+        <Body long>
           {successBody}
         </Body>
       </div>

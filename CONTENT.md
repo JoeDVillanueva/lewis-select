@@ -38,7 +38,9 @@ A short blockquote section, set in italic Cormorant Garamond, large.
 
 ### Empathy block  ·  cream surface
 
-**Eyebrow:** If this sounds familiar
+(v3.1: "If this sounds familiar" is no longer an eyebrow — it's a prominent gold italic Cormorant line that functions as the section's rhetorical hook. Set in `--color-gold` at the same size as a section title, italicized.)
+
+**Hook (gold italic Cormorant, section-title size, weight 400):** *If this sounds familiar…*
 
 **Body 1:** You wait three weeks for an appointment. The visit is fifteen minutes. The person who answers your call is not your doctor. A specialist referral takes another month. Your records are scattered across six portals. Modern medicine treats your time like the cheapest part of your life.
 
@@ -70,7 +72,7 @@ You leave most doctor appointments with a vague impression and a list of things 
 
 **Eyebrow:** What's included
 
-**Section title:** Care today. *Stewardship for the years ahead.*
+**Section title:** Care for your health today. *Stewardship of your health for the years ahead.*
 
 **Intro body:** Lewis Select has three pillars. The first two are about today — how fast you can reach your doctor, how fast specialists answer when you need them, how a hospital admission gets handled. The third is about decades — the science, the data, and the written plan that turn medicine from reaction into stewardship.
 
@@ -149,7 +151,7 @@ The longest, healthiest version of your life does not happen by accident. Lewis 
 
 **Eyebrow:** The program
 
-**Section title:** Care today. *Stewardship for the years ahead.*
+**Section title:** Care for your health today. *Stewardship of your health for the years ahead.*
 
 **Intro body:** Lewis Select stands on three pillars. Two address what most families fear most about modern medicine: that you cannot reach your doctor when you need her, and that when something goes wrong the system will not act fast enough. The third addresses something most practices don't even attempt — a real plan for the long arc of your health.
 

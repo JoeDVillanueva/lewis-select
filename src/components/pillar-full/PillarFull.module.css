@@ -39,15 +39,15 @@
   font-style: italic;
   font-weight: var(--weight-light);
   font-size: 18px;
-  color: var(--color-warm-gray);
+  color: var(--color-navy);
   margin-bottom: 20px;
 }
 
 .body {
   font-size: var(--text-body);
   font-weight: var(--weight-light);
-  line-height: var(--lh-loose);
-  color: var(--color-warm-gray);
+  line-height: 1.7;
+  color: var(--color-text);
   max-width: 720px;
   margin-bottom: 1.4em;
 }

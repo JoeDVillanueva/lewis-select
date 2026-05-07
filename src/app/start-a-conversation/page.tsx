@@ -29,7 +29,7 @@ export default function StartConversationPage() {
         <Section>
           <div className={styles.note}>
             <Eyebrow>{conversation.personalNote.eyebrow}</Eyebrow>
-            <Body variant="muted" long className={styles.noteBody}>
+            <Body long className={styles.noteBody}>
               {conversation.personalNote.body}
             </Body>
             <Body variant="muted" size="small" className={styles.smallNote}>
@@ -53,7 +53,7 @@ export default function StartConversationPage() {
         <Section>
           <div className={styles.next}>
             <Eyebrow>{conversation.whatNext.eyebrow}</Eyebrow>
-            <Body variant="muted" long>{conversation.whatNext.body}</Body>
+            <Body long>{conversation.whatNext.body}</Body>
           </div>
         </Section>
       </Band>

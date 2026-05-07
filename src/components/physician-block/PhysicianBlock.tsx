@@ -20,10 +20,6 @@ export function PhysicianBlock() {
 
           <div className={styles.content}>
             <Eyebrow>{about.bio.eyebrow}</Eyebrow>
-            <h2 className={styles.name}>
-              Dr. Kevin Lewis, <em>DO.</em>
-            </h2>
-            <p className={styles.subhead}>{about.header.subhead}</p>
 
             <p className={styles.bodyP}>{about.bio.body1}</p>
             <p

@@ -42,7 +42,7 @@ export default function HomePage() {
 
       <PhilosophyBand quote={home.philosophy.quote} attribution={home.philosophy.attribution} />
 
-      <EmpathyBlock eyebrow={home.empathy.eyebrow} paragraphs={home.empathy.paragraphs} />
+      <EmpathyBlock hook={home.empathy.hook} paragraphs={home.empathy.paragraphs} />
 
       <Differentiators
         eyebrow={home.differentiators.eyebrow}
@@ -54,7 +54,7 @@ export default function HomePage() {
         eyebrow={home.pillars.eyebrow}
         heading={
           <>
-            Care today. <em>Stewardship for the years ahead.</em>
+            Care for your health today. <em>Stewardship of your health for the years ahead.</em>
           </>
         }
         intro={home.pillars.intro}
