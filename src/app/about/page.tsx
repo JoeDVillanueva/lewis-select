@@ -13,7 +13,7 @@ import styles from "./page.module.css";
 export const metadata: Metadata = siteMetadata({
   title: "Dr. Kevin Lewis — Lewis Select",
   description:
-    "A third-generation Central Texas physician, practicing in the place his family helped settle.",
+    "A second-generation Central Texas physician, practicing in the place his family helped settle.",
   path: "/about",
 });
 

@@ -46,7 +46,7 @@ export const home = {
     attribution: "Dr. Kevin Lewis",
   },
   empathy: {
-    hook: "If this sounds familiar…",
+    hook: "Does this sound familiar?",
     paragraphs: [
       "You wait three weeks for an appointment. The visit is fifteen minutes. The person who answers your call is not your doctor. A specialist referral takes another month. Your records are scattered across six portals. Modern medicine treats your time like the cheapest part of your life.",
       "There is another way — one that begins by treating your time, and the relationship with your physician, as the things that matter most.",

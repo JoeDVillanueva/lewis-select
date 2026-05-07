@@ -25,7 +25,7 @@ export default function HomePage() {
           <p>
             Lewis Select is built for Hill Country families who are tired of fifteen-minute
             appointments, three-week waits, and being a stranger at every visit. Direct access to
-            your physician. A specialist network on speed dial. A written plan for the year ahead.
+            your physician. A specialist network on speed dial. A personal plan for your future.
           </p>
         }
         actions={
@@ -54,7 +54,7 @@ export default function HomePage() {
         eyebrow={home.pillars.eyebrow}
         heading={
           <>
-            Care for your health today. <em>Stewardship of your health for the years ahead.</em>
+            Immediate care for your health today. <em>Stewardship of your health for the years ahead.</em>
           </>
         }
         intro={home.pillars.intro}
@@ -72,7 +72,7 @@ export default function HomePage() {
         eyebrow={home.about.eyebrow}
         heading={
           <>
-            Dr. Kevin Lewis, <em>third-generation Central Texas physician.</em>
+            Dr. Kevin Lewis, <em>second-generation Central Texas physician.</em>
           </>
         }
         body={home.about.body}

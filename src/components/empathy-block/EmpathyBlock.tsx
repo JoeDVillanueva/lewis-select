@@ -7,7 +7,7 @@ type Props = {
   paragraphs: string[];
 };
 
-export function EmpathyBlock({ hook = "If this sounds familiar…", paragraphs }: Props) {
+export function EmpathyBlock({ hook = "Does this sound familiar?", paragraphs }: Props) {
   return (
     <Band tone="cream">
       <Section>
