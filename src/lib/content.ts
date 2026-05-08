@@ -65,19 +65,19 @@ export const home = {
       },
       {
         n: "02",
-        title: "Past the waiting line. By name.",
+        title: "Skip the waiting line. Get a personal referral.",
         body:
           "When you need a cardiologist or an oncologist, the standard wait is weeks. With Lewis Select, you do not wait. Dr. Lewis picks up the phone and calls a specialist by name — someone he has personally worked with for twenty-five years. Same-day or next-day placement is the norm, not the exception. That alone changes your relationship to time.",
       },
       {
         n: "03",
-        title: "The same physician. Day or night.",
+        title: "See your own doctor — not a “panel.”",
         body:
           "Direct text or call to Dr. Lewis — any day, any hour. The doctor who knows your family on Tuesday is the doctor who answers on Sunday at nine. Not an answering service. Not a covering physician. Not a name you have never met before. The fastest medicine in the world is the medicine that already knows you.",
       },
       {
         n: "04",
-        title: "A written plan for the year ahead.",
+        title: "Get a personal plan for your future health.",
         body:
           "You leave most doctor appointments with a vague impression and a list of things to remember. Lewis Select sends you home with a Health Blueprint — a bound document that lays out exactly what your year of health should look like, in plain language, for every member of your family. Your spouse can read it. You can come back to it. You do not have to remember anything. Most practices send you home with a prescription. Lewis Select sends you home with a plan.",
       },

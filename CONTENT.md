@@ -38,9 +38,9 @@ A short blockquote section, set in italic Cormorant Garamond, large.
 
 ### Empathy block  ·  cream surface
 
-(v3.1: "If this sounds familiar" is no longer an eyebrow — it's a prominent gold italic Cormorant line that functions as the section's rhetorical hook. Set in `--color-gold` at the same size as a section title, italicized.)
+(v3.1: this line is no longer an eyebrow — it's a prominent gold italic Cormorant line that functions as the section's rhetorical hook. Set in `--color-gold`, italicized. v3.2 sized down to `--text-hook` (not section-title scale). v3.3 copy: clean question, no ellipses.)
 
-**Hook (gold italic Cormorant, section-title size, weight 400):** *If this sounds familiar…*
+**Hook (gold italic Cormorant, `--text-hook` size, weight 400):** *Does this sound familiar?*
 
 **Body 1:** You wait three weeks for an appointment. The visit is fifteen minutes. The person who answers your call is not your doctor. A specialist referral takes another month. Your records are scattered across six portals. Modern medicine treats your time like the cheapest part of your life.
 
@@ -57,13 +57,13 @@ A short blockquote section, set in italic Cormorant Garamond, large.
 **01 — Your physician practices in the Hill Country.**
 Most private medicine in central Texas is in Westlake or downtown Austin — a thirty- to forty-minute drive from your driveway in good traffic. Lewis Select is in Dripping Springs. Dr. Lewis lives where you live, sees you in the same places you go, and is closer to your home than your nearest emergency room. Your medicine should not require a commute.
 
-**02 — Past the waiting line. By name.**
+**02 — Skip the waiting line. Get a personal referral.**
 When you need a cardiologist or an oncologist, the standard wait is weeks. With Lewis Select, you do not wait. Dr. Lewis picks up the phone and calls a specialist by name — someone he has personally worked with for twenty-five years. Same-day or next-day placement is the norm, not the exception. That alone changes your relationship to time.
 
-**03 — The same physician. Day or night.**
+**03 — See your own doctor — not a "panel."**
 Direct text or call to Dr. Lewis — any day, any hour. The doctor who knows your family on Tuesday is the doctor who answers on Sunday at nine. Not an answering service. Not a covering physician. Not a name you have never met before. The fastest medicine in the world is the medicine that already knows you.
 
-**04 — A written plan for the year ahead.**
+**04 — Get a personal plan for your future health.**
 You leave most doctor appointments with a vague impression and a list of things to remember. Lewis Select sends you home with a Health Blueprint — a bound document that lays out exactly what your year of health should look like, in plain language, for every member of your family. Your spouse can read it. You can come back to it. You do not have to remember anything. Most practices send you home with a prescription. Lewis Select sends you home with a plan.
 
 ### Three pillars  ·  cream surface
@@ -72,7 +72,7 @@ You leave most doctor appointments with a vague impression and a list of things 
 
 **Eyebrow:** What's included
 
-**Section title:** Care for your health today. *Stewardship of your health for the years ahead.*
+**Section title:** Immediate care for your health today. *Stewardship of your health for the years ahead.*
 
 **Intro body:** Lewis Select has three pillars. The first two are about today — how fast you can reach your doctor, how fast specialists answer when you need them, how a hospital admission gets handled. The third is about decades — the science, the data, and the written plan that turn medicine from reaction into stewardship.
 
@@ -151,7 +151,7 @@ The longest, healthiest version of your life does not happen by accident. Lewis 
 
 **Eyebrow:** The program
 
-**Section title:** Care for your health today. *Stewardship of your health for the years ahead.*
+**Section title:** Immediate care for your health today. *Stewardship of your health for the years ahead.*
 
 **Intro body:** Lewis Select stands on three pillars. Two address what most families fear most about modern medicine: that you cannot reach your doctor when you need her, and that when something goes wrong the system will not act fast enough. The third addresses something most practices don't even attempt — a real plan for the long arc of your health.
 

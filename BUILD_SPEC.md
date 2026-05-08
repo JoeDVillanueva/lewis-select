@@ -1,4 +1,18 @@
-# Lewis Select — Marketing Site Build Spec  ·  v3.2
+# Lewis Select — Marketing Site Build Spec  ·  v3.3
+
+> **v3.3 — number sizes + WTR legibility + targeted copy (post tightening pass).** The v3.2 tightening landed well, but several elements still inherit the tiiny baseline sizes (which were too small for this audience). Three legibility fixes plus four copy tweaks.
+>
+> **Type fixes:**
+> - **Differentiator numbers (01–04 on the homepage):** bump from the tiiny default of ~14px to **`--text-marker` (32px)** italic Cormorant Garamond gold. Adjacent title and body must use `--text-body` (17px) and a slightly larger title (24px) — see §6.3 `<Differentiators />`.
+> - **Pillar numbers (01–03 on the homepage):** bump from 22px to **`--text-marker` (32px)** for consistency with the differentiators above.
+> - **"What this replaces" body:** set explicit token `--text-replaces: 16px` italic, line-height 1.55. Currently inheriting the tiiny `.why-item-body` 12px treatment, which is unreadable.
+>
+> **Copy fixes:**
+> - Hook line: `"If this sounds familiar…"` → `"Does this sound familiar?"` (no ellipses, clean question).
+> - Differentiator 02 title: `"Past the waiting line. By name."` → `"Skip the waiting line. Get a personal referral."`
+> - Differentiator 03 title: `"The same physician. Day or night."` → `"See your own doctor — not a 'panel'."`
+> - Differentiator 04 title: `"A written plan for the year ahead."` → `"Get a personal plan for your future health."`
+> - Pillars section title (Home + Approach): `"Care for your health today…"` → `"Immediate care for your health today. Stewardship of your health for the years ahead."`
 
 > **v3.2 — tighten the rhythm (post second deploy).** Comparing Lewis Select against fidesops.com (the reference for "crisp"), the key gap is density-within-sections and rhythm-between-sections. Lewis has generous padding everywhere, generous line-height inside paragraphs, an oversized section title relative to body, and a Hook line that's set at full section-title scale. fidesops uses tighter type leading inside sections, smaller section titles relative to body, shorter section padding, and crisper section boundaries. The fixes below tighten Lewis's rhythm without changing layout structure or content.
 >
@@ -172,6 +186,8 @@ All tokens live in `src/app/globals.css` as CSS variables. Components reference 
   --text-h3:           clamp(22px, 2.2vw, 28px);    /* sub-section heads inside long-form */
   --text-blockquote:   clamp(24px, 2.8vw, 32px);    /* pull quotes, philosophy band (v3.2: tightened) */
   --text-stat:         44px;                        /* hero stat numerals (if used) */
+  --text-marker:       32px;                        /* NEW v3.3 — italic Cormorant numerals (01, 02, 03, 04) used by Differentiators and Pillars */
+  --text-replaces:     16px;                        /* NEW v3.3 — body inside "What this replaces" gold-edge banners */
 
   /* Body */
   --text-body:         17px;     /* primary body — every paragraph */
@@ -319,9 +335,9 @@ Each component below maps to `CONTENT.md` section types. Components are pure ser
 | `<Hero />` | Home, page headers (Approach, About, Conversation page) | full-bleed navy. Optional hero photo treatment (right-aligned, masked-fade, low opacity, mix-blend-mode luminosity — see tiiny `.hero-photo`). |
 | `<PhilosophyBand />` | Home | cream surface, centered italic Cormorant blockquote (`--text-blockquote`), gold uppercase attribution underneath. **v3.2 tightening:** section padding `64px 56px` (less than other sections — this is a transitional moment, not a long read). Quote `max-width: 760px` centered. Reserve generous breath ABOVE the band, less below. Add a 0.5px hairline at the bottom of the band to mark the transition into the empathy block. |
 | `<EmpathyBlock />` | Home | cream surface, eyebrow + two body paragraphs. |
-| `<Differentiators />` | Home | navy surface, 1.3fr / 1fr two-column grid. Left column has eyebrow, section title, intro body. Right column has four numbered items separated by hairlines. See tiiny `#why` for layout. **v3.2 tightening:** each item's vertical padding 30px → 22px, body line-height 1.6 → 1.55, body max-width capped at 480px to keep the column tight. |
-| `<Pillars />` | Home | cream surface. **Layout (v3.1, tightened in v3.2):** desktop = CSS grid, `grid-template-columns: repeat(3, 1fr)`, gap 0, with **0.5px hairline borders between cells** (`border-right` on cells 1 and 2, no border on cell 3). Mobile (<720px) = single column with hairline `border-bottom` between rows. Each cell: **padding 28px 28px** (v3.2: tightened from 36×32), top-aligned content. Inside each cell, in order: number (italic Cormorant gold, ~22px) above a small gap, then title (Cormorant 22px navy, weight 400), then body (DM Sans **17px** weight 300, **line-height 1.55**, color `--color-text`). Section title above the grid: "Care for your health today. *Stewardship of your health for the years ahead.*" |
-| `<PillarFull />` | Approach | **three** items with subhead (italic Cormorant) + body + "What this replaces" tag treated as a gold left-edge banner. Pillar 3 has multi-paragraph body. |
+| `<Differentiators />` | Home | navy surface, 1.3fr / 1fr two-column grid. Left column has eyebrow, section title, intro body. Right column has four numbered items separated by hairlines. See tiiny `#why` for layout. **v3.2 tightening:** each item's vertical padding 30 → 22, body line-height 1.55, body max-width 480px. **v3.3 sizes (override tiiny defaults):** number `--text-marker` (32px) italic Cormorant gold; title 24px Cormorant weight 400 white; body **`--text-body` (17px)** DM Sans weight 300 line-height 1.55, color `--color-text-on-dark-muted`. Do NOT inherit the tiiny `.why-item-num` 14px or `.why-item-body` 12px sizes. |
+| `<Pillars />` | Home | cream surface. **Layout (v3.1, tightened in v3.2):** desktop = CSS grid, `grid-template-columns: repeat(3, 1fr)`, gap 0, with **0.5px hairline borders between cells** (`border-right` on cells 1 and 2, no border on cell 3). Mobile (<720px) = single column with hairline `border-bottom` between rows. Each cell: **padding 28px 28px** (v3.2: tightened from 36×32), top-aligned content. Inside each cell, in order: number (italic Cormorant gold, **`--text-marker` (32px)** — v3.3 bumped from 22px) with a small gap below; then title (Cormorant 22px navy, weight 400); then body (DM Sans **17px** weight 300, **line-height 1.55**, color `--color-text`). Section title above the grid: "Immediate care for your health today. *Stewardship of your health for the years ahead.*" |
+| `<PillarFull />` | Approach | **three** items, each with: number (italic Cormorant gold, **`--text-marker` (32px)** — v3.3); title (Cormorant 24px navy weight 400); subhead (italic Cormorant ~20px navy weight 400); body (`--text-body` 17px, line-height 1.6, color `--color-text`); and a "What this replaces" gold-edge banner. Pillar 3 has multi-paragraph body. **"What this replaces" styling (v3.3):** gold left-edge (2px `--color-gold`), background `--color-cream-dark`, padding 20px 24px, body **`--text-replaces` (16px)** italic DM Sans weight 300, line-height 1.55, color `--color-text` (NOT `--color-warm-gray`, NOT 12px). The label "What this replaces." is uppercase 11px gold weight 500 letter-spacing 0.20em, displayed inline before the body italic text. |
 | `<PullQuote />` | Home, About | navy surface, italic Cormorant quote (clamp(26px, 3.2vw, 36px)) + gold uppercase attribution. Used twice on the homepage (the "fastest medicine" line) and once on the About page (the "knowing and caring for my patients" line). |
 | `<AboutBlock />` | Home | cream surface, eyebrow + display + body + sig line + CTA. Optional small portrait at right. |
 | `<WhoItsFor />` | Home | cream surface, eyebrow + display + body + CTA. |

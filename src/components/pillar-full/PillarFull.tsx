@@ -22,8 +22,11 @@ export function PillarFull({ items }: Props) {
                 </p>
               ))}
               <div className={styles.replacesBanner}>
-                <p className={styles.replacesLabel}>What this replaces</p>
-                <p className={styles.replacesBody}>{it.replaces}</p>
+                <p className={styles.replacesBody}>
+                  <span className={styles.replacesLabel}>What this replaces.</span>
+                  {" "}
+                  {it.replaces}
+                </p>
               </div>
             </div>
           </li>

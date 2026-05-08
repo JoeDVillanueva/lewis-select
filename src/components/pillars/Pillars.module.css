@@ -43,7 +43,7 @@
 .num {
   font-family: var(--font-display);
   font-style: italic;
-  font-size: 22px;
+  font-size: var(--text-marker);
   font-weight: var(--weight-light);
   color: var(--color-gold);
   letter-spacing: 0.05em;
