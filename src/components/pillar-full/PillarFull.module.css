@@ -25,22 +25,27 @@
   padding-top: 4px;
 }
 
+/* v3.5: title bumped from weight 300 → 500 (still Cormorant 24px navy)
+   so the headline anchors its paragraph instead of running into the body. */
 .title {
   font-family: var(--font-display);
-  font-size: 28px;
-  font-weight: var(--weight-light);
+  font-size: 24px;
+  font-weight: 500;
   color: var(--color-navy);
   line-height: 1.2;
   margin-bottom: 8px;
 }
 
+/* v3.5: subhead bumped to 22px / 500 (was 18px / 300), forced to block with
+   margin-bottom 14px so the body paragraph always begins on a new line. */
 .subhead {
+  display: block;
   font-family: var(--font-display);
   font-style: italic;
-  font-weight: var(--weight-light);
-  font-size: 18px;
+  font-weight: 500;
+  font-size: 22px;
   color: var(--color-navy);
-  margin-bottom: 20px;
+  margin-bottom: 14px;
 }
 
 .body {
@@ -64,15 +69,20 @@
   max-width: 720px;
 }
 
+/* v3.5: "What this replaces." label bumped 11px/500/0.20em → 13px/600/0.18em
+   and forced to block (margin-bottom 8px) so the italic body that follows
+   always begins on its own line — not inline. */
 .replacesLabel {
+  display: block;
   font-family: var(--font-body);
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.20em;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--color-gold);
   font-style: normal;
-  margin-right: 6px;
+  margin-bottom: 8px;
+  margin-right: 0;
 }
 
 .replacesBody {

@@ -28,25 +28,33 @@
 .brand {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 0;
   text-decoration: none;
   color: var(--color-text-on-dark);
 }
 
+/* v3.5: gold ornamental medallion. 36×36 default, 30×30 on scroll-shrink.
+   12px right margin against the wordmark (per BUILD_SPEC.md §6.4). */
 .markWrap {
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
+  margin-right: 12px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
+  transition: width 0.3s, height 0.3s;
 }
 
-.markWrap svg,
 .markWrap img {
   width: 100%;
   height: 100%;
-  /* Brand mark renders in terracotta on cream — invert to a pale tint on navy. */
-  filter: brightness(0) invert(1) opacity(0.85);
+  display: block;
+}
+
+.nav.scrolled .markWrap {
+  width: 30px;
+  height: 30px;
 }
 
 .wordmark {

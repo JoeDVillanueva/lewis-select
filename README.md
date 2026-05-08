@@ -2,7 +2,9 @@
 
 Marketing site for Lewis Select — a private concierge medical practice in Dripping Springs, TX.
 
-See `BUILD_SPEC.md` for the full build specification and `CONTENT.md` for all user-facing copy.
+See `BUILD_SPEC.md` for the full build specification, `CONTENT.md` for all user-facing copy, and `CHANGELOG.md` for what shipped when.
+
+Currently on **v3.5** — gold medallion brand mark, `<PillarFull />` legibility pass, and the Inaugural Cohort variant on `/start-a-conversation` (active until **2026-07-01**, then reverts to the standard "Start a Conversation" copy via a server-side date gate).
 
 ## Stack
 

@@ -9,9 +9,16 @@ export function Footer() {
       <div className={styles.inner}>
         <div className={styles.top}>
           <div className={styles.brand}>
-            <p className={styles.wordmark}>
-              Lewis <em>Select</em>
-            </p>
+            <div className={styles.brandHead}>
+              {/* v3.5: gold medallion brand mark — 44×44 with 14px right margin. */}
+              <span className={styles.markWrap} aria-hidden="true">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/logo-mark.png" alt="" />
+              </span>
+              <p className={styles.wordmark}>
+                Lewis <em>Select</em>
+              </p>
+            </div>
             <p className={styles.tagline}>{footer.tagline}</p>
             <p className={styles.brandPara}>{footer.blurb}</p>
           </div>

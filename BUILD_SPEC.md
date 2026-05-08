@@ -1,4 +1,10 @@
-# Lewis Select — Marketing Site Build Spec  ·  v3.4
+# Lewis Select — Marketing Site Build Spec  ·  v3.5
+
+> **v3.5 — brand mark + Approach pillar legibility + Inaugural Cohort CTA.** Three updates.
+>
+> - **Brand mark.** New gold ornamental medallion logo (`LewisSelect_Logo1.png`) replaces the placeholder mark. Save at `public/logo-mark.png`. Use it in: (a) **nav**, immediately left of the wordmark at **36px square**, with **12px right margin** against the wordmark; (b) **footer**, immediately left of the wordmark at **44px square**, with **14px right margin**; (c) **favicon** — export to `favicon.ico`, `favicon-32.png`, and `apple-touch-icon.png` (180px). Wordmark text continues unchanged ("Lewis *Select*"). Mark renders as `<img>` with `alt="Lewis Select"` and `loading="eager"` in the nav.
+> - **Approach `<PillarFull />` legibility.** Three weight/size tweaks plus a structural change so subheads and tags anchor their paragraphs instead of running into the body. (1) **Title** weight 400 → **500** (still Cormorant 24px navy). (2) **Italic subhead** size ~20px → **22px**, weight 400 → **500** (still Cormorant italic navy); display **block**, `margin-bottom: 14px` so the body always starts on a new line. (3) **"What this replaces." label** size 11px → **13px**, weight 500 → **600**, letter-spacing 0.20em → **0.18em**, color stays gold; display **block**, `margin-bottom: 8px`. The italic body inside the gold-edge banner continues to use `--text-replaces` (16px). Net effect: title, subhead, and "What this replaces." each visually anchor their paragraph; bodies always begin on their own line. See §6.3 `<PillarFull />`.
+> - **`/start-a-conversation` rescripted as Inaugural Cohort invitation.** Until **July 1, 2026**, this page is the entry point for Lewis Select's Inaugural Cohort. New page header copy, new personal note, **new form fields (seven essential questions)**, new submit button label (**"Inquire about inaugural membership"**), updated success state. See §7 below and `CONTENT.md` §04. After July 1 the page reverts to the standard "Start a Conversation" treatment (the v5 copy preserved in `CONTENT.md` §04 under "Post-launch fallback").
 
 > **v3.4 — gold saturation + subtext + attribution sizes (post numeral fix).** Three targeted fixes.
 >
@@ -90,9 +96,11 @@ lewis-select/
 ├── .env.local.example
 ├── .gitignore
 ├── public/
-│   ├── favicon.ico
+│   ├── favicon.ico                # v3.5 — derived from logo-mark.png
+│   ├── favicon-32.png             # v3.5
+│   ├── apple-touch-icon.png       # v3.5 — 180×180
 │   ├── logo.svg                   # full Lewis Select wordmark
-│   ├── logo-mark.svg              # mark only
+│   ├── logo-mark.png              # v3.5 — gold medallion brand mark (LewisSelect_Logo1.png)
 │   ├── og-default.png             # social card placeholder
 │   └── photos/
 │       └── PLACEHOLDERS.md        # spec for photography to be commissioned
@@ -345,7 +353,7 @@ Each component below maps to `CONTENT.md` section types. Components are pure ser
 | `<EmpathyBlock />` | Home | cream surface, eyebrow + two body paragraphs. |
 | `<Differentiators />` | Home | navy surface, 1.3fr / 1fr two-column grid. Left column has eyebrow, section title, intro body. Right column has four numbered items separated by hairlines. See tiiny `#why` for layout. **v3.2 tightening:** each item's vertical padding 30 → 22, body line-height 1.55, body max-width 480px. **v3.3 sizes (override tiiny defaults):** number `--text-marker` (32px) italic Cormorant gold; title 24px Cormorant weight 400 white; body **`--text-body` (17px)** DM Sans weight 300 line-height 1.55, color `--color-text-on-dark-muted`. Do NOT inherit the tiiny `.why-item-num` 14px or `.why-item-body` 12px sizes. **v3.4 left-column intro body ("Most private practices…"):** explicit override of tiiny `.why-left p` — **18px** DM Sans weight 300 line-height 1.6, color `--color-text-on-dark-muted`, max-width 420px. NOT 14px / weight 200 / 40%-white. |
 | `<Pillars />` | Home | cream surface. **Layout (v3.1, tightened in v3.2):** desktop = CSS grid, `grid-template-columns: repeat(3, 1fr)`, gap 0, with **0.5px hairline borders between cells** (`border-right` on cells 1 and 2, no border on cell 3). Mobile (<720px) = single column with hairline `border-bottom` between rows. Each cell: **padding 28px 28px** (v3.2: tightened from 36×32), top-aligned content. Inside each cell, in order: number (italic Cormorant gold, **`--text-marker` (32px)** — v3.3 bumped from 22px) with a small gap below; then title (Cormorant 22px navy, weight 400); then body (DM Sans **17px** weight 300, **line-height 1.55**, color `--color-text`). Section title above the grid: "Immediate care for your health today. *Stewardship of your health for the years ahead.*" |
-| `<PillarFull />` | Approach | **three** items, each with: number (italic Cormorant gold, **`--text-marker` (32px)** — v3.3); title (Cormorant 24px navy weight 400); subhead (italic Cormorant ~20px navy weight 400); body (`--text-body` 17px, line-height 1.6, color `--color-text`); and a "What this replaces" gold-edge banner. Pillar 3 has multi-paragraph body. **"What this replaces" styling (v3.3):** gold left-edge (2px `--color-gold`), background `--color-cream-dark`, padding 20px 24px, body **`--text-replaces` (16px)** italic DM Sans weight 300, line-height 1.55, color `--color-text` (NOT `--color-warm-gray`, NOT 12px). The label "What this replaces." is uppercase 11px gold weight 500 letter-spacing 0.20em, displayed inline before the body italic text. |
+| `<PillarFull />` | Approach | **three** items, each with: number (italic Cormorant gold, **`--text-marker` (32px)** — v3.3); title (Cormorant **24px navy weight 500** — v3.5 bumped from 400, slightly bolder anchor); subhead (italic Cormorant **22px navy weight 500** — v3.5 bumped from ~20px / 400; **display block, margin-bottom 14px** so the body always begins on a new line); body (`--text-body` 17px, line-height 1.6, color `--color-text`); and a "What this replaces" gold-edge banner. Pillar 3 has multi-paragraph body. **"What this replaces" styling (v3.3, sizes/weight bumped in v3.5):** gold left-edge (2px `--color-gold`), background `--color-cream-dark`, padding 20px 24px, body **`--text-replaces` (16px)** italic DM Sans weight 300, line-height 1.55, color `--color-text` (NOT `--color-warm-gray`, NOT 12px). The label "What this replaces." is uppercase **13px gold weight 600 letter-spacing 0.18em** — v3.5 bumped from 11px/500/0.20em — and is **displayed as a block element with `margin-bottom: 8px`**, so the italic body that follows always begins on its own line (not inline). |
 | `<PullQuote />` | Home, About | navy surface, italic Cormorant quote (`--text-blockquote`) + gold uppercase attribution. **v3.4 attribution sizing:** `--text-attribution` (15px) DM Sans weight 400, letter-spacing 0.30em, uppercase, color `--color-gold`. Same treatment everywhere "— Dr. Kevin Lewis" appears: philosophy band, navy pull quote, closing CTA, About page pull quote. Was 12px — now legible. |
 | `<AboutBlock />` | Home | cream surface, eyebrow + display + body + sig line + CTA. Optional small portrait at right. |
 | `<WhoItsFor />` | Home | cream surface, eyebrow + display + body + CTA. |
@@ -355,7 +363,7 @@ Each component below maps to `CONTENT.md` section types. Components are pure ser
 
 ### 6.4 Nav specifics
 
-- Logo mark + wordmark at left. Wordmark: 22px Cormorant Garamond, weight 300, italic on "Select" in `--color-gold-light`. Beneath the wordmark, a tagline: "PRIVATE CONCIERGE MEDICINE" in **`--text-nav-tagline` (10px)** DM Sans, weight 300, letter-spacing 0.30em, `--color-text-on-dark-muted`.
+- **Logo mark + wordmark at left.** Mark: `public/logo-mark.png` rendered as `<img>` at **36×36px**, **12px right margin** against the wordmark, vertically centered to the wordmark cap-height (no baseline alignment — the medallion is round). Wordmark: 22px Cormorant Garamond, weight 300, italic on "Select" in `--color-gold-light`. Beneath the wordmark, a tagline: "PRIVATE CONCIERGE MEDICINE" in **`--text-nav-tagline` (10px)** DM Sans, weight 300, letter-spacing 0.30em, `--color-text-on-dark-muted`. On scroll-shrink (after 24px), the mark scales to **30×30px** in lockstep with the nav height shrink.
 - Right-side links: Approach, Dr. Lewis. **`--text-nav-link` (12px)** DM Sans, weight 400, uppercase, letter-spacing 0.20em, `rgba(255,255,255,0.65)`. Hover → white. Underline reveals from left.
 - "Start a conversation" as a gold-bordered ghost CTA (right-most). **`--text-nav-cta` (11px)** DM Sans, weight 400, uppercase, letter-spacing 0.22em. `border: 0.5px solid var(--color-gold); color: var(--color-gold); padding: 12px 22px;` Hover fills gold with white text.
 - Mobile: hamburger opens a mobile menu beneath the nav with the same links + CTA.
@@ -365,6 +373,7 @@ Each component below maps to `CONTENT.md` section types. Components are pure ser
 
 Always navy. Four columns desktop, two columns mobile. See `CONTENT.md` §Footer for content.
 
+- **Logo mark + wordmark.** Mark: `public/logo-mark.png` at **44×44px**, **14px right margin** against the wordmark, vertically aligned to the wordmark optical center.
 - Wordmark: 24px Cormorant Garamond, weight 300, italic "Select" in `--color-gold-light`.
 - Tagline beneath wordmark: 10px DM Sans, weight 300, letter-spacing 0.30em, uppercase, `--color-text-on-dark-muted`.
 - Brand paragraph: **`--text-body-sm` (15px)** DM Sans, weight 300, line-height 1.7, `--color-text-on-dark-muted`.
@@ -378,29 +387,35 @@ Always navy. Four columns desktop, two columns mobile. See `CONTENT.md` §Footer
 
 ### 7.1 Page composition
 
-The page renders the `<ConversationForm />` component as its primary content (no `<ClosingCTA />` at the bottom of this page — the form is the conversion action). Sections in scroll order:
+**v3.5 — Inaugural Cohort window (active until July 1, 2026).** The page is now the inquiry form for Lewis Select's Inaugural Cohort. After July 1, 2026 the page reverts to the standard "Start a Conversation" treatment using the post-launch fallback copy in `CONTENT.md` §04. Both versions render the `<ConversationForm />` component as the primary content (no `<ClosingCTA />` at the bottom of this page — the form is the conversion action).
 
-1. `<Hero />` — navy, with the Dr. Lewis quote ("I would be honored to be your family's physician.")
-2. Personal note (eyebrow + body paragraph in Dr. Lewis's voice + small note about direct-pay/by invitation) — cream
+Sections in scroll order (Inaugural Cohort variant):
+
+1. `<Hero />` — navy, with the new headline ("*An invitation to the Inaugural Cohort.*") and a small DM Sans countdown note: "Inaugural membership opens July 1, 2026."
+2. Inaugural invitation block (eyebrow + two body paragraphs about the founding cohort, limited spots, one-time founding-member advantages) — cream
 3. The form — cream
 4. "What happens next" block — cream
 
-### 7.2 Fields
+### 7.2 Fields  ·  v3.5 — seven essential questions
 
-| Name | Label | Type | Required | Validation |
+The form collects only what Dr. Lewis needs to prepare for a follow-up conversation. Health context, insurance status, and clinical detail are intentionally excluded; those belong to the post-conversation intake.
+
+| Name | Label | Type | Required | Notes |
 |---|---|---|---|---|
-| `name` | Name | text | yes | min 2 chars |
-| `phone` | Phone | tel | yes | min 7 digits, allow international format |
+| `name` | Your name | text | yes | min 2 chars; placeholder: "First and last" |
 | `email` | Email | email | yes | RFC 5322-ish via simple regex |
-| `location` | Where you live | text | no | placeholder: "city / community" |
-| `family` | Family composition | text | no | placeholder: "number of adults, number of children" |
-| `referral` | How you heard about Lewis Select | text | no | |
-| `notes` | Anything you'd like Dr. Lewis to know in advance | textarea | no | rows=5 |
+| `phone` | Phone (with preferred contact method) | composite | yes | tel input + small radio group beneath labeled "Best way to reach you" with options Phone call · Text · Email. min 7 digits on the tel; default radio: Phone call |
+| `connection` | How are you connected to Dr. Lewis? | radio | yes | Single select. Options: "I'm a member of Driftwood Golf & Lake Club" · "I was referred by a current patient or friend" · "We met at an event" · "I came across Lewis Select on my own". Selecting "referred" or "event" reveals an optional follow-up text input labeled "Who introduced you?" |
+| `residence` | Where would you primarily receive care? | composite | yes | Primary: text input, placeholder "City and ZIP, e.g., Driftwood, TX 78619". Optional second input beneath, labeled "Second home, if applicable" — same format, not required |
+| `household` | Who would the membership cover? | checkbox group | yes | Helper text: "Lewis Select is structured for individuals and families. Select all that apply." Options: "Just me" · "My spouse or partner" · "Dependents under 25". Selecting "Dependents" reveals a small `number` input (label: "How many?", min 1, max 12) |
+| `prompt` | What prompted you to reach out now? | textarea | yes | rows=4, no character cap. Helper text: "A few sentences is enough — what's on your mind, or what you're hoping a partnership with Dr. Lewis could look like." |
 | `_company` | (honeypot) | hidden text | hidden | must be empty; if present, drop submission silently |
 
-**Form styling.** Match the tiiny gate's input style adapted to a light surface: `border: 0.5px solid var(--color-rule); padding: 15px 22px; font-family: var(--font-body); font-weight: 200; font-size: 14px; letter-spacing: 0.05em; outline: none;` Focus state shifts border to `--color-gold`. Labels above inputs in eyebrow style.
+**Form styling.** Match the tiiny gate's input style adapted to a light surface: `border: 0.5px solid var(--color-rule); padding: 15px 22px; font-family: var(--font-body); font-weight: 300; font-size: 16px; letter-spacing: 0.02em; outline: none;` Focus state shifts border to `--color-gold`. Labels above inputs in eyebrow style (12px gold uppercase letter-spacing 0.30em). Helper text 14px DM Sans weight 300 color `--color-warm-gray`, directly beneath the label. Required fields marked with a small gold asterisk after the label.
 
-**Submit button:** *Send to Dr. Lewis* — primary gold variant, full-width on mobile, inline on desktop.
+**Spam protection.** Honeypot only (no CAPTCHA — friction is costly at this audience tier).
+
+**Submit button:** ***Inquire about inaugural membership*** — primary gold variant, full-width on mobile, inline on desktop. After July 1, 2026 the button label reverts to *Send to Dr. Lewis* (standard "Start a Conversation" variant).
 
 ### 7.3 Submission flow
 

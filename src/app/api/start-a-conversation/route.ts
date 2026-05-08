@@ -7,19 +7,31 @@ export const dynamic = "force-dynamic";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const MAX_FIELD = 1000;
-const MAX_NOTES = 4000;
+const MAX_PROMPT = 4000;
 
-type FieldKey = "name" | "phone" | "email";
+type FieldKey =
+  | "name"
+  | "email"
+  | "phone"
+  | "connection"
+  | "residence"
+  | "household"
+  | "prompt";
 type FieldErrors = Partial<Record<FieldKey, string>>;
 
 type Submission = {
+  variant: "inaugural" | "postLaunch";
   name: string;
-  phone: string;
   email: string;
-  location?: string;
-  family?: string;
-  referral?: string;
-  notes?: string;
+  phone: string;
+  contactMethod?: "phone" | "text" | "email";
+  connection: string;
+  introducedBy?: string;
+  residence: string;
+  secondHome?: string;
+  household: string[];
+  dependentsCount?: number;
+  prompt: string;
   _company?: string;
 };
 
@@ -32,7 +44,6 @@ function clientIp(req: NextRequest): string {
 }
 
 function redactIp(ip: string): string {
-  // IPv4: replace last octet. IPv6: replace last group.
   if (ip.includes(":")) {
     const parts = ip.split(":");
     parts[parts.length - 1] = "x";
@@ -52,13 +63,41 @@ function asString(v: unknown): string | undefined {
   return t.length ? t : undefined;
 }
 
+function asContactMethod(v: unknown): Submission["contactMethod"] {
+  if (v === "phone" || v === "text" || v === "email") return v;
+  return undefined;
+}
+
+function asStringArray(v: unknown): string[] {
+  if (!Array.isArray(v)) {
+    const single = asString(v);
+    return single ? [single] : [];
+  }
+  return v
+    .map((x) => (typeof x === "string" ? x.trim() : ""))
+    .filter((x) => x.length > 0);
+}
+
+function asNumber(v: unknown): number | undefined {
+  if (typeof v === "number" && Number.isFinite(v)) return v;
+  if (typeof v === "string" && v.trim() !== "") {
+    const n = Number(v);
+    if (Number.isFinite(n)) return n;
+  }
+  return undefined;
+}
+
 function validate(s: Submission): FieldErrors {
   const errors: FieldErrors = {};
   if (!s.name || s.name.length < 2) errors.name = "Please enter your name.";
-  if (!s.phone || s.phone.replace(/\D/g, "").length < 7) {
-    errors.phone = "Please enter a valid phone number.";
-  }
   if (!s.email || !EMAIL_RE.test(s.email)) errors.email = "Please enter a valid email address.";
+  if (!s.phone || s.phone.replace(/\D/g, "").length < 7) errors.phone = "Please enter a valid phone number.";
+  if (!s.connection) errors.connection = "Please choose one.";
+  if (!s.residence) errors.residence = "Please tell us where you'd primarily receive care.";
+  if (!s.household.length) errors.household = "Please select at least one.";
+  if (!s.prompt || s.prompt.length < 2) {
+    errors.prompt = "A few sentences is enough — please share what's on your mind.";
+  }
   return errors;
 }
 
@@ -75,31 +114,38 @@ export async function POST(req: NextRequest) {
   }
 
   const raw = body as Record<string, unknown>;
+  const variant = raw.variant === "postLaunch" ? "postLaunch" : "inaugural";
   const submission: Submission = {
+    variant,
     name: asString(raw.name) ?? "",
-    phone: asString(raw.phone) ?? "",
     email: asString(raw.email) ?? "",
-    location: asString(raw.location),
-    family: asString(raw.family),
-    referral: asString(raw.referral),
-    notes: asString(raw.notes),
+    phone: asString(raw.phone) ?? "",
+    contactMethod: asContactMethod(raw.contactMethod),
+    connection: asString(raw.connection) ?? "",
+    introducedBy: asString(raw.introducedBy),
+    residence: asString(raw.residence) ?? "",
+    secondHome: asString(raw.secondHome),
+    household: asStringArray(raw.household),
+    dependentsCount: asNumber(raw.dependentsCount),
+    prompt: asString(raw.prompt) ?? "",
     _company: asString(raw._company),
   };
 
-  // Honeypot — if filled, drop silently with 200.
+  // Honeypot — drop silently with 200.
   if (submission._company) {
     return NextResponse.json({ ok: true });
   }
 
-  // Bound input sizes so a single submission can't ship a payload bomb.
   const oversize =
     submission.name.length > MAX_FIELD ||
-    submission.phone.length > MAX_FIELD ||
     submission.email.length > MAX_FIELD ||
-    (submission.location?.length ?? 0) > MAX_FIELD ||
-    (submission.family?.length ?? 0) > MAX_FIELD ||
-    (submission.referral?.length ?? 0) > MAX_FIELD ||
-    (submission.notes?.length ?? 0) > MAX_NOTES;
+    submission.phone.length > MAX_FIELD ||
+    submission.connection.length > MAX_FIELD ||
+    (submission.introducedBy?.length ?? 0) > MAX_FIELD ||
+    submission.residence.length > MAX_FIELD ||
+    (submission.secondHome?.length ?? 0) > MAX_FIELD ||
+    submission.household.join(",").length > MAX_FIELD ||
+    submission.prompt.length > MAX_PROMPT;
   if (oversize) {
     return NextResponse.json({ error: "Submission is too large." }, { status: 400 });
   }
@@ -112,7 +158,6 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  // Rate limit: 3 submissions per 10 minutes per IP.
   const ip = clientIp(req);
   const rl = rateLimit(`conversation:${ip}`, 3, 10 * 60 * 1000);
   if (!rl.allowed) {
@@ -123,13 +168,18 @@ export async function POST(req: NextRequest) {
   }
 
   const payload: ConversationPayload = {
+    variant: submission.variant,
     name: submission.name,
-    phone: submission.phone,
     email: submission.email,
-    location: submission.location,
-    family: submission.family,
-    referral: submission.referral,
-    notes: submission.notes,
+    phone: submission.phone,
+    contactMethod: submission.contactMethod,
+    connection: submission.connection,
+    introducedBy: submission.introducedBy,
+    residence: submission.residence,
+    secondHome: submission.secondHome,
+    household: submission.household,
+    dependentsCount: submission.dependentsCount,
+    prompt: submission.prompt,
     submittedAt: new Date().toISOString(),
     redactedIp: redactIp(ip),
   };
@@ -138,10 +188,9 @@ export async function POST(req: NextRequest) {
     await sendConversationEmail(payload);
   } catch (err) {
     const msg = err instanceof Error ? err.message : "send failed";
-    // Log to server console only — don't leak to client.
     console.error("[conversation] send failed:", msg);
     return NextResponse.json(
-      { error: "We could not send your note just now. Please try again in a moment." },
+      { error: "We could not send your inquiry just now. Please try again in a moment." },
       { status: 502 },
     );
   }
