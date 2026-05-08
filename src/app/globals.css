@@ -191,3 +191,14 @@ main > .on-navy {
 main > .on-navy + * {
   border-top-color: var(--color-rule-on-dark);
 }
+
+/* ── v3.6: page-scoped eyebrow override for /inaugural ──
+   Every section eyebrow on /inaugural reads at 13px / weight 500 / 0.30em
+   (vs the default 12px / weight 400 / 0.34em used elsewhere). The leading
+   30px gold hairline + 16px gap from the base .eyebrow rule still apply.
+   Apply via the `className` prop on <Eyebrow>. */
+.eyebrow--inaugural {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.30em;
+}

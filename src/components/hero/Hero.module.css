@@ -16,6 +16,14 @@
   padding-block: 120px;
 }
 
+/* v3.6 — Inaugural-launch hero: pronounced date display sits between the
+   eyebrow and the headline; the headline drops one size so the date is the
+   visual anchor. Slightly tighter top padding so the date sits above the fold
+   on common laptop sizes. */
+.inauguralLaunch {
+  padding-block: 100px;
+}
+
 .bgLines {
   position: absolute; inset: 0;
   pointer-events: none;
@@ -51,6 +59,27 @@
   letter-spacing: var(--ls-tight);
   color: var(--color-text-on-dark);
   margin-bottom: 28px;
+}
+
+/* v3.6 — Inaugural-launch hero: prominent italic Cormorant gold-light date.
+   Sits between the eyebrow and the (smaller) headline. */
+.dateDisplay {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: var(--weight-regular);
+  font-size: clamp(40px, 5vw, 60px);
+  line-height: 1.05;
+  letter-spacing: -0.005em;
+  color: var(--color-gold-light);
+  margin: 8px 0 18px;
+}
+
+/* On the inaugural-launch hero the headline drops one size so the date
+   is the visual anchor. */
+.inauguralLaunch .headline {
+  font-size: var(--text-section);
+  font-weight: var(--weight-light);
+  margin-bottom: 18px;
 }
 
 .headline em,
@@ -91,4 +120,5 @@
 @media (max-width: 720px) {
   .full { min-height: auto; padding-block: 96px 60px; }
   .pageHeader { padding-block: 96px 72px; }
+  .inauguralLaunch { padding-block: 88px 64px; }
 }

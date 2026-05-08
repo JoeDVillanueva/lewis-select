@@ -1,4 +1,22 @@
-# Lewis Select — Marketing Site Build Spec  ·  v3.5
+# Lewis Select — Marketing Site Build Spec  ·  v3.6
+
+> **v3.6 — Inaugural page polish (post first review).** Eight targeted changes against the live `/start-a-conversation` deploy. Net effect: the route renames to `/inaugural`, the page reads like a personal letter from Dr. Lewis with room for his portrait, the form drops three secondary fields, and the global CTA shifts to "Join The Inaugural" until July 1, 2026.
+>
+> 1. **Route rename.** `/start-a-conversation` → `/inaugural`. Move `src/app/start-a-conversation/` → `src/app/inaugural/` and `src/app/api/start-a-conversation/` → `src/app/api/inaugural/`. Add a permanent redirect (308) from `/start-a-conversation` → `/inaugural` in `next.config.mjs` so the old URL keeps working. Update every internal link and CTA `href` site-wide.
+> 2. **Site-wide CTA label.** The primary CTA on every page (Home hero, Pillars, Who-it's-for, About sig CTA, Approach closing CTA, Nav ghost CTA) currently reads *"Start a conversation"* — change to **"Join The Inaugural"** while the Inaugural Cohort window is open. After 2026-07-01 it reverts to *"Start a conversation"* via the same date-gating mechanism used for the page copy.
+> 3. **Inaugural hero — pronounced launch date.** Promote the July 1, 2026 line in the hero. Above the headline, a new gold-light eyebrow pair: a small uppercase eyebrow "INAUGURAL · OPENS" followed by a **prominent date display**: *July 1, 2026* set in italic Cormorant Garamond gold-light at `clamp(40px, 5vw, 60px)`, weight 400, letter-spacing -0.005em. Headline below ("*An invitation to Lewis Select's Inaugural Cohort.*") drops one size to keep the date the visual anchor. The supporting subhead beneath the headline is preserved.
+> 4. **Personal letter section (replaces "Personal note").** Restructure the cream surface immediately below the hero as a personal letter from Dr. Lewis, centered on the page. Layout: (a) **portrait placeholder** at top center — a 180×180 rounded square (`border-radius: 4px`) at `--color-cream-dark` with a faint gold hairline border, captioned "Photograph forthcoming"; component must accept a `src` prop so Dr. Lewis can drop in his real photo when ready. (b) **Letter copy** below the portrait, centered, max-width 620px, body uses `--text-body` (17px) DM Sans weight 300 line-height 1.7, **`text-align: center`**, with paragraph spacing 16px. (c) **Signature** at the bottom: italic Cormorant Garamond, ~28px navy, weight 400, "*— Dr. Kevin Lewis*" centered. (d) **Drop the small DM Sans muted note** ("Lewis Select is direct-pay; no insurance is billed for membership…") that previously closed this block. The new section uses one eyebrow above the portrait: "FROM DR. LEWIS".
+> 5. **Form field drops + rename.** Three changes to `<ConversationForm />`:
+>    - **Drop** the "Best way to reach you" radio group beneath the phone field. Keep `phone` as a single tel input.
+>    - **Drop** the optional "Second home, if applicable" input beneath the residence field. Keep `residence` as a single tel-style input.
+>    - **Rename** the third household checkbox option *"Dependents under 25"* → **"Other family members"**. The number-of-people input that reveals on selection stays, but its label changes from "How many?" to "How many?" (unchanged), with helper text updated to "Spouse, partner, dependents, others in your household."
+> 6. **Submit button text.** Form submit changes from *"Inquire about inaugural membership"* to **"Send Inquiry"** (still primary gold, full-width on mobile, inline on desktop). The longer "Join The Inaugural" CTA stays on the rest of the site; the submit on the form itself is short.
+> 7. **"What to expect" block (replaces "After you submit").** Eyebrow updates to "WHAT TO EXPECT". Body shortens and drops the conditional framing — new copy: *"Inquiries are reviewed personally by Dr. Lewis ahead of the July 1, 2026 launch. Inaugural spots are limited; we will be candid with you either way. Most replies arrive within a week."* The phrase "If you are selected to participate in the Inaugural Cohort…" is removed everywhere on the page (hero subhead, inaugural-invitation block, what-to-expect, success state). Globally replace **"Inaugural Cohort spots are limited"** with **"Inaugural spots are limited"**.
+> 8. **Inaugural page eyebrow scale.** Eyebrows on `/inaugural` only render at **13px DM Sans weight 500 letter-spacing 0.30em** (vs the default `--text-eyebrow` 12px / 400 / 0.34em used elsewhere). New page-scoped class `.eyebrow--inaugural`. The leading gold hairline before the eyebrow stays 30px; gap unchanged. This is a single-page bump — do not change `--text-eyebrow` globally. Net feel: each section title on this page reads with a touch more authority, matching the visual weight of other pages' headers.
+>
+> **Footer changes (apply globally, not just on `/inaugural`):**
+> - **Hide the "Connect" column.** Remove column 4 from the footer until phone and email placeholders are filled. Footer is now a 3-column desktop layout (or 1 + 2 mobile): brand paragraph · The Practice · Visit. Update grid template accordingly.
+> - **Brand paragraph copy** updated to: *"Exclusive concierge medicine for the Hill Country. Get fast, direct access to a doctor who knows you, a specialist network on speed dial, and a personal plan for your long-term health."* Replace the existing "An invitation-only medical practice in Dripping Springs, Texas…" paragraph in `<Footer />` and `CONTENT.md` Footer section.
 
 > **v3.5 — brand mark + Approach pillar legibility + Inaugural Cohort CTA.** Three updates.
 >
@@ -110,10 +128,10 @@ lewis-select/
 │   │   ├── page.tsx               # / (Home)
 │   │   ├── approach/page.tsx
 │   │   ├── about/page.tsx
-│   │   ├── start-a-conversation/page.tsx
+│   │   ├── inaugural/page.tsx     # v3.6 — renamed from start-a-conversation
 │   │   ├── privacy/page.tsx       # placeholder Notice of Privacy Practices
 │   │   ├── api/
-│   │   │   └── start-a-conversation/route.ts   # form submit handler
+│   │   │   └── inaugural/route.ts # v3.6 — renamed from start-a-conversation
 │   │   ├── globals.css            # tokens + base styles
 │   │   ├── not-found.tsx
 │   │   └── opengraph-image.tsx    # default OG image generator
@@ -365,13 +383,13 @@ Each component below maps to `CONTENT.md` section types. Components are pure ser
 
 - **Logo mark + wordmark at left.** Mark: `public/logo-mark.png` rendered as `<img>` at **36×36px**, **12px right margin** against the wordmark, vertically centered to the wordmark cap-height (no baseline alignment — the medallion is round). Wordmark: 22px Cormorant Garamond, weight 300, italic on "Select" in `--color-gold-light`. Beneath the wordmark, a tagline: "PRIVATE CONCIERGE MEDICINE" in **`--text-nav-tagline` (10px)** DM Sans, weight 300, letter-spacing 0.30em, `--color-text-on-dark-muted`. On scroll-shrink (after 24px), the mark scales to **30×30px** in lockstep with the nav height shrink.
 - Right-side links: Approach, Dr. Lewis. **`--text-nav-link` (12px)** DM Sans, weight 400, uppercase, letter-spacing 0.20em, `rgba(255,255,255,0.65)`. Hover → white. Underline reveals from left.
-- "Start a conversation" as a gold-bordered ghost CTA (right-most). **`--text-nav-cta` (11px)** DM Sans, weight 400, uppercase, letter-spacing 0.22em. `border: 0.5px solid var(--color-gold); color: var(--color-gold); padding: 12px 22px;` Hover fills gold with white text.
+- **v3.6 CTA label:** while the Inaugural Cohort window is open (until 2026-07-01), the right-most ghost CTA reads **"Join The Inaugural"** and links to `/inaugural`. After 2026-07-01 it reverts to *"Start a conversation"* and links to `/start-a-conversation` (the redirect target after the route flip — see §3 / next.config.mjs). Style: gold-bordered ghost CTA. **`--text-nav-cta` (11px)** DM Sans, weight 400, uppercase, letter-spacing 0.22em. `border: 0.5px solid var(--color-gold); color: var(--color-gold); padding: 12px 22px;` Hover fills gold with white text. The same date-gating rule applies to every primary CTA on the site (Home hero, Pillars, Who-it's-for, About sig, Approach closing CTA).
 - Mobile: hamburger opens a mobile menu beneath the nav with the same links + CTA.
 - Sticky on scroll. Background: `rgba(15,39,68,0.97)` with `backdrop-filter: blur(12px)`. After 24px of scroll, height shrinks 80px → 64px and border-bottom darkens.
 
 ### 6.5 Footer specifics
 
-Always navy. Four columns desktop, two columns mobile. See `CONTENT.md` §Footer for content.
+Always navy. **v3.6 — three columns desktop** (was four; "Connect" column hidden until phone and email placeholders are filled). Mobile collapses to single column with hairline rules between rows. See `CONTENT.md` §Footer for content.
 
 - **Logo mark + wordmark.** Mark: `public/logo-mark.png` at **44×44px**, **14px right margin** against the wordmark, vertically aligned to the wordmark optical center.
 - Wordmark: 24px Cormorant Garamond, weight 300, italic "Select" in `--color-gold-light`.
@@ -383,39 +401,41 @@ Always navy. Four columns desktop, two columns mobile. See `CONTENT.md` §Footer
 
 ---
 
-## 7. Conversation form (`/start-a-conversation`)
+## 7. Inaugural form (`/inaugural`)
 
 ### 7.1 Page composition
 
-**v3.5 — Inaugural Cohort window (active until July 1, 2026).** The page is now the inquiry form for Lewis Select's Inaugural Cohort. After July 1, 2026 the page reverts to the standard "Start a Conversation" treatment using the post-launch fallback copy in `CONTENT.md` §04. Both versions render the `<ConversationForm />` component as the primary content (no `<ClosingCTA />` at the bottom of this page — the form is the conversion action).
+**v3.6 — route renamed to `/inaugural` (was `/start-a-conversation`).** Add a 308 permanent redirect from the old path in `next.config.mjs`. The page remains the inquiry form for Lewis Select's Inaugural Cohort until **2026-07-01**, after which it reverts to the standard "Start a Conversation" treatment using the post-launch fallback copy in `CONTENT.md` §04 — but the route stays `/inaugural` (the old "Start a Conversation" copy is repurposed under the same URL). Both variants render the `<InaugurationForm />` component (renamed from `<ConversationForm />`) as the primary content. No `<ClosingCTA />` on this page — the form is the conversion action.
 
-Sections in scroll order (Inaugural Cohort variant):
+Sections in scroll order (Inaugural Cohort variant — v3.6):
 
-1. `<Hero />` — navy, with the new headline ("*An invitation to the Inaugural Cohort.*") and a small DM Sans countdown note: "Inaugural membership opens July 1, 2026."
-2. Inaugural invitation block (eyebrow + two body paragraphs about the founding cohort, limited spots, one-time founding-member advantages) — cream
-3. The form — cream
-4. "What happens next" block — cream
+1. **`<Hero variant="inaugural-launch" />`** — navy. New three-tier header: (a) eyebrow "INAUGURAL · OPENS"; (b) **prominent date display** "*July 1, 2026*" — italic Cormorant Garamond `--color-gold-light`, `clamp(40px, 5vw, 60px)`, weight 400, letter-spacing -0.005em, centered or left-aligned to match the page rhythm; (c) headline "*An invitation to Lewis Select's Inaugural Cohort.*" set one step smaller than the standard hero headline (`clamp(38px, 4.4vw, 56px)`); (d) supporting subhead beneath in DM Sans 16px weight 300 `--color-gold-light`, max-width 640px: *"Founding-member spots are limited and come with one-time advantages reserved for this cohort."* Drop any prior "If selected to participate…" wording.
+2. **Personal letter block** — cream surface. Replaces the previous "Personal note" component. New `<PersonalLetter />` UI primitive with: (a) eyebrow "FROM DR. LEWIS" (uses `.eyebrow--inaugural` 13px / weight 500 / letter-spacing 0.30em); (b) **portrait placeholder** centered, 180×180 rounded square (`border-radius: 4px`) at `--color-cream-dark` background with a 0.5px `--color-gold` hairline border, faint italic caption beneath: "*Photograph forthcoming.*" Component accepts a `src?: string` and `alt?: string` prop; when `src` is set, render an `<Image>` instead of the placeholder; when unset, render the placeholder. (c) **Letter copy** below the portrait, centered horizontally, max-width 620px, **`text-align: center`**, body uses `--text-body` (17px) DM Sans weight 300 line-height 1.7, paragraph spacing 16px. (d) **Signature** at the bottom: italic Cormorant Garamond ~28px navy weight 400, "*— Dr. Kevin Lewis*", centered, 20px above the section's bottom rule. **No** small DM Sans muted note at the bottom (the v3.5 "Lewis Select is direct-pay…" line is dropped).
+3. **The form** — cream surface. See §7.2.
+4. **"What to expect" block** — cream surface. Eyebrow "WHAT TO EXPECT". Single body paragraph; no conditional "if selected" framing. See `CONTENT.md` §04 for copy.
 
-### 7.2 Fields  ·  v3.5 — seven essential questions
+**Eyebrow scale on `/inaugural` only.** Use page-scoped class `.eyebrow--inaugural` for every section eyebrow on this page: 13px DM Sans weight 500 letter-spacing 0.30em (vs default `--text-eyebrow` 12px / 400 / 0.34em). Leading 30px gold hairline preserved.
 
-The form collects only what Dr. Lewis needs to prepare for a follow-up conversation. Health context, insurance status, and clinical detail are intentionally excluded; those belong to the post-conversation intake.
+### 7.2 Fields  ·  v3.6 — five essential questions
+
+(v3.5 had seven. v3.6 drops the "best way to reach you" radio, drops the "second home" optional input, and renames "Dependents under 25" to "Other family members". Net field count is five required questions plus the conditional follow-ups.)
 
 | Name | Label | Type | Required | Notes |
 |---|---|---|---|---|
 | `name` | Your name | text | yes | min 2 chars; placeholder: "First and last" |
 | `email` | Email | email | yes | RFC 5322-ish via simple regex |
-| `phone` | Phone (with preferred contact method) | composite | yes | tel input + small radio group beneath labeled "Best way to reach you" with options Phone call · Text · Email. min 7 digits on the tel; default radio: Phone call |
+| `phone` | Phone | tel | yes | min 7 digits, allow international format. **No** sub-radio for preferred contact method (v3.6 dropped). |
 | `connection` | How are you connected to Dr. Lewis? | radio | yes | Single select. Options: "I'm a member of Driftwood Golf & Lake Club" · "I was referred by a current patient or friend" · "We met at an event" · "I came across Lewis Select on my own". Selecting "referred" or "event" reveals an optional follow-up text input labeled "Who introduced you?" |
-| `residence` | Where would you primarily receive care? | composite | yes | Primary: text input, placeholder "City and ZIP, e.g., Driftwood, TX 78619". Optional second input beneath, labeled "Second home, if applicable" — same format, not required |
-| `household` | Who would the membership cover? | checkbox group | yes | Helper text: "Lewis Select is structured for individuals and families. Select all that apply." Options: "Just me" · "My spouse or partner" · "Dependents under 25". Selecting "Dependents" reveals a small `number` input (label: "How many?", min 1, max 12) |
+| `residence` | Where would you primarily receive care? | text | yes | Single text input. Placeholder: "City and ZIP, e.g., Driftwood, TX 78619". **No** optional "Second home" follow-up (v3.6 dropped). |
+| `household` | Who would the membership cover? | checkbox group | yes | Helper text: "Lewis Select is structured for individuals and families. Select all that apply." Options: "Just me" · "My spouse or partner" · **"Other family members"** (v3.6 — renamed from "Dependents under 25"). Selecting "Other family members" reveals a small `number` input (label: "How many?", min 1, max 12, helper: "Spouse, partner, dependents, others in your household."). |
 | `prompt` | What prompted you to reach out now? | textarea | yes | rows=4, no character cap. Helper text: "A few sentences is enough — what's on your mind, or what you're hoping a partnership with Dr. Lewis could look like." |
 | `_company` | (honeypot) | hidden text | hidden | must be empty; if present, drop submission silently |
 
-**Form styling.** Match the tiiny gate's input style adapted to a light surface: `border: 0.5px solid var(--color-rule); padding: 15px 22px; font-family: var(--font-body); font-weight: 300; font-size: 16px; letter-spacing: 0.02em; outline: none;` Focus state shifts border to `--color-gold`. Labels above inputs in eyebrow style (12px gold uppercase letter-spacing 0.30em). Helper text 14px DM Sans weight 300 color `--color-warm-gray`, directly beneath the label. Required fields marked with a small gold asterisk after the label.
+**Form styling.** Match the tiiny gate's input style adapted to a light surface: `border: 0.5px solid var(--color-rule); padding: 15px 22px; font-family: var(--font-body); font-weight: 300; font-size: 16px; letter-spacing: 0.02em; outline: none;` Focus state shifts border to `--color-gold`. Labels above inputs use the inaugural eyebrow class (13px / weight 500 / 0.30em). Helper text 14px DM Sans weight 300 color `--color-warm-gray`, directly beneath the label. Required fields marked with a small gold asterisk after the label.
 
 **Spam protection.** Honeypot only (no CAPTCHA — friction is costly at this audience tier).
 
-**Submit button:** ***Inquire about inaugural membership*** — primary gold variant, full-width on mobile, inline on desktop. After July 1, 2026 the button label reverts to *Send to Dr. Lewis* (standard "Start a Conversation" variant).
+**Submit button (v3.6):** **"Send Inquiry"** — primary gold variant, full-width on mobile, inline on desktop. (The longer **"Join The Inaugural"** site-wide CTA is for navigation; the on-form submit is the short verb-noun version.) After 2026-07-01 the submit reverts to *Send to Dr. Lewis*.
 
 ### 7.3 Submission flow
 

@@ -1,13 +1,15 @@
 # Lewis Select — Site Content  ·  v5
 
-All user-facing copy for the marketing site, organized by page and by section. Section names (e.g., "Hero," "Empathy block") map to component blocks defined in `BUILD_SPEC.md`. Italics in `*single asterisks*` mark display lines that should be set in the display serif (Cormorant Garamond), italicized. Roman text is body. CTAs are marked with `→` and link to `/start-a-conversation` unless otherwise noted.
+All user-facing copy for the marketing site, organized by page and by section. Section names (e.g., "Hero," "Empathy block") map to component blocks defined in `BUILD_SPEC.md`. Italics in `*single asterisks*` mark display lines that should be set in the display serif (Cormorant Garamond), italicized. Roman text is body. CTAs are marked with `→` and link to `/inaugural` unless otherwise noted.
+
+**v3.6 — site-wide CTA label.** While the Inaugural Cohort window is open (until 2026-07-01), the primary CTA on every page reads **"Join The Inaugural"** and links to `/inaugural`. Below, the historical *"Start a conversation"* label is preserved in copy for clarity but should render as **"Join The Inaugural"** in the build until 2026-07-01, after which it reverts.
 
 The site has four pages:
 
 1. `/` — Home
 2. `/approach` — Approach
 3. `/about` — Dr. Kevin Lewis
-4. `/start-a-conversation` — Start a Conversation
+4. `/inaugural` — Inaugural (was `/start-a-conversation`; legacy URL redirects 308)
 
 The visual reference is `Lewis Select tiiny site.html` in this folder, with the v4/v5 size and color updates documented in `Lewis_Select_Moodboard.html`. Match that register: navy + warm gold, Cormorant Garamond display + DM Sans body, hairline rules, light weights, generous letter-spacing on uppercase eyebrows.
 
@@ -25,7 +27,7 @@ The visual reference is `Lewis Select tiiny site.html` in this folder, with the 
 
 **Body:** For Hill Country families who want a doctor who knows them, who's there when they need him, and who's planning their health for years to come. Direct 24/7 access. Same-day specialist placement. A written plan for the year ahead.
 
-**Primary CTA:** → Start a conversation
+**Primary CTA:** → Join The Inaugural  [/inaugural]  *(reverts to "Start a conversation" → /inaugural after 2026-07-01)*
 **Secondary (ghost) CTA:** Read the approach  [/approach]
 
 ### Philosophy band  ·  cream surface
@@ -113,7 +115,7 @@ The longest, healthiest version of your life does not happen by accident. Lewis 
 
 **Body:** Lewis Select is for Hill Country families who want their physician to know them by name, who expect their time to be respected as much as their health, and who believe their best decade has not happened yet. Membership is by invitation, and limited each year.
 
-**CTA:** → Start a conversation
+**CTA:** → Join The Inaugural  [/inaugural]  *(reverts to "Start a conversation" → /inaugural after 2026-07-01)*
 
 ### Closing CTA  ·  navy surface
 
@@ -127,7 +129,7 @@ The longest, healthiest version of your life does not happen by accident. Lewis 
 
 **Body:** If your family is considering a different kind of medical practice, the next step is a conversation with Dr. Lewis — by phone or in person.
 
-**Primary CTA:** → Start a conversation
+**Primary CTA:** → Join The Inaugural  [/inaugural]  *(reverts to "Start a conversation" → /inaugural after 2026-07-01)*
 
 ---
 
@@ -242,35 +244,49 @@ All of it synthesizes into your annual Health Blueprint: a written, bound docume
 
 ---
 
-## 04 — Start a Conversation (`/start-a-conversation`)
+## 04 — Inaugural (`/inaugural`)
 
-> **v3.5 — Inaugural Cohort window (active May 8 – July 1, 2026).** This page is temporarily the inquiry form for Lewis Select's Inaugural Cohort. Inaugural membership officially opens **July 1, 2026**. After that date, the page reverts to the post-launch fallback copy preserved at the end of this section.
+> **v3.6 — route renamed from `/start-a-conversation` to `/inaugural`.** A 308 permanent redirect from the old path is configured in `next.config.mjs` so legacy links keep working. Inaugural Cohort window active May 8 – July 1, 2026; on/after **July 1, 2026** the page reverts to the post-launch fallback copy preserved at the end of this section (the route stays `/inaugural`).
+>
+> **Page-scoped eyebrow treatment:** every eyebrow on `/inaugural` uses 13px DM Sans weight 500 letter-spacing 0.30em (page-scoped class `.eyebrow--inaugural` — see `BUILD_SPEC.md` §7.1).
 
-### Page header  ·  navy surface
+### Hero  ·  navy surface
 
-**Eyebrow:** Inaugural Cohort
+**Eyebrow:** Inaugural · Opens
 
-**Headline:** *An invitation to Lewis Select's Inaugural Cohort.*
+**Date display (italic Cormorant Garamond, color `--color-gold-light`, `clamp(40px, 5vw, 60px)`, weight 400, letter-spacing -0.005em):** *July 1, 2026*
 
-**Subhead body (DM Sans 16px, weight 300, color `--color-gold-light`, max-width 640px):** Inaugural membership officially opens July 1, 2026. Founding-member spots are limited and come with one-time advantages reserved for this cohort.
+**Headline (one step smaller than standard hero):** *An invitation to Lewis Select's Inaugural Cohort.*
 
-### Inaugural invitation  ·  cream surface
+**Subhead (DM Sans 16px, weight 300, `--color-gold-light`, max-width 640px):** Founding-member spots are limited and come with one-time advantages reserved for this cohort.
+
+### Personal letter  ·  cream surface  ·  centered, max-width 620px
+
+(v3.6 — replaces the v3.5 "Personal note" block. Reads as a short letter from Dr. Lewis with his portrait at the top and his signature at the bottom. Body copy is centered. The v3.5 muted footer note about direct-pay is dropped here — that detail can live in the standard "Start a Conversation" fallback or in a future FAQ.)
 
 **Eyebrow:** From Dr. Lewis
 
-**Body 1:** Lewis Select is opening to its Inaugural Cohort — a small group of founding families who will become the first members of the practice. Founding spots are limited, and intentionally so. The relationships formed in the first season set the character of the practice for the years that follow.
+**Portrait placeholder (centered, 180×180 rounded square, `--color-cream-dark` background, 0.5px gold hairline border):** *Photograph forthcoming.*
 
-**Body 2:** Founding members receive advantages reserved for this cohort and offered only once: founding-rate pricing locked for two years, an unhurried in-person introduction with Dr. Lewis before launch, and a hand in shaping how Lewis Select serves Hill Country families.
+(Component accepts a `src` prop. Drop in Dr. Lewis's portrait when ready and the placeholder swaps automatically.)
 
-**Body 3:** If you are interested, please share a brief introduction below. Inquiries are reviewed personally by Dr. Lewis. **If you are selected to participate in the Inaugural Cohort, Dr. Lewis will reach out to you directly with a personal invitation to inaugural membership.**
+**Letter body (DM Sans 17px weight 300 line-height 1.7, centered, max-width 620px, paragraph spacing 16px):**
 
-**Small note (DM Sans, muted):** Lewis Select is direct-pay; no insurance is billed for membership. Members maintain their own comprehensive health insurance separately.
+To the families considering us,
+
+Lewis Select is opening to its Inaugural Cohort — a small group of founding families who will become the first members of the practice. Founding spots are limited, and intentionally so. The relationships formed in the first season set the character of the practice for the years that follow.
+
+Founding members receive advantages reserved for this cohort and offered only once: founding-rate pricing locked for two years, an unhurried in-person introduction before launch, and a hand in shaping how Lewis Select serves Hill Country families.
+
+If you are interested, please share a brief introduction below. I will be reading every inquiry myself.
+
+**Signature (italic Cormorant Garamond, ~28px navy, weight 400, centered, 20px above the section's bottom rule):** *— Dr. Kevin Lewis*
 
 ### Form  ·  cream surface
 
 **Eyebrow:** Inaugural inquiry
 
-**Form intro (italic Cormorant ~18px, navy, max-width 640px):** *A brief introduction so Dr. Lewis can prepare for our follow-up conversation. The seven fields below are the essentials — anything else, we'll cover on the call.*
+**Form intro (italic Cormorant ~18px, navy, max-width 640px):** *A brief introduction so Dr. Lewis can prepare for our follow-up conversation. The fields below are the essentials — anything else, we'll cover on the call.*
 
 Form fields, in order (see `BUILD_SPEC.md` §7.2 for field types and validation):
 
@@ -278,19 +294,21 @@ Form fields, in order (see `BUILD_SPEC.md` §7.2 for field types and validation)
 |---|---|---|---|
 | `name` | Your name | yes | placeholder: "First and last" |
 | `email` | Email | yes | |
-| `phone` | Phone | yes | small radio beneath labeled "Best way to reach you" — Phone call · Text · Email (default: Phone call) |
+| `phone` | Phone | yes | tel input only (v3.6 — dropped the "Best way to reach you" radio) |
 | `connection` | How are you connected to Dr. Lewis? | yes | radio — "I'm a member of Driftwood Golf & Lake Club" · "I was referred by a current patient or friend" · "We met at an event" · "I came across Lewis Select on my own". "Referred" or "event" reveals optional follow-up: "Who introduced you?" |
-| `residence` | Where would you primarily receive care? | yes | text — placeholder: "City and ZIP, e.g., Driftwood, TX 78619". Optional second input beneath labeled "Second home, if applicable" |
-| `household` | Who would the membership cover? | yes | helper: "Lewis Select is structured for individuals and families. Select all that apply." Checkboxes: "Just me" · "My spouse or partner" · "Dependents under 25" (reveals a small number input for count) |
+| `residence` | Where would you primarily receive care? | yes | text — placeholder: "City and ZIP, e.g., Driftwood, TX 78619" (v3.6 — dropped the optional "Second home, if applicable" follow-up) |
+| `household` | Who would the membership cover? | yes | helper: "Lewis Select is structured for individuals and families. Select all that apply." Checkboxes: "Just me" · "My spouse or partner" · **"Other family members"** (v3.6 — renamed from "Dependents under 25"; reveals a small number input with helper "Spouse, partner, dependents, others in your household.") |
 | `prompt` | What prompted you to reach out now? | yes | textarea, rows=4. Helper: "A few sentences is enough — what's on your mind, or what you're hoping a partnership with Dr. Lewis could look like." |
 
-**Submit button (gold, primary):** ***Inquire about inaugural membership***
+**Submit button (gold, primary):** **Send Inquiry**
 
-### What happens next  ·  cream surface
+### What to expect  ·  cream surface
 
-**Eyebrow:** After you submit
+(v3.6 — eyebrow renamed from "After you submit" to "What to expect". Copy shortened; no conditional "if selected" framing.)
 
-**Body:** Inquiries are reviewed personally by Dr. Lewis. If you are selected to participate in the Inaugural Cohort, Dr. Lewis will reach out directly — generally within a week — with a personal invitation to inaugural membership ahead of the July 1, 2026 launch. Inaugural Cohort spots are limited; not every inquiry will receive an invitation, and we will be candid with you either way.
+**Eyebrow:** What to expect
+
+**Body:** Inquiries are reviewed personally by Dr. Lewis ahead of the July 1, 2026 launch. Inaugural spots are limited; we will be candid with you either way. Most replies arrive within a week.
 
 ### Success state  ·  cream surface
 
@@ -300,7 +318,7 @@ Form fields, in order (see `BUILD_SPEC.md` §7.2 for field types and validation)
 
 **Headline:** *Thank you. Your inquiry is in front of Dr. Lewis.*
 
-**Body:** If you are selected to participate in the Inaugural Cohort, Dr. Lewis will reach out directly — generally within a week — with a personal invitation to inaugural membership. If something is urgent, you can also call the practice at [phone — TK] during business hours.
+**Body:** Dr. Lewis will reach out directly — generally within a week — ahead of the July 1, 2026 launch. Inaugural spots are limited; we will be candid with you either way.
 
 ### Error state  ·  cream surface
 
@@ -310,9 +328,9 @@ Form fields, in order (see `BUILD_SPEC.md` §7.2 for field types and validation)
 
 ---
 
-### Post-launch fallback  ·  effective July 1, 2026
+### Post-launch fallback  ·  effective July 1, 2026  ·  route stays `/inaugural`
 
-After Inaugural Cohort enrollment closes, the page reverts to the standard "Start a Conversation" copy below. The route, hero pattern, and form mechanics stay the same — only the eyebrows, headline, body copy, button label, and "What happens next" text swap back to this version.
+After the Inaugural Cohort window closes, the page swaps to the standard "Start a Conversation" copy below. The route stays at `/inaugural` (no route flip — the legacy redirect from `/start-a-conversation` keeps working). Only the eyebrows, headline, body copy, button label, and "What happens next" text swap back to this version. The hero shifts back from the new three-tier launch-date treatment to the standard `<Hero />` pattern. Eyebrows revert from `.eyebrow--inaugural` (13px / 500) to the default `--text-eyebrow` (12px / 400). The Personal Letter block reverts to a left-aligned Personal Note block (no portrait, no centered letter, no signature).
 
 #### Page header  ·  navy surface
 
@@ -332,7 +350,7 @@ After Inaugural Cohort enrollment closes, the page reverts to the standard "Star
 
 #### Form
 
-(Same seven fields as the Inaugural Cohort variant — the seven essentials remain the post-launch standard.)
+(Same five essential fields as the Inaugural Cohort variant — the v3.6 simplified set remains the post-launch standard. No "Best way to reach you" radio, no "Second home" follow-up, household checkbox stays as "Other family members".)
 
 **Submit button (gold, primary):** *Send to Dr. Lewis*
 
@@ -354,9 +372,9 @@ After Inaugural Cohort enrollment closes, the page reverts to the standard "Star
 
 ## Footer (every page)  ·  navy surface
 
-A four-column footer with a hairline rule above the bottom bar. Gold accent on column titles and hover states. v5 sizes:
+(v3.6 — three-column footer; the "Connect" column is hidden until phone and email placeholders are filled. Brand paragraph rewritten.) A three-column footer with a hairline rule above the bottom bar. Gold accent on column titles and hover states. Sizes:
 
-- **Wordmark:** 24px Cormorant Garamond, italic on "Select" in `--gold-light`.
+- **Wordmark:** 24px Cormorant Garamond, italic on "Select" in `--gold-light`. v3.5 — preceded by the gold medallion mark at 44×44 with 14px right margin.
 - **Tagline beneath wordmark:** 10px DM Sans, weight 300, letter-spacing 0.30em, uppercase, `--text-on-dark-muted` color.
 - **Brand paragraph:** 15px DM Sans, weight 300, line-height 1.7, `--text-on-dark-muted`.
 - **Column titles:** 12px DM Sans, weight 400, letter-spacing 0.30em, uppercase, `--gold` color.
@@ -365,9 +383,9 @@ A four-column footer with a hairline rule above the bottom bar. Gold accent on c
 
 | Column | Heading | Items |
 |---|---|---|
-| 1 | Lewis *Select* (wordmark, italic on "Select" in `--gold-light`) | Tagline (small, uppercase, letter-spaced): A PRIVATE MEDICAL PRACTICE · TEXAS HILL COUNTRY. Brief paragraph: "An invitation-only medical practice in Dripping Springs, Texas. Direct access to your physician. A specialist network on speed dial. A written plan for the year ahead." |
-| 2 | The Practice | Approach · Dr. Kevin Lewis · Start a Conversation |
+| 1 | Lewis *Select* (wordmark, italic on "Select" in `--gold-light`) | Tagline (small, uppercase, letter-spaced): A PRIVATE MEDICAL PRACTICE · TEXAS HILL COUNTRY. **Brand paragraph (v3.6):** "Exclusive concierge medicine for the Hill Country. Get fast, direct access to a doctor who knows you, a specialist network on speed dial, and a personal plan for your long-term health." |
+| 2 | The Practice | Approach · Dr. Kevin Lewis · Join The Inaugural  *(reverts to "Start a Conversation" after 2026-07-01; link target stays `/inaugural`)* |
 | 3 | Visit | Dripping Springs, TX · By appointment |
-| 4 | Connect | Phone — [TK] · Email — [TK] |
+| ~~4~~ | ~~Connect~~ | **Hidden in v3.6.** Restore once phone and email are confirmed. Restored content: Phone — [TK] · Email — [TK]. |
 
 **Bottom bar:** © 2026 Lewis Select. All rights reserved.  ·  Notice of Privacy Practices  [/privacy]

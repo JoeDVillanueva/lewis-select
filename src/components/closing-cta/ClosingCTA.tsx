@@ -1,9 +1,11 @@
 import { Container } from "@/components/layout";
 import { Body, Cta, Eyebrow } from "@/components/ui";
-import { closingCta } from "@/lib/content";
+import { closingCta, getPrimaryCtaLabel } from "@/lib/content";
 import styles from "./ClosingCTA.module.css";
 
 export function ClosingCTA() {
+  // v3.6: label is date-gated; href stays /inaugural in both windows.
+  const ctaLabel = getPrimaryCtaLabel();
   return (
     <section className={`${styles.band} on-navy`} aria-label="Next steps">
       <Container>
@@ -19,7 +21,7 @@ export function ClosingCTA() {
             {closingCta.body}
           </Body>
           <Cta href={closingCta.ctaHref} variant="primary">
-            {closingCta.ctaLabel}
+            {ctaLabel}
           </Cta>
         </div>
       </Container>

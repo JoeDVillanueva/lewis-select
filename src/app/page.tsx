@@ -8,9 +8,15 @@ import { AboutBlock } from "@/components/about-block/AboutBlock";
 import { WhoItsFor } from "@/components/who-its-for/WhoItsFor";
 import { ClosingCTA } from "@/components/closing-cta/ClosingCTA";
 import { Cta } from "@/components/ui";
-import { home } from "@/lib/content";
+import { getPrimaryCtaLabel, home } from "@/lib/content";
+
+// v3.6: render server-side per request so the date-gated CTA label flips
+// at 2026-07-01 without a redeploy.
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 export default function HomePage() {
+  const primaryCtaLabel = getPrimaryCtaLabel();
   return (
     <>
       <Hero
@@ -30,8 +36,8 @@ export default function HomePage() {
         }
         actions={
           <>
-            <Cta href={home.hero.primaryCta.href} variant="primary">
-              {home.hero.primaryCta.label}
+            <Cta href={home.hero.primaryCtaHref} variant="primary">
+              {primaryCtaLabel}
             </Cta>
             <Cta href={home.hero.secondaryCta.href} variant="ghost">
               {home.hero.secondaryCta.label}
@@ -88,7 +94,7 @@ export default function HomePage() {
           </>
         }
         body={home.whoItsFor.body}
-        cta={home.whoItsFor.cta}
+        cta={{ href: home.whoItsFor.ctaHref, label: primaryCtaLabel }}
       />
 
       <ClosingCTA />

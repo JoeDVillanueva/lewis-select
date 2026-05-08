@@ -31,7 +31,7 @@ export default function PrivacyPage() {
           <Body long>
             The Notice of Privacy Practices required by HIPAA is provided to all members of Lewis
             Select directly. A copy is available upon request — please{" "}
-            <Link href="/start-a-conversation" style={{ color: "var(--color-navy)", borderBottom: "0.5px solid var(--color-gold)" }}>
+            <Link href="/inaugural" style={{ color: "var(--color-navy)", borderBottom: "0.5px solid var(--color-gold)" }}>
               contact the practice
             </Link>{" "}
             and Dr. Lewis will send it to you.

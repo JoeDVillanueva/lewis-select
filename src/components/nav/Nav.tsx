@@ -10,7 +10,14 @@ const links = [
   { href: "/about", label: "Dr. Lewis" },
 ];
 
-export function Nav() {
+type NavProps = {
+  /** Primary CTA label — date-gated by the server layout. */
+  ctaLabel: string;
+  /** Primary CTA target (always /inaugural while route name is current). */
+  ctaHref: string;
+};
+
+export function Nav({ ctaLabel, ctaHref }: NavProps) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -50,8 +57,8 @@ export function Nav() {
             ))}
           </ul>
           <span className={styles.navCta}>
-            <Cta href="/start-a-conversation" variant="bordered">
-              Start a conversation
+            <Cta href={ctaHref} variant="bordered">
+              {ctaLabel}
             </Cta>
           </span>
           <button
@@ -77,8 +84,8 @@ export function Nav() {
           </Link>
         ))}
         <span className={styles.mobileCta} onClick={closeMenu}>
-          <Cta href="/start-a-conversation" variant="bordered">
-            Start a conversation
+          <Cta href={ctaHref} variant="bordered">
+            {ctaLabel}
           </Cta>
         </span>
       </div>
