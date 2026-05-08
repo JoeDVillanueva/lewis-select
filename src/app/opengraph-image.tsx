@@ -27,7 +27,7 @@ export default async function OpengraphImage() {
           style={{
             fontSize: 18,
             letterSpacing: 12,
-            color: "#B8955A",
+            color: "#A87E36",
             textTransform: "uppercase",
             marginBottom: 32,
           }}
@@ -35,7 +35,7 @@ export default async function OpengraphImage() {
           Private Concierge Medicine
         </div>
         <div style={{ fontSize: 120, fontWeight: 300, lineHeight: 1.1 }}>
-          Lewis <span style={{ fontStyle: "italic", color: "#D4B47A" }}>Select</span>
+          Lewis <span style={{ fontStyle: "italic", color: "#D9B560" }}>Select</span>
         </div>
         <div
           style={{

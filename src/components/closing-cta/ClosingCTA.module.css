@@ -25,10 +25,11 @@
   max-width: 720px;
 }
 
+/* v3.4: --text-attribution (15px) DM Sans weight 400, ls 0.30em, gold. Was 10px. */
 .attribution {
   font-family: var(--font-body);
-  font-size: 10px;
-  font-weight: var(--weight-thin);
+  font-size: var(--text-attribution);
+  font-weight: var(--weight-regular);
   letter-spacing: var(--ls-uppercase);
   text-transform: uppercase;
   color: var(--color-gold);

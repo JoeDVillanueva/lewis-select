@@ -17,7 +17,7 @@
 .nav.scrolled {
   height: var(--nav-height-scrolled);
   background: rgba(15, 39, 68, 0.99);
-  border-bottom-color: rgba(184, 149, 90, 0.30);
+  border-bottom-color: rgba(168, 126, 54, 0.32);   /* v3.4: tracks new --color-gold */
 }
 
 /* Spacer pushes the page content below the fixed nav. */

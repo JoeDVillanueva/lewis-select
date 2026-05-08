@@ -1,4 +1,10 @@
-# Lewis Select — Marketing Site Build Spec  ·  v3.3
+# Lewis Select — Marketing Site Build Spec  ·  v3.4
+
+> **v3.4 — gold saturation + subtext + attribution sizes (post numeral fix).** Three targeted fixes.
+>
+> - **Gold saturation:** primary `--color-gold` from `#B8955A` (a desaturated tan) → **`#A87E36`** (a stronger, deeper, more recognizable gold). Contrast against cream goes from ~3.5:1 to ~5:1; against navy stays ~4.2:1. Eyebrows, the "What this replaces" label, the gold-italic display words, and the gold underlines all become visibly more present without changing their structural role. Light variant `--color-gold-light` shifted slightly more saturated: `#D4B47A` → **`#D9B560`** (used for italicized display words on navy).
+> - **Differentiator left-column intro body ("Most private practices give you a longer appointment and a phone number…"):** the live site is inheriting the tiiny `.why-left p` 14px / weight 200 / 40%-white style. Override explicitly: **18px DM Sans weight 300, line-height 1.6, color `--color-text-on-dark-muted` (#B5C6E0), max-width 420px**. See §6.3 `<Differentiators />`.
+> - **Quote attribution lines (`— Dr. Kevin Lewis`):** new explicit token `--text-attribution: 15px` (was 12px). Letter-spacing stays at 0.30em, color `--color-gold`, weight 400. Applies to every pull-quote attribution: philosophy band, navy pull quote, closing CTA, About page pull quote.
 
 > **v3.3 — number sizes + WTR legibility + targeted copy (post tightening pass).** The v3.2 tightening landed well, but several elements still inherit the tiiny baseline sizes (which were too small for this audience). Three legibility fixes plus four copy tweaks.
 >
@@ -141,9 +147,10 @@ All tokens live in `src/app/globals.css` as CSS variables. Components reference 
   --color-navy-mid:    #1A3A5C;
   --color-navy-light:  #243F64;
 
-  /* Gold — primary accent (eyebrows, italic display words, CTAs, hairlines) */
-  --color-gold:        #B8955A;
-  --color-gold-light:  #D4B47A;   /* italicized headline highlights */
+  /* Gold — primary accent (eyebrows, italic display words, CTAs, hairlines)
+     v3.4: bumped saturation. Old #B8955A read too faint at small sizes. */
+  --color-gold:        #A87E36;   /* primary gold — stronger contrast on cream and navy */
+  --color-gold-light:  #D9B560;   /* italicized headline highlights on navy */
   --color-gold-pale:   #F0E4CC;   /* subtle backgrounds, dividers */
 
   /* Cream — primary light surface (alternating sections, blockquotes) */
@@ -188,6 +195,7 @@ All tokens live in `src/app/globals.css` as CSS variables. Components reference 
   --text-stat:         44px;                        /* hero stat numerals (if used) */
   --text-marker:       32px;                        /* NEW v3.3 — italic Cormorant numerals (01, 02, 03, 04) used by Differentiators and Pillars */
   --text-replaces:     16px;                        /* NEW v3.3 — body inside "What this replaces" gold-edge banners */
+  --text-attribution:  15px;                        /* NEW v3.4 — "— Dr. Kevin Lewis" attribution under every pull quote (was 12px) */
 
   /* Body */
   --text-body:         17px;     /* primary body — every paragraph */
@@ -335,10 +343,10 @@ Each component below maps to `CONTENT.md` section types. Components are pure ser
 | `<Hero />` | Home, page headers (Approach, About, Conversation page) | full-bleed navy. Optional hero photo treatment (right-aligned, masked-fade, low opacity, mix-blend-mode luminosity — see tiiny `.hero-photo`). |
 | `<PhilosophyBand />` | Home | cream surface, centered italic Cormorant blockquote (`--text-blockquote`), gold uppercase attribution underneath. **v3.2 tightening:** section padding `64px 56px` (less than other sections — this is a transitional moment, not a long read). Quote `max-width: 760px` centered. Reserve generous breath ABOVE the band, less below. Add a 0.5px hairline at the bottom of the band to mark the transition into the empathy block. |
 | `<EmpathyBlock />` | Home | cream surface, eyebrow + two body paragraphs. |
-| `<Differentiators />` | Home | navy surface, 1.3fr / 1fr two-column grid. Left column has eyebrow, section title, intro body. Right column has four numbered items separated by hairlines. See tiiny `#why` for layout. **v3.2 tightening:** each item's vertical padding 30 → 22, body line-height 1.55, body max-width 480px. **v3.3 sizes (override tiiny defaults):** number `--text-marker` (32px) italic Cormorant gold; title 24px Cormorant weight 400 white; body **`--text-body` (17px)** DM Sans weight 300 line-height 1.55, color `--color-text-on-dark-muted`. Do NOT inherit the tiiny `.why-item-num` 14px or `.why-item-body` 12px sizes. |
+| `<Differentiators />` | Home | navy surface, 1.3fr / 1fr two-column grid. Left column has eyebrow, section title, intro body. Right column has four numbered items separated by hairlines. See tiiny `#why` for layout. **v3.2 tightening:** each item's vertical padding 30 → 22, body line-height 1.55, body max-width 480px. **v3.3 sizes (override tiiny defaults):** number `--text-marker` (32px) italic Cormorant gold; title 24px Cormorant weight 400 white; body **`--text-body` (17px)** DM Sans weight 300 line-height 1.55, color `--color-text-on-dark-muted`. Do NOT inherit the tiiny `.why-item-num` 14px or `.why-item-body` 12px sizes. **v3.4 left-column intro body ("Most private practices…"):** explicit override of tiiny `.why-left p` — **18px** DM Sans weight 300 line-height 1.6, color `--color-text-on-dark-muted`, max-width 420px. NOT 14px / weight 200 / 40%-white. |
 | `<Pillars />` | Home | cream surface. **Layout (v3.1, tightened in v3.2):** desktop = CSS grid, `grid-template-columns: repeat(3, 1fr)`, gap 0, with **0.5px hairline borders between cells** (`border-right` on cells 1 and 2, no border on cell 3). Mobile (<720px) = single column with hairline `border-bottom` between rows. Each cell: **padding 28px 28px** (v3.2: tightened from 36×32), top-aligned content. Inside each cell, in order: number (italic Cormorant gold, **`--text-marker` (32px)** — v3.3 bumped from 22px) with a small gap below; then title (Cormorant 22px navy, weight 400); then body (DM Sans **17px** weight 300, **line-height 1.55**, color `--color-text`). Section title above the grid: "Immediate care for your health today. *Stewardship of your health for the years ahead.*" |
 | `<PillarFull />` | Approach | **three** items, each with: number (italic Cormorant gold, **`--text-marker` (32px)** — v3.3); title (Cormorant 24px navy weight 400); subhead (italic Cormorant ~20px navy weight 400); body (`--text-body` 17px, line-height 1.6, color `--color-text`); and a "What this replaces" gold-edge banner. Pillar 3 has multi-paragraph body. **"What this replaces" styling (v3.3):** gold left-edge (2px `--color-gold`), background `--color-cream-dark`, padding 20px 24px, body **`--text-replaces` (16px)** italic DM Sans weight 300, line-height 1.55, color `--color-text` (NOT `--color-warm-gray`, NOT 12px). The label "What this replaces." is uppercase 11px gold weight 500 letter-spacing 0.20em, displayed inline before the body italic text. |
-| `<PullQuote />` | Home, About | navy surface, italic Cormorant quote (clamp(26px, 3.2vw, 36px)) + gold uppercase attribution. Used twice on the homepage (the "fastest medicine" line) and once on the About page (the "knowing and caring for my patients" line). |
+| `<PullQuote />` | Home, About | navy surface, italic Cormorant quote (`--text-blockquote`) + gold uppercase attribution. **v3.4 attribution sizing:** `--text-attribution` (15px) DM Sans weight 400, letter-spacing 0.30em, uppercase, color `--color-gold`. Same treatment everywhere "— Dr. Kevin Lewis" appears: philosophy band, navy pull quote, closing CTA, About page pull quote. Was 12px — now legible. |
 | `<AboutBlock />` | Home | cream surface, eyebrow + display + body + sig line + CTA. Optional small portrait at right. |
 | `<WhoItsFor />` | Home | cream surface, eyebrow + display + body + CTA. |
 | `<ClosingCTA />` | every page except `/start-a-conversation` | navy surface, eyebrow + italic Cormorant headline (Dr. Lewis quote pattern), body, primary gold CTA. |

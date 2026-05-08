@@ -20,14 +20,15 @@
   margin: 0;
 }
 
+/* v3.4: --text-attribution (15px) DM Sans weight 400, ls 0.30em, gold. Was 9px. */
 .attribution {
   display: block;
   margin-top: 24px;
   font-family: var(--font-body);
   font-style: normal;
-  font-size: 9px;
-  font-weight: var(--weight-thin);
-  letter-spacing: 0.35em;
+  font-size: var(--text-attribution);
+  font-weight: var(--weight-regular);
+  letter-spacing: var(--ls-uppercase);
   text-transform: uppercase;
   color: var(--color-gold);
 }

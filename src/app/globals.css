@@ -9,8 +9,8 @@
   --color-navy-mid:           #1A3A5C;
   --color-navy-light:         #243F64;
 
-  --color-gold:               #B8955A;
-  --color-gold-light:         #D4B47A;
+  --color-gold:               #A87E36;   /* v3.4: bumped saturation from #B8955A — stronger, deeper, more recognizable on cream and navy. */
+  --color-gold-light:         #D9B560;   /* v3.4: shifted slightly more saturated from #D4B47A — italicized headline highlights on navy. */
   --color-gold-pale:          #F0E4CC;
 
   --color-cream:              #F6F3EE;
@@ -21,8 +21,8 @@
   --color-text:               #1A1714;
 
   --color-rule:               #D8D0C2;
-  --color-rule-dark:          rgba(184, 149, 90, 0.20);
-  --color-rule-on-dark:       rgba(184, 149, 90, 0.22);   /* v3.2: rule color used at section boundaries that touch navy. */
+  --color-rule-dark:          rgba(168, 126, 54, 0.22);   /* v3.4: tracks the new --color-gold (#A87E36). */
+  --color-rule-on-dark:       rgba(168, 126, 54, 0.24);   /* v3.2: rule color used at section boundaries that touch navy. v3.4: tracks new gold. */
   --color-rule-on-navy:       rgba(255, 255, 255, 0.07);
   --color-rule-on-navy-strong:rgba(255, 255, 255, 0.18);
 
@@ -44,6 +44,7 @@
   --text-stat:       48px;
   --text-marker:     32px;     /* v3.3 — italic Cormorant numerals (01, 02, …) on Differentiators, Pillars, PillarFull */
   --text-replaces:   16px;     /* v3.3 — body inside the "What this replaces" gold-edge banner */
+  --text-attribution:15px;     /* v3.4 — "— Dr. Kevin Lewis" attribution under every pull quote (was 12px) */
 
   /* Body */
   --text-body:       17px;
