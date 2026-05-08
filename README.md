@@ -4,7 +4,7 @@ Marketing site for Lewis Select — a private concierge medical practice in Drip
 
 See `BUILD_SPEC.md` for the full build specification, `CONTENT.md` for all user-facing copy, and `CHANGELOG.md` for what shipped when.
 
-Currently on **v3.5** — gold medallion brand mark, `<PillarFull />` legibility pass, and the Inaugural Cohort variant on `/start-a-conversation` (active until **2026-07-01**, then reverts to the standard "Start a Conversation" copy via a server-side date gate).
+Currently on **v3.6** — route renamed to `/inaugural` (308 redirect from the old `/start-a-conversation`), site-wide primary CTA now reads "Join The Inaugural" until **2026-07-01**, hero promotes the launch date, the personal note becomes a centered letter from Dr. Lewis with a portrait slot, and the form drops three secondary fields (the "best way to reach you" radio, the second-home input, and renames "Dependents under 25" → "Other family members"). Footer drops the unfilled "Connect" column and the brand paragraph is rewritten.
 
 ## Stack
 

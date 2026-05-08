@@ -24,11 +24,9 @@ type Submission = {
   name: string;
   email: string;
   phone: string;
-  contactMethod?: "phone" | "text" | "email";
   connection: string;
   introducedBy?: string;
   residence: string;
-  secondHome?: string;
   household: string[];
   dependentsCount?: number;
   prompt: string;
@@ -61,11 +59,6 @@ function asString(v: unknown): string | undefined {
   if (typeof v !== "string") return undefined;
   const t = v.trim();
   return t.length ? t : undefined;
-}
-
-function asContactMethod(v: unknown): Submission["contactMethod"] {
-  if (v === "phone" || v === "text" || v === "email") return v;
-  return undefined;
 }
 
 function asStringArray(v: unknown): string[] {
@@ -120,11 +113,9 @@ export async function POST(req: NextRequest) {
     name: asString(raw.name) ?? "",
     email: asString(raw.email) ?? "",
     phone: asString(raw.phone) ?? "",
-    contactMethod: asContactMethod(raw.contactMethod),
     connection: asString(raw.connection) ?? "",
     introducedBy: asString(raw.introducedBy),
     residence: asString(raw.residence) ?? "",
-    secondHome: asString(raw.secondHome),
     household: asStringArray(raw.household),
     dependentsCount: asNumber(raw.dependentsCount),
     prompt: asString(raw.prompt) ?? "",
@@ -143,7 +134,6 @@ export async function POST(req: NextRequest) {
     submission.connection.length > MAX_FIELD ||
     (submission.introducedBy?.length ?? 0) > MAX_FIELD ||
     submission.residence.length > MAX_FIELD ||
-    (submission.secondHome?.length ?? 0) > MAX_FIELD ||
     submission.household.join(",").length > MAX_FIELD ||
     submission.prompt.length > MAX_PROMPT;
   if (oversize) {
@@ -172,11 +162,9 @@ export async function POST(req: NextRequest) {
     name: submission.name,
     email: submission.email,
     phone: submission.phone,
-    contactMethod: submission.contactMethod,
     connection: submission.connection,
     introducedBy: submission.introducedBy,
     residence: submission.residence,
-    secondHome: submission.secondHome,
     household: submission.household,
     dependentsCount: submission.dependentsCount,
     prompt: submission.prompt,

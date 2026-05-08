@@ -12,11 +12,9 @@ export type ConversationPayload = {
   name: string;
   email: string;
   phone: string;
-  contactMethod?: "phone" | "text" | "email";
   connection: string;
   introducedBy?: string;
   residence: string;
-  secondHome?: string;
   household: string[];
   dependentsCount?: number;
   prompt: string;
@@ -63,45 +61,32 @@ const CONNECTION_LABELS: Record<string, string> = {
   self: "Came across Lewis Select on my own",
 };
 
-const CONTACT_LABELS: Record<string, string> = {
-  phone: "Phone call",
-  text: "Text",
-  email: "Email",
-};
-
+// v3.6 — third option renamed: "Dependents under 25" → "Other family members".
+// Underlying form value `dependents` preserved for backward compatibility.
 const HOUSEHOLD_LABELS: Record<string, string> = {
   self: "Just me",
   spouse: "Spouse or partner",
-  dependents: "Dependents under 25",
+  dependents: "Other family members",
 };
 
 function describeFields(p: ConversationPayload): Array<[string, string | undefined]> {
-  const phoneCell =
-    p.contactMethod
-      ? `${p.phone}  ·  Best way: ${CONTACT_LABELS[p.contactMethod] ?? p.contactMethod}`
-      : p.phone;
-
   const connection = CONNECTION_LABELS[p.connection] ?? p.connection;
   const connectionCell = p.introducedBy
     ? `${connection}\nIntroduced by: ${p.introducedBy}`
     : connection;
 
-  const residenceCell = p.secondHome
-    ? `${p.residence}\nSecond home: ${p.secondHome}`
-    : p.residence;
-
   const household = p.household.map((v) => HOUSEHOLD_LABELS[v] ?? v).join(", ");
   const householdCell =
     p.household.includes("dependents") && p.dependentsCount
-      ? `${household}  (${p.dependentsCount} dependent${p.dependentsCount === 1 ? "" : "s"})`
+      ? `${household}  (${p.dependentsCount} other${p.dependentsCount === 1 ? "" : "s"})`
       : household;
 
   return [
     ["Name", p.name],
     ["Email", p.email],
-    ["Phone", phoneCell],
+    ["Phone", p.phone],
     ["Connection to Dr. Lewis", connectionCell],
-    ["Where they'd receive care", residenceCell],
+    ["Where they'd receive care", p.residence],
     ["Who the membership covers", householdCell],
     ["What prompted the inquiry", p.prompt],
     ["Variant", p.variant === "inaugural" ? "Inaugural Cohort inquiry" : "Post-launch standard"],
@@ -137,17 +122,15 @@ export function composeEmailText(p: ConversationPayload): string {
     "",
     `Name:                  ${p.name}`,
     `Email:                 ${p.email}`,
-    `Phone:                 ${p.phone}` +
-      (p.contactMethod ? `  (best: ${CONTACT_LABELS[p.contactMethod] ?? p.contactMethod})` : ""),
+    `Phone:                 ${p.phone}`,
     `Connection:            ${CONNECTION_LABELS[p.connection] ?? p.connection}` +
       (p.introducedBy ? `  (introduced by: ${p.introducedBy})` : ""),
-    `Where they'd be seen:  ${p.residence}` +
-      (p.secondHome ? `  (second home: ${p.secondHome})` : ""),
+    `Where they'd be seen:  ${p.residence}`,
     `Membership covers:     ${p.household
       .map((v) => HOUSEHOLD_LABELS[v] ?? v)
       .join(", ")}` +
       (p.household.includes("dependents") && p.dependentsCount
-        ? `  (${p.dependentsCount} dependents)`
+        ? `  (${p.dependentsCount} other${p.dependentsCount === 1 ? "" : "s"})`
         : ""),
     "",
     "What prompted the inquiry:",

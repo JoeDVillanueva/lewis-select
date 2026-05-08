@@ -1,0 +1,71 @@
+.letter {
+  max-width: 620px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.portraitWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 8px 0 28px;
+}
+
+/* v3.6 — 180×180 rounded square (border-radius: 4px) at --color-cream-dark
+   with a faint gold hairline border. Same shell whether placeholder or photo. */
+.placeholder,
+.portrait {
+  width: 180px;
+  height: 180px;
+  border-radius: 4px;
+  border: 0.5px solid var(--color-gold);
+}
+
+.placeholder {
+  background: var(--color-cream-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: var(--weight-light);
+  font-size: 56px;
+  line-height: 1;
+  color: rgba(168, 126, 54, 0.32);
+  letter-spacing: 0.02em;
+}
+
+.caption {
+  margin-top: 14px;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: var(--weight-light);
+  font-size: 14px;
+  color: var(--color-warm-gray);
+}
+
+/* Letter body — centered, 17px / 1.7, paragraph spacing 16px. */
+.body {
+  text-align: center;
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: var(--weight-light);
+  line-height: 1.7;
+  color: var(--color-text);
+}
+
+.body p + p {
+  margin-top: 16px;
+}
+
+/* Signature — italic Cormorant ~28px navy weight 400, centered, 20px margin
+   above the next section's bottom rule. */
+.signature {
+  margin: 32px 0 20px;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: var(--weight-regular);
+  font-size: 28px;
+  line-height: 1.2;
+  color: var(--color-navy);
+}

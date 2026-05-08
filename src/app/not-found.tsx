@@ -1,7 +1,12 @@
 import { Band, Section } from "@/components/layout";
 import { Eyebrow, Body, Cta } from "@/components/ui";
+import { getPrimaryCtaLabel, PRIMARY_CTA_HREF } from "@/lib/content";
+
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 export default function NotFound() {
+  const ctaLabel = getPrimaryCtaLabel();
   return (
     <Band tone="cream">
       <Section>
@@ -20,13 +25,13 @@ export default function NotFound() {
           </h1>
           <div style={{ marginBottom: 32 }}>
             <Body long>
-              The page you're looking for isn't here. The home page or the conversation form is
+              The page you're looking for isn't here. The home page or the inquiry form is
               probably what you wanted.
             </Body>
           </div>
           <div style={{ display: "flex", gap: 24, flexWrap: "wrap" }}>
             <Cta href="/" variant="navy">Home</Cta>
-            <Cta href="/start-a-conversation" variant="ghostLight">Start a conversation</Cta>
+            <Cta href={PRIMARY_CTA_HREF} variant="ghostLight">{ctaLabel}</Cta>
           </div>
         </div>
       </Section>

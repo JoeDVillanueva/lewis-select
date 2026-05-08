@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Hero } from "@/components/hero/Hero";
 import { Band, Section } from "@/components/layout";
 import { Body, Eyebrow } from "@/components/ui";
-import { ConversationForm } from "@/components/conversation-form/ConversationForm";
+import { InaugurationForm } from "@/components/inauguration-form/InaugurationForm";
+import { PersonalLetter } from "@/components/personal-letter/PersonalLetter";
 import { pickConversationVariant } from "@/lib/content";
 import { siteMetadata } from "@/lib/seo";
 
@@ -22,11 +23,11 @@ export function generateMetadata(): Metadata {
   const variant = pickConversationVariant();
   const title =
     variant.key === "inaugural"
-      ? "Inaugural Cohort — Lewis Select"
+      ? "Join The Inaugural — Lewis Select"
       : "Start a Conversation — Lewis Select";
   const description =
     variant.key === "inaugural" ? DESCRIPTION_INAUGURAL : DESCRIPTION_POSTLAUNCH;
-  return siteMetadata({ title, description, path: "/start-a-conversation" });
+  return siteMetadata({ title, description, path: "/inaugural" });
 }
 
 /**
@@ -38,14 +39,24 @@ function HeadlineHtml({ html }: { html: string }) {
   return <span dangerouslySetInnerHTML={{ __html: html }} />;
 }
 
-export default function StartConversationPage() {
+export default function InauguralPage() {
   const variant = pickConversationVariant();
+  const isInaugural = variant.key === "inaugural";
+  // v3.6 — every section eyebrow on /inaugural reads at 13px / 500 / 0.30em
+  // while the inaugural window is open. Post-launch reverts to default.
+  const eyebrowClass = isInaugural ? "eyebrow--inaugural" : undefined;
 
   return (
     <>
       <Hero
-        variant="page-header"
+        variant={isInaugural ? "inaugural-launch" : "page-header"}
         eyebrow={variant.header.eyebrow}
+        eyebrowClassName={eyebrowClass}
+        dateDisplay={
+          variant.header.dateDisplay ? (
+            <em>{variant.header.dateDisplay}</em>
+          ) : undefined
+        }
         headline={<HeadlineHtml html={variant.header.headlineHtml} />}
         attribution={variant.header.attribution}
         body={
@@ -57,25 +68,39 @@ export default function StartConversationPage() {
 
       <Band tone="cream">
         <Section>
-          <div className={styles.note}>
-            <Eyebrow>{variant.intro.eyebrow}</Eyebrow>
-            {variant.intro.paragraphs.map((p, i) => (
-              <Body long key={i}>
-                {p}
-              </Body>
-            ))}
-            <Body variant="muted" size="small" className={styles.smallNote}>
-              {variant.intro.smallNote}
-            </Body>
-          </div>
+          {variant.intro.letter ? (
+            <PersonalLetter
+              eyebrow={variant.intro.eyebrow}
+              eyebrowClassName={eyebrowClass}
+              paragraphs={variant.intro.paragraphs}
+              signature={variant.intro.letter.signature}
+              portraitCaption={variant.intro.letter.portraitCaption}
+              alt="Dr. Kevin Lewis"
+            />
+          ) : (
+            <div className={styles.note}>
+              <Eyebrow className={eyebrowClass}>{variant.intro.eyebrow}</Eyebrow>
+              {variant.intro.paragraphs.map((p, i) => (
+                <Body long key={i}>
+                  {p}
+                </Body>
+              ))}
+              {variant.intro.smallNote && (
+                <Body variant="muted" size="small" className={styles.smallNote}>
+                  {variant.intro.smallNote}
+                </Body>
+              )}
+            </div>
+          )}
         </Section>
       </Band>
 
       <Band tone="cream">
         <Section className={styles.formSection}>
-          <Eyebrow>{variant.form.eyebrow}</Eyebrow>
-          <ConversationForm
+          <Eyebrow className={eyebrowClass}>{variant.form.eyebrow}</Eyebrow>
+          <InaugurationForm
             variant={variant}
+            eyebrowClassName={eyebrowClass}
             fallbackEmail={process.env.LEWIS_FALLBACK_EMAIL}
             fallbackPhone={process.env.LEWIS_PUBLIC_PHONE}
           />
@@ -85,7 +110,7 @@ export default function StartConversationPage() {
       <Band tone="cream">
         <Section>
           <div className={styles.next}>
-            <Eyebrow>{variant.whatNext.eyebrow}</Eyebrow>
+            <Eyebrow className={eyebrowClass}>{variant.whatNext.eyebrow}</Eyebrow>
             <Body long>{variant.whatNext.body}</Body>
           </div>
         </Section>

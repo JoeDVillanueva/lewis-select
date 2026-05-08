@@ -10,9 +10,11 @@
   margin: 0 auto;
 }
 
+/* v3.6: Footer is a 3-column grid (was 4 — "Connect" column hidden until
+   phone and email are confirmed). Mobile collapses to 1 + 2. */
 .top {
   display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  grid-template-columns: 1.4fr 1fr 1fr;
   gap: 56px;
   padding-bottom: 48px;
   border-bottom: 0.5px solid rgba(255, 255, 255, 0.10);

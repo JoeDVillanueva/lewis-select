@@ -3,7 +3,7 @@
 import { useState, type FormEvent } from "react";
 import { Body, Cta, Eyebrow } from "@/components/ui";
 import { conversation, type ConversationVariant } from "@/lib/content";
-import styles from "./ConversationForm.module.css";
+import styles from "./InaugurationForm.module.css";
 
 type FieldKey =
   | "name"
@@ -22,6 +22,8 @@ type State =
 
 type Props = {
   variant: ConversationVariant;
+  /** Page-scoped className applied to <Eyebrow> elements (success state). */
+  eyebrowClassName?: string;
   fallbackPhone?: string;
   fallbackEmail?: string;
 };
@@ -33,15 +35,12 @@ const CONNECTION_OPTIONS = [
   { value: "event", label: "We met at an event" },
   { value: "self", label: "I came across Lewis Select on my own" },
 ] as const;
-const CONTACT_METHODS = [
-  { value: "phone", label: "Phone call" },
-  { value: "text", label: "Text" },
-  { value: "email", label: "Email" },
-] as const;
+// v3.6: third checkbox renamed from "Dependents under 25" → "Other family members".
+// The underlying form value stays `dependents` so legacy email mappings still work.
 const HOUSEHOLD_OPTIONS = [
   { value: "self", label: "Just me" },
   { value: "spouse", label: "My spouse or partner" },
-  { value: "dependents", label: "Dependents under 25" },
+  { value: "dependents", label: "Other family members" },
 ] as const;
 
 function validate(form: HTMLFormElement): FieldErrors {
@@ -59,7 +58,12 @@ function validate(form: HTMLFormElement): FieldErrors {
   return errors;
 }
 
-export function ConversationForm({ variant, fallbackPhone, fallbackEmail }: Props) {
+export function InaugurationForm({
+  variant,
+  eyebrowClassName,
+  fallbackPhone,
+  fallbackEmail,
+}: Props) {
   const [state, setState] = useState<State>({ kind: "idle" });
   const [connection, setConnection] = useState<string>("");
   const [dependentsChecked, setDependentsChecked] = useState(false);
@@ -88,7 +92,8 @@ export function ConversationForm({ variant, fallbackPhone, fallbackEmail }: Prop
     setState({ kind: "submitting" });
 
     try {
-      const res = await fetch("/api/start-a-conversation", {
+      // v3.6: route renamed to /api/inaugural.
+      const res = await fetch("/api/inaugural", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
@@ -110,7 +115,7 @@ export function ConversationForm({ variant, fallbackPhone, fallbackEmail }: Prop
   if (state.kind === "success") {
     return (
       <div className={styles.success} aria-live="polite">
-        <Eyebrow>{variant.success.eyebrow}</Eyebrow>
+        <Eyebrow className={eyebrowClassName}>{variant.success.eyebrow}</Eyebrow>
         <p className={styles.successHead}>{variant.success.headline}</p>
         <Body long>{successBody}</Body>
       </div>
@@ -168,28 +173,11 @@ export function ConversationForm({ variant, fallbackPhone, fallbackEmail }: Prop
         {fields?.email && <p className={styles.fieldError}>{fields.email}</p>}
       </div>
 
-      {/* Phone + best way to reach you */}
+      {/* Phone — v3.6 dropped the "Best way to reach you" radio. */}
       <div className={styles.full}>
         <label htmlFor="phone" className={`${styles.label} ${styles.required}`}>Phone</label>
         <input id="phone" name="phone" type="tel" required className={styles.input} autoComplete="tel" />
         {fields?.phone && <p className={styles.fieldError}>{fields.phone}</p>}
-
-        <fieldset className={styles.subgroup}>
-          <legend className={styles.subLabel}>Best way to reach you</legend>
-          <div className={styles.radioRow}>
-            {CONTACT_METHODS.map((opt, i) => (
-              <label key={opt.value} className={styles.radioOption}>
-                <input
-                  type="radio"
-                  name="contactMethod"
-                  value={opt.value}
-                  defaultChecked={i === 0}
-                />
-                <span>{opt.label}</span>
-              </label>
-            ))}
-          </div>
-        </fieldset>
       </div>
 
       {/* Connection */}
@@ -217,7 +205,7 @@ export function ConversationForm({ variant, fallbackPhone, fallbackEmail }: Prop
         )}
       </fieldset>
 
-      {/* Residence + optional second home */}
+      {/* Residence — v3.6 dropped the optional "Second home" follow-up. */}
       <div className={styles.full}>
         <label htmlFor="residence" className={`${styles.label} ${styles.required}`}>
           Where would you primarily receive care?
@@ -232,11 +220,6 @@ export function ConversationForm({ variant, fallbackPhone, fallbackEmail }: Prop
           autoComplete="address-level2"
         />
         {fields?.residence && <p className={styles.fieldError}>{fields.residence}</p>}
-
-        <div className={styles.reveal}>
-          <label htmlFor="secondHome" className={styles.subLabel}>Second home, if applicable</label>
-          <input id="secondHome" name="secondHome" type="text" className={styles.input} />
-        </div>
       </div>
 
       {/* Household */}
@@ -266,6 +249,9 @@ export function ConversationForm({ variant, fallbackPhone, fallbackEmail }: Prop
         {dependentsChecked && (
           <div className={styles.reveal}>
             <label htmlFor="dependentsCount" className={styles.subLabel}>How many?</label>
+            <p className={styles.helper}>
+              Spouse, partner, dependents, others in your household.
+            </p>
             <input
               id="dependentsCount"
               name="dependentsCount"

@@ -2,8 +2,14 @@ import type { Metadata } from "next";
 import { Cormorant_Garamond, DM_Sans } from "next/font/google";
 import { Nav } from "@/components/nav/Nav";
 import { Footer } from "@/components/footer/Footer";
+import { getPrimaryCtaLabel, PRIMARY_CTA_HREF } from "@/lib/content";
 import { siteMetadata } from "@/lib/seo";
 import "./globals.css";
+
+// v3.6: render layout per request so the date-gated CTA label flips on
+// 2026-07-01 without a redeploy.
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -29,13 +35,14 @@ export const metadata: Metadata = siteMetadata({
 });
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const ctaLabel = getPrimaryCtaLabel();
   return (
     <html lang="en" className={`${cormorant.variable} ${dmSans.variable}`}>
       <body>
         <a href="#main" className="skip-link">Skip to content</a>
-        <Nav />
+        <Nav ctaLabel={ctaLabel} ctaHref={PRIMARY_CTA_HREF} />
         <main id="main">{children}</main>
-        <Footer />
+        <Footer ctaLabel={ctaLabel} ctaHref={PRIMARY_CTA_HREF} />
       </body>
     </html>
   );

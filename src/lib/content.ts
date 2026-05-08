@@ -6,18 +6,38 @@
 
 import type { ReactNode } from "react";
 
+/* ─── Site-wide primary-CTA helpers (v3.6) ──────────────
+   The primary CTA reads "Join The Inaugural" while the Inaugural Cohort
+   window is open and reverts to "Start a conversation" on/after
+   2026-07-01. The href is always /inaugural — the legacy
+   /start-a-conversation path 308-redirects to /inaugural via
+   next.config.mjs. */
+
+export const INAUGURAL_LAUNCH_DATE = new Date("2026-07-01T00:00:00Z");
+export const PRIMARY_CTA_HREF = "/inaugural";
+
+export function isInauguralWindowOpen(now: Date = new Date()): boolean {
+  return now < INAUGURAL_LAUNCH_DATE;
+}
+
+export function getPrimaryCtaLabel(now: Date = new Date()): string {
+  return isInauguralWindowOpen(now) ? "Join The Inaugural" : "Start a conversation";
+}
+
 /* ─── Footer ─────────────────────────────────────────── */
 
 export const footer = {
   tagline: "A Private Medical Practice · Texas Hill Country",
   blurb:
-    "An invitation-only medical practice in Dripping Springs, Texas. Direct access to your physician. A specialist network on speed dial. A written plan for the year ahead.",
+    "Exclusive concierge medicine for the Hill Country. Get fast, direct access to a doctor who knows you, a specialist network on speed dial, and a personal plan for your long-term health.",
+  /** v3.6 — third item's label is computed at render time (date-gated). */
   practice: [
     { href: "/approach", label: "Approach" },
     { href: "/about", label: "Dr. Kevin Lewis" },
-    { href: "/start-a-conversation", label: "Start a Conversation" },
   ],
   visit: ["Dripping Springs, TX", "By appointment"],
+  // v3.6 — Connect column hidden until phone and email are confirmed.
+  // Kept for future restoration; the Footer component does not render it.
   connect: ["Phone — TK", "Email — TK"],
 };
 
@@ -28,8 +48,7 @@ export const closingCta = {
   attribution: "— Dr. Kevin Lewis",
   body:
     "If your family is considering a different kind of medical practice, the next step is a conversation with Dr. Lewis — by phone or in person.",
-  ctaLabel: "Start a conversation",
-  ctaHref: "/start-a-conversation",
+  ctaHref: PRIMARY_CTA_HREF,
 };
 
 /* ─── Home ────────────────────────────────────────────── */
@@ -37,7 +56,8 @@ export const closingCta = {
 export const home = {
   hero: {
     eyebrow: "A private medical practice in the Texas Hill Country",
-    primaryCta: { label: "Start a conversation", href: "/start-a-conversation" },
+    /** v3.6 — primary CTA label is supplied at render time via getPrimaryCtaLabel(). */
+    primaryCtaHref: PRIMARY_CTA_HREF,
     secondaryCta: { label: "Read the approach", href: "/approach" },
   },
   philosophy: {
@@ -125,7 +145,8 @@ export const home = {
     eyebrow: "Membership",
     body:
       "Lewis Select is for Hill Country families who want their physician to know them by name, who expect their time to be respected as much as their health, and who believe their best decade has not happened yet. Membership is by invitation, and limited each year.",
-    cta: { label: "Start a conversation", href: "/start-a-conversation" },
+    /** v3.6 — label resolved at render time. */
+    ctaHref: PRIMARY_CTA_HREF,
   },
 };
 
@@ -222,13 +243,14 @@ export const about = {
   sigLine: "Lewis Select is the practice he has wanted to build for a long time.",
 };
 
-/* ─── Start a Conversation ───────────────────────────── */
-/* v3.5: page is the Inaugural Cohort inquiry until 2026-07-01, then reverts
-   to the post-launch fallback. Both variants share the seven-question form
-   (see <ConversationForm /> + BUILD_SPEC.md §7.2); only page copy + submit
-   button label + success/whatNext text differ. */
-
-export const INAUGURAL_LAUNCH_DATE = new Date("2026-07-01T00:00:00Z");
+/* ─── Inaugural form (`/inaugural`) ──────────────────────
+   v3.5 introduced two variants: the Inaugural Cohort inquiry until
+   2026-07-01 and the post-launch fallback after. v3.6 keeps both,
+   restructures the inaugural variant as a personal letter from
+   Dr. Lewis (portrait + centered body + signature), drops three
+   form fields, and renames the route + form component. The route
+   stays `/inaugural` for both variants. Only page copy + submit
+   label + success/whatNext copy differ between variants. */
 
 export type ConversationVariantKey = "inaugural" | "postLaunch";
 
@@ -236,6 +258,8 @@ export type ConversationVariant = {
   key: ConversationVariantKey;
   header: {
     eyebrow: string;
+    /** v3.6 — prominent date display (italic Cormorant gold-light) — only used by the inaugural-launch hero. */
+    dateDisplay?: string;
     /** Page-header headline. May contain inline italic spans. */
     headlineHtml: string;
     /** Optional subhead body rendered beneath the hero headline (gold-light, DM Sans). */
@@ -246,7 +270,13 @@ export type ConversationVariant = {
   intro: {
     eyebrow: string;
     paragraphs: string[];
-    smallNote: string;
+    /** v3.5 fallback only — the v3.6 inaugural letter drops this. */
+    smallNote?: string;
+    /** v3.6 — when present, render the cream surface as the <PersonalLetter />: portrait + centered body + signature. */
+    letter?: {
+      portraitCaption: string;
+      signature: string;
+    };
   };
   form: {
     eyebrow: string;
@@ -276,39 +306,43 @@ export const conversation = {
   inaugural: {
     key: "inaugural",
     header: {
-      eyebrow: "Inaugural Cohort",
+      eyebrow: "Inaugural · Opens",
+      dateDisplay: "July 1, 2026",
       headlineHtml:
         '<em>An invitation to Lewis Select’s Inaugural Cohort.</em>',
       subhead:
-        "Inaugural membership officially opens July 1, 2026. Founding-member spots are limited and come with one-time advantages reserved for this cohort.",
+        "Founding-member spots are limited and come with one-time advantages reserved for this cohort.",
     },
     intro: {
       eyebrow: "From Dr. Lewis",
       paragraphs: [
+        "To the families considering us,",
         "Lewis Select is opening to its Inaugural Cohort — a small group of founding families who will become the first members of the practice. Founding spots are limited, and intentionally so. The relationships formed in the first season set the character of the practice for the years that follow.",
-        "Founding members receive advantages reserved for this cohort and offered only once: founding-rate pricing locked for two years, an unhurried in-person introduction with Dr. Lewis before launch, and a hand in shaping how Lewis Select serves Hill Country families.",
-        "If you are interested, please share a brief introduction below. Inquiries are reviewed personally by Dr. Lewis. If you are selected to participate in the Inaugural Cohort, Dr. Lewis will reach out to you directly with a personal invitation to inaugural membership.",
+        "Founding members receive advantages reserved for this cohort and offered only once: founding-rate pricing locked for two years, an unhurried in-person introduction before launch, and a hand in shaping how Lewis Select serves Hill Country families.",
+        "If you are interested, please share a brief introduction below. I will be reading every inquiry myself.",
       ],
-      smallNote:
-        "Lewis Select is direct-pay; no insurance is billed for membership. Members maintain their own comprehensive health insurance separately.",
+      letter: {
+        portraitCaption: "Photograph forthcoming.",
+        signature: "— Dr. Kevin Lewis",
+      },
     },
     form: {
       eyebrow: "Inaugural inquiry",
       intro:
-        "A brief introduction so Dr. Lewis can prepare for our follow-up conversation. The seven fields below are the essentials — anything else, we’ll cover on the call.",
-      submitLabel: "Inquire about inaugural membership",
+        "A brief introduction so Dr. Lewis can prepare for our follow-up conversation. The fields below are the essentials — anything else, we’ll cover on the call.",
+      submitLabel: "Send Inquiry",
       submittingLabel: "Sending…",
     },
     whatNext: {
-      eyebrow: "After you submit",
+      eyebrow: "What to expect",
       body:
-        "Inquiries are reviewed personally by Dr. Lewis. If you are selected to participate in the Inaugural Cohort, Dr. Lewis will reach out directly — generally within a week — with a personal invitation to inaugural membership ahead of the July 1, 2026 launch. Inaugural Cohort spots are limited; not every inquiry will receive an invitation, and we will be candid with you either way.",
+        "Inquiries are reviewed personally by Dr. Lewis ahead of the July 1, 2026 launch. Inaugural spots are limited; we will be candid with you either way. Most replies arrive within a week.",
     },
     success: {
       eyebrow: "Sent",
       headline: "Thank you. Your inquiry is in front of Dr. Lewis.",
       body:
-        "If you are selected to participate in the Inaugural Cohort, Dr. Lewis will reach out directly — generally within a week — with a personal invitation to inaugural membership. If something is urgent, you can also call the practice at [phone — TK] during business hours.",
+        "Dr. Lewis will reach out directly — generally within a week — ahead of the July 1, 2026 launch. Inaugural spots are limited; we will be candid with you either way.",
     },
   },
   postLaunch: {
@@ -353,7 +387,7 @@ export const conversation = {
 
 /** Server-side variant selector. Inaugural until 2026-07-01 UTC; post-launch after. */
 export function pickConversationVariant(now: Date = new Date()): ConversationVariant {
-  return now < INAUGURAL_LAUNCH_DATE ? conversation.inaugural : conversation.postLaunch;
+  return isInauguralWindowOpen(now) ? conversation.inaugural : conversation.postLaunch;
 }
 
 /* ─── Helpers ────────────────────────────────────────── */
