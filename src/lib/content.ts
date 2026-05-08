@@ -223,36 +223,138 @@ export const about = {
 };
 
 /* ─── Start a Conversation ───────────────────────────── */
+/* v3.5: page is the Inaugural Cohort inquiry until 2026-07-01, then reverts
+   to the post-launch fallback. Both variants share the seven-question form
+   (see <ConversationForm /> + BUILD_SPEC.md §7.2); only page copy + submit
+   button label + success/whatNext text differ. */
+
+export const INAUGURAL_LAUNCH_DATE = new Date("2026-07-01T00:00:00Z");
+
+export type ConversationVariantKey = "inaugural" | "postLaunch";
+
+export type ConversationVariant = {
+  key: ConversationVariantKey;
+  header: {
+    eyebrow: string;
+    /** Page-header headline. May contain inline italic spans. */
+    headlineHtml: string;
+    /** Optional subhead body rendered beneath the hero headline (gold-light, DM Sans). */
+    subhead?: string;
+    /** Optional gold attribution line beneath the headline. */
+    attribution?: string;
+  };
+  intro: {
+    eyebrow: string;
+    paragraphs: string[];
+    smallNote: string;
+  };
+  form: {
+    eyebrow: string;
+    /** Italic Cormorant intro line above the fields (only the inaugural variant uses it). */
+    intro?: string;
+    submitLabel: string;
+    submittingLabel: string;
+  };
+  whatNext: {
+    eyebrow: string;
+    body: string;
+  };
+  success: {
+    eyebrow: string;
+    headline: string;
+    body: string;
+  };
+};
+
+const sharedError = {
+  eyebrow: "Something went wrong",
+  body:
+    "We could not send your inquiry just now. Please try again in a moment, or email us directly at [email — TK].",
+};
 
 export const conversation = {
-  header: {
-    eyebrow: "Begin the conversation",
-    attribution: "— Dr. Kevin Lewis",
+  inaugural: {
+    key: "inaugural",
+    header: {
+      eyebrow: "Inaugural Cohort",
+      headlineHtml:
+        '<em>An invitation to Lewis Select’s Inaugural Cohort.</em>',
+      subhead:
+        "Inaugural membership officially opens July 1, 2026. Founding-member spots are limited and come with one-time advantages reserved for this cohort.",
+    },
+    intro: {
+      eyebrow: "From Dr. Lewis",
+      paragraphs: [
+        "Lewis Select is opening to its Inaugural Cohort — a small group of founding families who will become the first members of the practice. Founding spots are limited, and intentionally so. The relationships formed in the first season set the character of the practice for the years that follow.",
+        "Founding members receive advantages reserved for this cohort and offered only once: founding-rate pricing locked for two years, an unhurried in-person introduction with Dr. Lewis before launch, and a hand in shaping how Lewis Select serves Hill Country families.",
+        "If you are interested, please share a brief introduction below. Inquiries are reviewed personally by Dr. Lewis. If you are selected to participate in the Inaugural Cohort, Dr. Lewis will reach out to you directly with a personal invitation to inaugural membership.",
+      ],
+      smallNote:
+        "Lewis Select is direct-pay; no insurance is billed for membership. Members maintain their own comprehensive health insurance separately.",
+    },
+    form: {
+      eyebrow: "Inaugural inquiry",
+      intro:
+        "A brief introduction so Dr. Lewis can prepare for our follow-up conversation. The seven fields below are the essentials — anything else, we’ll cover on the call.",
+      submitLabel: "Inquire about inaugural membership",
+      submittingLabel: "Sending…",
+    },
+    whatNext: {
+      eyebrow: "After you submit",
+      body:
+        "Inquiries are reviewed personally by Dr. Lewis. If you are selected to participate in the Inaugural Cohort, Dr. Lewis will reach out directly — generally within a week — with a personal invitation to inaugural membership ahead of the July 1, 2026 launch. Inaugural Cohort spots are limited; not every inquiry will receive an invitation, and we will be candid with you either way.",
+    },
+    success: {
+      eyebrow: "Sent",
+      headline: "Thank you. Your inquiry is in front of Dr. Lewis.",
+      body:
+        "If you are selected to participate in the Inaugural Cohort, Dr. Lewis will reach out directly — generally within a week — with a personal invitation to inaugural membership. If something is urgent, you can also call the practice at [phone — TK] during business hours.",
+    },
   },
-  personalNote: {
-    eyebrow: "From Dr. Lewis",
-    body:
-      "Lewis Select is built one family at a time. The next step, if you are considering us, is a phone call with Dr. Lewis. The call is the same one we begin every member relationship with. We will use it to understand what you are looking for, to answer your questions plainly, and to determine together whether this practice is the right fit for your family.",
-    smallNote:
-      "Lewis Select is direct-pay; no insurance is billed for membership. Membership is by invitation.",
+  postLaunch: {
+    key: "postLaunch",
+    header: {
+      eyebrow: "Begin the conversation",
+      headlineHtml:
+        '<em>“I would be honored to be your family’s physician.”</em>',
+      attribution: "— Dr. Kevin Lewis",
+    },
+    intro: {
+      eyebrow: "From Dr. Lewis",
+      paragraphs: [
+        "Lewis Select is built one family at a time. The next step, if you are considering us, is a phone call with Dr. Lewis. The call is the same one we begin every member relationship with. We will use it to understand what you are looking for, to answer your questions plainly, and to determine together whether this practice is the right fit for your family.",
+      ],
+      smallNote:
+        "Lewis Select is direct-pay; no insurance is billed for membership. Membership is by invitation.",
+    },
+    form: {
+      eyebrow: "Tell us about your family",
+      submitLabel: "Send to Dr. Lewis",
+      submittingLabel: "Sending…",
+    },
+    whatNext: {
+      eyebrow: "After you submit",
+      body:
+        "Dr. Lewis will be in touch directly — generally within a week. Most conversations are by phone. Some are in person. None are a sales pitch.",
+    },
+    success: {
+      eyebrow: "Sent",
+      headline: "Thank you. Dr. Lewis will be in touch.",
+      body:
+        "Your note has been sent. Dr. Lewis will reach out directly, generally within a week. If something is urgent, you can also call the practice at [phone — TK] during business hours.",
+    },
   },
-  formEyebrow: "Tell us about your family",
-  whatNext: {
-    eyebrow: "After you submit",
-    body:
-      "Dr. Lewis will be in touch directly — generally within a week. Most conversations are by phone. Some are in person. None are a sales pitch.",
-  },
-  success: {
-    eyebrow: "Sent",
-    body:
-      "Your note has been sent. Dr. Lewis will reach out directly, generally within a week. If something is urgent, you can also call the practice at [phone — TK] during business hours.",
-  },
-  error: {
-    eyebrow: "Something went wrong",
-    body:
-      "We could not send your note just now. Please try again in a moment, or email us directly at [email — TK].",
-  },
+  error: sharedError,
+} as const satisfies {
+  inaugural: ConversationVariant;
+  postLaunch: ConversationVariant;
+  error: typeof sharedError;
 };
+
+/** Server-side variant selector. Inaugural until 2026-07-01 UTC; post-launch after. */
+export function pickConversationVariant(now: Date = new Date()): ConversationVariant {
+  return now < INAUGURAL_LAUNCH_DATE ? conversation.inaugural : conversation.postLaunch;
+}
 
 /* ─── Helpers ────────────────────────────────────────── */
 

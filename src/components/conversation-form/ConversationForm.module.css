@@ -1,21 +1,57 @@
 .form {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 24px 32px;
+  gap: 28px 32px;
   max-width: 880px;
 }
 
 .full { grid-column: 1 / -1; }
 
+/* v3.5: italic Cormorant intro line above the seven-question form. */
+.formIntro {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: var(--weight-light);
+  font-size: 18px;
+  line-height: 1.55;
+  color: var(--color-navy);
+  max-width: 640px;
+  margin-bottom: 8px;
+}
+
+/* v3.5 §7.2: Labels above inputs in eyebrow style — 12px gold uppercase 0.30em.
+   (Was 9px / weight-light.) */
 .label {
   display: block;
   font-family: var(--font-body);
-  font-size: 9px;
-  font-weight: var(--weight-light);
+  font-size: var(--text-eyebrow);
+  font-weight: var(--weight-regular);
   letter-spacing: var(--ls-uppercase);
   text-transform: uppercase;
   color: var(--color-gold);
   margin-bottom: 10px;
+  padding: 0;
+}
+
+.subLabel {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: var(--weight-regular);
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-warm-gray);
+  margin: 14px 0 8px;
+  padding: 0;
+}
+
+.helper {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: var(--weight-light);
+  line-height: 1.5;
+  color: var(--color-warm-gray);
+  margin-bottom: 12px;
 }
 
 .required::after {
@@ -23,6 +59,7 @@
   color: var(--color-gold);
 }
 
+/* v3.5 §7.2 input style — bumped to 16px / weight 300 for legibility. */
 .input,
 .textarea {
   width: 100%;
@@ -30,18 +67,22 @@
   border: 0.5px solid var(--color-rule);
   padding: 15px 22px;
   font-family: var(--font-body);
-  font-weight: var(--weight-thin);
-  font-size: 14px;
-  letter-spacing: 0.05em;
+  font-weight: var(--weight-light);
+  font-size: 16px;
+  letter-spacing: 0.02em;
   color: var(--color-text);
   outline: none;
   transition: border-color 0.2s;
 }
 
+.inputNumber {
+  width: 120px;
+}
+
 .input::placeholder,
 .textarea::placeholder {
-  color: rgba(107, 101, 96, 0.5);
-  letter-spacing: 0.04em;
+  color: rgba(74, 68, 63, 0.5);
+  letter-spacing: 0.02em;
 }
 
 .input:focus,
@@ -49,7 +90,52 @@
   border-color: var(--color-gold);
 }
 
-.textarea { resize: vertical; min-height: 140px; }
+.textarea { resize: vertical; min-height: 120px; }
+
+/* Radio + checkbox layouts. */
+.subgroup {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.radioRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px 28px;
+}
+
+.radioColumn,
+.checkColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.radioOption,
+.checkOption {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: var(--weight-light);
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.radioOption input,
+.checkOption input {
+  accent-color: var(--color-gold);
+  width: 16px;
+  height: 16px;
+  margin: 0;
+}
+
+/* Conditionally revealed follow-up inputs (introducedBy, secondHome, dependentsCount). */
+.reveal {
+  margin-top: 12px;
+}
 
 .honeypot {
   position: absolute !important;
@@ -60,7 +146,7 @@
 }
 
 .actions {
-  margin-top: 8px;
+  margin-top: 16px;
   display: flex;
   gap: 24px;
   align-items: center;
@@ -68,9 +154,9 @@
 }
 
 .fieldError {
-  margin-top: 6px;
-  font-size: 11px;
-  font-weight: var(--weight-thin);
+  margin-top: 8px;
+  font-size: 12px;
+  font-weight: var(--weight-light);
   color: #a44a3a;
   letter-spacing: 0.04em;
 }
@@ -80,8 +166,8 @@
   padding: 16px 20px;
   background: rgba(164, 74, 58, 0.06);
   border-left: 2px solid #a44a3a;
-  font-size: 13px;
-  font-weight: var(--weight-thin);
+  font-size: 14px;
+  font-weight: var(--weight-light);
   color: var(--color-text);
 }
 

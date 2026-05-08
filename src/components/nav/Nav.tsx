@@ -31,10 +31,9 @@ export function Nav() {
         aria-label="Primary"
       >
         <Link href="/" className={styles.brand} aria-label="Lewis Select — home">
-          <span className={styles.markWrap} aria-hidden="true">
-            {/* Brand mark — Texas live oak silhouette */}
+          <span className={styles.markWrap}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/logo-mark.svg" alt="" />
+            <img src="/logo-mark.png" alt="Lewis Select" loading="eager" />
           </span>
           <span className={styles.wordmark}>
             Lewis <em>Select</em>

@@ -155,7 +155,7 @@ The longest, healthiest version of your life does not happen by accident. Lewis 
 
 **Intro body:** Lewis Select stands on three pillars. Two address what most families fear most about modern medicine: that you cannot reach your doctor when you need her, and that when something goes wrong the system will not act fast enough. The third addresses something most practices don't even attempt — a real plan for the long arc of your health.
 
-Each pillar is structured: number (italic Cormorant, gold), title (Cormorant), subhead (italic Cormorant, smaller), body, and a "What this replaces" tag with a gold left-edge treatment.
+Each pillar is structured: number (italic Cormorant, gold), title (Cormorant), subhead (italic Cormorant, smaller), body, and a "What this replaces" tag with a gold left-edge treatment. **(v3.5: title weight 500, subhead 22px weight 500, "What this replaces." label 13px weight 600 — and subhead and label are block-level so the body that follows always begins on its own line. See `BUILD_SPEC.md` §6.3 `<PillarFull />`.)**
 
 **01 — Direct 24/7 access to your doctor.**
 *One number. Seven days. The same physician.*
@@ -244,48 +244,53 @@ All of it synthesizes into your annual Health Blueprint: a written, bound docume
 
 ## 04 — Start a Conversation (`/start-a-conversation`)
 
+> **v3.5 — Inaugural Cohort window (active May 8 – July 1, 2026).** This page is temporarily the inquiry form for Lewis Select's Inaugural Cohort. Inaugural membership officially opens **July 1, 2026**. After that date, the page reverts to the post-launch fallback copy preserved at the end of this section.
+
 ### Page header  ·  navy surface
 
-**Eyebrow:** Begin the conversation
+**Eyebrow:** Inaugural Cohort
 
-**Headline:** *"I would be honored to be your family's physician."*
+**Headline:** *An invitation to Lewis Select's Inaugural Cohort.*
 
-**Attribution:** — Dr. Kevin Lewis
+**Subhead body (DM Sans 16px, weight 300, color `--color-gold-light`, max-width 640px):** Inaugural membership officially opens July 1, 2026. Founding-member spots are limited and come with one-time advantages reserved for this cohort.
 
-### Personal note  ·  cream surface
-
-(v5: drops the "There is no application form." sentence. Reads cleaner.)
+### Inaugural invitation  ·  cream surface
 
 **Eyebrow:** From Dr. Lewis
 
-**Body:** Lewis Select is built one family at a time. The next step, if you are considering us, is a phone call with Dr. Lewis. The call is the same one we begin every member relationship with. We will use it to understand what you are looking for, to answer your questions plainly, and to determine together whether this practice is the right fit for your family.
+**Body 1:** Lewis Select is opening to its Inaugural Cohort — a small group of founding families who will become the first members of the practice. Founding spots are limited, and intentionally so. The relationships formed in the first season set the character of the practice for the years that follow.
 
-**Small note (DM Sans, muted):** Lewis Select is direct-pay; no insurance is billed for membership. Membership is by invitation.
+**Body 2:** Founding members receive advantages reserved for this cohort and offered only once: founding-rate pricing locked for two years, an unhurried in-person introduction with Dr. Lewis before launch, and a hand in shaping how Lewis Select serves Hill Country families.
+
+**Body 3:** If you are interested, please share a brief introduction below. Inquiries are reviewed personally by Dr. Lewis. **If you are selected to participate in the Inaugural Cohort, Dr. Lewis will reach out to you directly with a personal invitation to inaugural membership.**
+
+**Small note (DM Sans, muted):** Lewis Select is direct-pay; no insurance is billed for membership. Members maintain their own comprehensive health insurance separately.
 
 ### Form  ·  cream surface
 
-**Eyebrow:** Tell us about your family
+**Eyebrow:** Inaugural inquiry
 
-Form fields, in order:
+**Form intro (italic Cormorant ~18px, navy, max-width 640px):** *A brief introduction so Dr. Lewis can prepare for our follow-up conversation. The seven fields below are the essentials — anything else, we'll cover on the call.*
 
-| Field | Type | Required | Notes |
+Form fields, in order (see `BUILD_SPEC.md` §7.2 for field types and validation):
+
+| Field | Label | Required | Notes |
 |---|---|---|---|
-| `name` | text | yes | full name |
-| `phone` | tel | yes | will be used to call you back |
-| `email` | email | yes | format-validated |
-| `location` | text | no | placeholder: "city / community" |
-| `family` | text | no | placeholder: "number of adults, number of children" |
-| `referral` | text | no | "How you heard about Lewis Select" |
-| `notes` | textarea | no | "Anything you'd like Dr. Lewis to know in advance" — rows=5 |
-| `_company` | hidden | hidden | honeypot, must be empty |
+| `name` | Your name | yes | placeholder: "First and last" |
+| `email` | Email | yes | |
+| `phone` | Phone | yes | small radio beneath labeled "Best way to reach you" — Phone call · Text · Email (default: Phone call) |
+| `connection` | How are you connected to Dr. Lewis? | yes | radio — "I'm a member of Driftwood Golf & Lake Club" · "I was referred by a current patient or friend" · "We met at an event" · "I came across Lewis Select on my own". "Referred" or "event" reveals optional follow-up: "Who introduced you?" |
+| `residence` | Where would you primarily receive care? | yes | text — placeholder: "City and ZIP, e.g., Driftwood, TX 78619". Optional second input beneath labeled "Second home, if applicable" |
+| `household` | Who would the membership cover? | yes | helper: "Lewis Select is structured for individuals and families. Select all that apply." Checkboxes: "Just me" · "My spouse or partner" · "Dependents under 25" (reveals a small number input for count) |
+| `prompt` | What prompted you to reach out now? | yes | textarea, rows=4. Helper: "A few sentences is enough — what's on your mind, or what you're hoping a partnership with Dr. Lewis could look like." |
 
-**Submit button (gold, primary):** *Send to Dr. Lewis*
+**Submit button (gold, primary):** ***Inquire about inaugural membership***
 
 ### What happens next  ·  cream surface
 
 **Eyebrow:** After you submit
 
-**Body:** Dr. Lewis will be in touch directly — generally within a week. Most conversations are by phone. Some are in person. None are a sales pitch.
+**Body:** Inquiries are reviewed personally by Dr. Lewis. If you are selected to participate in the Inaugural Cohort, Dr. Lewis will reach out directly — generally within a week — with a personal invitation to inaugural membership ahead of the July 1, 2026 launch. Inaugural Cohort spots are limited; not every inquiry will receive an invitation, and we will be candid with you either way.
 
 ### Success state  ·  cream surface
 
@@ -293,15 +298,57 @@ Form fields, in order:
 
 **Eyebrow:** Sent
 
-**Headline:** *Thank you. Dr. Lewis will be in touch.*
+**Headline:** *Thank you. Your inquiry is in front of Dr. Lewis.*
 
-**Body:** Your note has been sent. Dr. Lewis will reach out directly, generally within a week. If something is urgent, you can also call the practice at [phone — TK] during business hours.
+**Body:** If you are selected to participate in the Inaugural Cohort, Dr. Lewis will reach out directly — generally within a week — with a personal invitation to inaugural membership. If something is urgent, you can also call the practice at [phone — TK] during business hours.
 
 ### Error state  ·  cream surface
 
 **Eyebrow:** Something went wrong
 
-**Body:** We could not send your note just now. Please try again in a moment, or email us directly at [email — TK].
+**Body:** We could not send your inquiry just now. Please try again in a moment, or email us directly at [email — TK].
+
+---
+
+### Post-launch fallback  ·  effective July 1, 2026
+
+After Inaugural Cohort enrollment closes, the page reverts to the standard "Start a Conversation" copy below. The route, hero pattern, and form mechanics stay the same — only the eyebrows, headline, body copy, button label, and "What happens next" text swap back to this version.
+
+#### Page header  ·  navy surface
+
+**Eyebrow:** Begin the conversation
+
+**Headline:** *"I would be honored to be your family's physician."*
+
+**Attribution:** — Dr. Kevin Lewis
+
+#### Personal note  ·  cream surface
+
+**Eyebrow:** From Dr. Lewis
+
+**Body:** Lewis Select is built one family at a time. The next step, if you are considering us, is a phone call with Dr. Lewis. The call is the same one we begin every member relationship with. We will use it to understand what you are looking for, to answer your questions plainly, and to determine together whether this practice is the right fit for your family.
+
+**Small note (DM Sans, muted):** Lewis Select is direct-pay; no insurance is billed for membership. Membership is by invitation.
+
+#### Form
+
+(Same seven fields as the Inaugural Cohort variant — the seven essentials remain the post-launch standard.)
+
+**Submit button (gold, primary):** *Send to Dr. Lewis*
+
+#### What happens next  ·  cream surface
+
+**Eyebrow:** After you submit
+
+**Body:** Dr. Lewis will be in touch directly — generally within a week. Most conversations are by phone. Some are in person. None are a sales pitch.
+
+#### Success state  ·  cream surface
+
+**Eyebrow:** Sent
+
+**Headline:** *Thank you. Dr. Lewis will be in touch.*
+
+**Body:** Your note has been sent. Dr. Lewis will reach out directly, generally within a week. If something is urgent, you can also call the practice at [phone — TK] during business hours.
 
 ---
 
