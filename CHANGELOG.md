@@ -4,6 +4,21 @@ All notable changes to the Lewis Select marketing site. The build spec
 (`BUILD_SPEC.md`) is the canonical source for design and IA decisions; this file
 captures what shipped and when.
 
+## v3.9 amendment — 2026-05-09 — left-align PillarStepper
+
+`<PillarStepper />` no longer centers under its section. Both the stepper
+row and the detail panel now sit at the left edge of the section's content
+column, per `BUILD_SPEC.md` §6.3 (canonical max-width 720px preserved;
+`margin: 0` instead of `0 auto`).
+
+- `.stepper { margin: 0 0 56px }` (was `margin: 0 auto 56px`).
+- `.step { text-align: left }` (was `text-align: center`) — numerals and
+  labels are now flush-left within each cell.
+- `.detailWrap { margin: 0 }` (was `margin: 0 auto`); max-width 720px and
+  min-height 320px unchanged.
+- `.body { text-align: left }` set explicitly.
+- Mobile accordion is unaffected.
+
 ## v3.9 — 2026-05-09
 
 Approach pillars become a hairline stepper. No design tokens, no IA changes;

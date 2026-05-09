@@ -11,21 +11,25 @@
   display: block;
 }
 
+/* v3.9 amendment: left-aligned to the section's content column.
+   margin: 0 (not 0 auto), max-width 720px. */
 .stepper {
   position: relative;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0;
   max-width: 720px;
-  margin: 0 auto 56px;
+  margin: 0 0 56px;
   border-bottom: 0.5px solid var(--color-rule);
 }
 
+/* v3.9 amendment: each step is left-aligned within its cell (numeral and
+   label both flush-left). */
 .step {
   position: relative;
   background: none;
   border: none;
-  text-align: center;
+  text-align: left;
   cursor: pointer;
   padding: 22px 12px 28px;
   transition: color 300ms ease;
@@ -82,10 +86,12 @@
 }
 
 /* Detail panel: 720px wide, 320px min-height so the page does not reflow
-   as the user clicks through steps. */
+   as the user clicks through steps.
+   v3.9 amendment: left-aligned to the section's content column
+   (margin: 0, not 0 auto). */
 .detailWrap {
   max-width: 720px;
-  margin: 0 auto;
+  margin: 0;
   min-height: 320px;
 }
 
@@ -120,12 +126,15 @@
   margin-bottom: 14px;
 }
 
+/* v3.9 amendment: body text-align: left explicitly (no inheritance worries
+   from the surrounding section). */
 .body {
   font-family: var(--font-body);
   font-size: var(--text-body);
   font-weight: var(--weight-light);
   line-height: 1.65;
   color: var(--color-text);
+  text-align: left;
 }
 
 .body + .body {
