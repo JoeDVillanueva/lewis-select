@@ -1,3 +1,7 @@
+/* v3.8 — Home <Pillars /> renders as three tiles in a single row.
+   The previous between-cell hairlines (`border-right` on cells 1–2) and v3.2
+   28×28 cell padding rules are superseded by the tile treatment below. */
+
 .intro {
   max-width: 720px;
   margin-bottom: 56px;
@@ -21,23 +25,31 @@
   max-width: 640px;
 }
 
+/* Three tiles, equal heights via grid stretch. */
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 0;
-  border-top: 0.5px solid var(--color-rule);
-  border-bottom: 0.5px solid var(--color-rule);
+  gap: 16px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-.cell {
-  padding: 28px 28px;
+.tile {
+  background: var(--color-white);
+  border: 0.5px solid var(--color-rule);
+  border-radius: 4px;
+  padding: 36px 28px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  /* Top-aligned content inside the tile; tile itself stretches to row height. */
+  justify-content: flex-start;
+  transition: border-color 200ms ease;
 }
 
-.cell:not(:last-child) {
-  border-right: 0.5px solid var(--color-rule);
+.tile:hover {
+  border-color: var(--color-gold);
 }
 
 .num {
@@ -57,15 +69,8 @@
   font-weight: var(--weight-regular);
   color: var(--color-navy);
   line-height: 1.25;
-  margin-bottom: 16px;
-}
-
-.body {
-  font-family: var(--font-body);
-  font-size: 17px;
-  font-weight: var(--weight-light);
-  line-height: 1.55;
-  color: var(--color-text);
+  /* No bottom margin: bodies don't render on home; tile ends here. */
+  margin-bottom: 0;
 }
 
 .ctaRow {
@@ -75,9 +80,6 @@
 @media (max-width: 720px) {
   .grid {
     grid-template-columns: 1fr;
-  }
-  .cell:not(:last-child) {
-    border-right: none;
-    border-bottom: 0.5px solid var(--color-rule);
+    gap: 16px;
   }
 }

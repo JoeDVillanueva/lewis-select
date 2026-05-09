@@ -4,6 +4,31 @@ All notable changes to the Lewis Select marketing site. The build spec
 (`BUILD_SPEC.md`) is the canonical source for design and IA decisions; this file
 captures what shipped and when.
 
+## v3.8 — 2026-05-09
+
+Home pillars become tiles, bodies hidden. Single change scoped to the
+homepage `<Pillars />` component. No design tokens, no IA changes; the
+Approach `<PillarFull />` is unaffected.
+
+### Homepage `<Pillars />` — three tiles
+- Layout shift: hairline-separated grid cells → three tiles in a single row.
+  Desktop: `grid-template-columns: repeat(3, 1fr); gap: 16px;` Mobile
+  (<720px): `grid-template-columns: 1fr; gap: 16px;` (vertical stack of
+  tiles, not the previous flat-stacked cells).
+- Tile styling: `background: var(--color-white); border: 0.5px solid
+  var(--color-rule); border-radius: 4px; padding: 36px 28px;` Equal heights
+  via grid stretch. Hover shifts border to `var(--color-gold)` over 200ms.
+- Each tile renders only the number + title (top-aligned, 16px gap between
+  number and title). Body paragraphs are intentionally hidden on `/` —
+  the full pillar copy lives on `/approach` in `<PillarFull />`. Copy is
+  preserved in `CONTENT.md` §01 for reference.
+- Section eyebrow ("What's included"), section title, intro body, and the
+  trailing "Read the full approach" CTA are unchanged.
+- Dropped: between-cell hairline borders and the v3.2 28×28 cell padding —
+  superseded by tile styling.
+
+`BUILD_SPEC.md` and `CONTENT.md` synced verbatim from canonical.
+
 ## v3.7 — 2026-05-09
 
 Empathy block restructure + homepage copy pass. No design tokens, no IA

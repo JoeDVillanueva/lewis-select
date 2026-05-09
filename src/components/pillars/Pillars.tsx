@@ -1,3 +1,16 @@
+/**
+ * v3.8 — Home <Pillars /> becomes three tiles in a single row.
+ *
+ * Each tile renders ONLY the number + title. Bodies are intentionally not
+ * rendered on the homepage; the full pillar copy lives on /approach in
+ * <PillarFull /> (which is unaffected). The accepted `Item.body` field is
+ * kept in the prop type for compatibility with the shared content shape but
+ * is ignored at render time on this surface.
+ *
+ * Section eyebrow, title, intro body, and the trailing "Read the full
+ * approach" CTA are unchanged.
+ */
+
 import type { ReactNode } from "react";
 import type { CtaSpec, Item } from "@/lib/content";
 import { Band, Section } from "@/components/layout";
@@ -26,15 +39,14 @@ export function Pillars({ eyebrow, heading, intro, items, cta }: Props) {
             </Body>
           )}
         </div>
-        <div className={styles.grid}>
+        <ul className={styles.grid}>
           {items.map((it) => (
-            <div key={it.n} className={styles.cell}>
+            <li key={it.n} className={styles.tile}>
               <p className={styles.num}>{it.n}</p>
               <h3 className={styles.head}>{it.title}</h3>
-              <p className={styles.body}>{it.body}</p>
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
         {cta && (
           <div className={styles.ctaRow}>
             <Cta href={cta.href} variant="ghostLight">

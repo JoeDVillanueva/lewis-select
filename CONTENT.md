@@ -72,7 +72,7 @@ You leave most doctor appointments with a vague impression and a list of things 
 
 ### Three pillars  ·  cream surface
 
-(Replaces the previous "Everything in one practice" 7-item list. New section title names the two value axes.)
+(v3.8: rendered as three tiles in a single row. **Only the number and title appear on the live home page** — the body paragraphs below are preserved here for reference but are not rendered on `/`. The full pillar content lives on `/approach` via `<PillarFull />`. See `BUILD_SPEC.md` §6.3 `<Pillars />`.)
 
 **Eyebrow:** What's included
 
@@ -81,13 +81,13 @@ You leave most doctor appointments with a vague impression and a list of things 
 **Intro body:** Lewis Select has three pillars. The first two are about today — how fast you can reach your doctor, how fast specialists answer when you need them, how a hospital admission gets handled. The third is about decades — the science, the data, and the written plan that turn medicine from reaction into stewardship.
 
 **01 — Direct 24/7 access to your doctor.**
-Get in contact with Dr. Lewis directly, any day, any hour. The doctor who knows your family on Tuesday is the doctor who answers on Sunday at nine.
+*(body hidden on home in v3.8 — preserved for reference)* Get in contact with Dr. Lewis directly, any day, any hour. The doctor who knows your family on Tuesday is the doctor who answers on Sunday at nine.
 
 **02 — Same-day acute response, with care coordination and advocacy.**
-When something serious happens, you make one phone call and Dr. Lewis quarterbacks the whole diagnosis and medical response activities from there. Calling specialists, coordinating with the hospital, advocating for you.
+*(body hidden on home in v3.8 — preserved for reference)* When something serious happens, you make one phone call and Dr. Lewis quarterbacks the whole diagnosis and medical response activities from there. Calling specialists, coordinating with the hospital, advocating for you.
 
 **03 — Vision and stewardship of your long-term health.**
-The longest, healthiest version of your life does not happen by accident. It's intentional and it's proactive. Lewis Select helps you and your family create a personal plan that ties your data, your history, your goals, and your conversations together into a clear, high-leverage plan for the future.
+*(body hidden on home in v3.8 — preserved for reference)* The longest, healthiest version of your life does not happen by accident. It's intentional and it's proactive. Lewis Select helps you and your family create a personal plan that ties your data, your history, your goals, and your conversations together into a clear, high-leverage plan for the future.
 
 **CTA:** → Read the full approach  [/approach]
 

@@ -4,7 +4,7 @@ Marketing site for Lewis Select — a private concierge medical practice in Drip
 
 See `BUILD_SPEC.md` for the full build specification, `CONTENT.md` for all user-facing copy, and `CHANGELOG.md` for what shipped when.
 
-Currently on **v3.7** — homepage `<EmpathyBlock />` restructured into two parallel Hook + body pairs (problem → promise), and a full homepage copy pass against the canonical `CONTENT.md` §01 (Hero body, Philosophy quote, both Empathy bodies, Differentiators eyebrow + intro + items 01–04, Three Pillars 01–03, Your physician body, Who it's for body). No token or IA changes. Approach, About, Inaugural, Nav, and Footer untouched from v3.6.
+Currently on **v3.8** — homepage `<Pillars />` becomes three tiles in a single row (white surface, 0.5px gold-on-hover border, 4px radius, 36×28 padding). Each tile renders only the number + title; body paragraphs are intentionally hidden on `/` (the full pillar copy lives on `/approach` in `<PillarFull />`, which is unchanged). No design tokens, no IA changes.
 
 ## Stack
 
