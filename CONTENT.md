@@ -25,7 +25,7 @@ The visual reference is `Lewis Select tiiny site.html` in this folder, with the 
 
 (The italicized phrase sets in `--gold-light`; the rest in white.)
 
-**Body:** For Hill Country families who want a doctor who knows them, who's there when they need him, and who's planning their health for years to come. Direct 24/7 access. Same-day specialist placement. A written plan for the year ahead.
+**Body:** For Hill Country families. Direct 24/7 access. Same-day specialist placement. Personal planning for your long-term health.
 
 **Primary CTA:** → Join The Inaugural  [/inaugural]  *(reverts to "Start a conversation" → /inaugural after 2026-07-01)*
 **Secondary (ghost) CTA:** Read the approach  [/approach]
@@ -34,39 +34,41 @@ The visual reference is `Lewis Select tiiny site.html` in this folder, with the 
 
 A short blockquote section, set in italic Cormorant Garamond, large.
 
-**Quote:** *"Stewardship is an old word. It used to describe what a physician did for a family — kept watch, year after year, knowing the children, the parents, the parents' parents. Lewis Select is built around getting it back."*
+**Quote:** *"We've lost the concept of stewardship in modern medicine. Lewis Select is built around getting it back."*
 
 **Attribution:** — Dr. Kevin Lewis
 
 ### Empathy block  ·  cream surface
 
-(v3.1: this line is no longer an eyebrow — it's a prominent gold italic Cormorant line that functions as the section's rhetorical hook. Set in `--color-gold`, italicized. v3.2 sized down to `--text-hook` (not section-title scale). v3.3 copy: clean question, no ellipses.)
+(v3.7: restructured into two parallel Hook + body pairs — problem → promise. Both hooks render with the same `<Hook />` treatment: gold italic Cormorant, `--text-hook`, weight 400. Vertical rhythm: ~12px hook → body, ~32px Body 1 → Hook 2 — this is the visual pivot. See `BUILD_SPEC.md` §6.3 `<EmpathyBlock />`.)
 
-**Hook (gold italic Cormorant, `--text-hook` size, weight 400):** *Does this sound familiar?*
+**Hook 1 (gold italic Cormorant, `--text-hook` size, weight 400):** *Does this sound familiar?*
 
-**Body 1:** You wait three weeks for an appointment. The visit is fifteen minutes. The person who answers your call is not your doctor. A specialist referral takes another month. Your records are scattered across six portals. Modern medicine treats your time like the cheapest part of your life.
+**Body 1:** You wait 3 weeks for an appointment. The visit lasts only 15 minutes long. A specialist referral takes a month. Your medical records are scattered across 6 portals. Modern medicine treats your time like the cheapest part of your life.
 
-**Body 2:** There is another way — one that begins by treating your time, and the relationship with your physician, as the things that matter most.
+**Hook 2 (gold italic Cormorant, `--text-hook` size, weight 400):** *There is a better way.*
+
+**Body 2:** We treat your time and your relationship with your physician as the things that matter most.
 
 ### Four differentiators  ·  navy surface
 
-**Eyebrow:** Care of a different shape
+**Eyebrow:** Care shaped differently
 
 **Section title:** Four things you will not find anywhere else in central Texas.
 
-**Intro body:** Most private practices give you a longer appointment and a phone number. Lewis Select gives you four things you won't find anywhere else.
+**Intro body:** Most concierge practices give you a longer appointment, a portal, and a phone number. Lewis Select offers four things you won't find anywhere else.
 
-**01 — Your physician practices in the Hill Country.**
-Most private medicine in central Texas is in Westlake or downtown Austin — a thirty- to forty-minute drive from your driveway in good traffic. Lewis Select is in Dripping Springs. Dr. Lewis lives where you live, sees you in the same places you go, and is closer to your home than your nearest emergency room. Your medicine should not require a commute.
+**01 — Your physician practices here in Hill Country.**
+Your medicine should not require a commute. Most private medicine in central Texas is in Westlake or downtown Austin — a 30-40 minute drive from home. Lewis Select is based in Dripping Springs. Dr. Lewis lives where you live.
 
 **02 — Skip the waiting line. Get a personal referral.**
-When you need a cardiologist or an oncologist, the standard wait is weeks. With Lewis Select, you do not wait. Dr. Lewis picks up the phone and calls a specialist by name — someone he has personally worked with for twenty-five years. Same-day or next-day placement is the norm, not the exception. That alone changes your relationship to time.
+When you need a cardiologist or an oncologist, you usually wait for weeks. With Lewis Select, you skip the line. Dr. Lewis picks up the phone and calls the specialist you need. Same-day or next-day placement is the norm, not the exception.
 
 **03 — See your own doctor — not a "panel."**
-Direct text or call to Dr. Lewis — any day, any hour. The doctor who knows your family on Tuesday is the doctor who answers on Sunday at nine. Not an answering service. Not a covering physician. Not a name you have never met before. The fastest medicine in the world is the medicine that already knows you.
+Direct contact with Dr. Lewis — during the day or after-hours. The doctor who sees you on Tuesday is the same doctor who responds to a call from the golf course on Sunday afternoon.
 
 **04 — Get a personal plan for your future health.**
-You leave most doctor appointments with a vague impression and a list of things to remember. Lewis Select sends you home with a Health Blueprint — a bound document that lays out exactly what your year of health should look like, in plain language, for every member of your family. Your spouse can read it. You can come back to it. You do not have to remember anything. Most practices send you home with a prescription. Lewis Select sends you home with a plan.
+You leave most doctor appointments with a vague impression and a list of things to remember. Lewis Select helps you manage your long-term health progress with a living Health Blueprint — a personal gameplan baselining your health today, which health levers you need to pull next, and clarity around the most important health outcomes to shooting for over the long haul.
 
 ### Three pillars  ·  cream surface
 
@@ -79,13 +81,13 @@ You leave most doctor appointments with a vague impression and a list of things 
 **Intro body:** Lewis Select has three pillars. The first two are about today — how fast you can reach your doctor, how fast specialists answer when you need them, how a hospital admission gets handled. The third is about decades — the science, the data, and the written plan that turn medicine from reaction into stewardship.
 
 **01 — Direct 24/7 access to your doctor.**
-Text or call Dr. Lewis directly, any day, any hour. The doctor who knows your family on Tuesday is the doctor who answers on Sunday at nine. No answering service. No covering physician.
+Get in contact with Dr. Lewis directly, any day, any hour. The doctor who knows your family on Tuesday is the doctor who answers on Sunday at nine.
 
 **02 — Same-day acute response, with care coordination and advocacy.**
-When something serious happens, you make one phone call. Dr. Lewis is on the phone within minutes — calling specialists by name from a network he has personally worked with for twenty-five years, coordinating with the hospital, advocating for you. Same-day or next-day specialist placement is the norm, not the exception.
+When something serious happens, you make one phone call and Dr. Lewis quarterbacks the whole diagnosis and medical response activities from there. Calling specialists, coordinating with the hospital, advocating for you.
 
 **03 — Vision and stewardship of your long-term health.**
-The longest, healthiest version of your life does not happen by accident. Lewis Select gives you the plan: a 100+ biomarker panel twice a year, ninety unhurried minutes for an annual executive physical, continuous wearable monitoring, and a written, bound Health Blueprint Dr. Lewis writes for each member of your family every year — tying your data, your history, and your conversations together into a clear plan for the year ahead.
+The longest, healthiest version of your life does not happen by accident. It's intentional and it's proactive. Lewis Select helps you and your family create a personal plan that ties your data, your history, your goals, and your conversations together into a clear, high-leverage plan for the future.
 
 **CTA:** → Read the full approach  [/approach]
 
@@ -101,7 +103,7 @@ The longest, healthiest version of your life does not happen by accident. Lewis 
 
 **Section title:** Dr. Kevin Lewis, *third-generation Central Texas physician.*
 
-**Body:** Fifth-generation Texan. Third-generation physician — his grandfather practiced in Lockhart, his father in Austin. Dr. Lewis trained in Dallas, completed Level 1 trauma residency, and returned to the Hill Country to build the kind of practice his grandfather would recognize. He runs a primary care practice in Dripping Springs, serves as Medical Director of a private community in Driftwood, and has built a twenty-five-year specialist network across Austin.
+**Body:** Fifth-generation Texan. Third-generation physician. Level 1 trauma-trained. Dr. Lewis runs a primary care practice in Dripping Springs, serves as Medical Director of a private community in Driftwood. He has built a twenty-five-year specialist network across Austin.
 
 **Sig line (italic Cormorant):** *Lewis Select is the practice he has wanted to build for a long time.*
 
@@ -113,7 +115,7 @@ The longest, healthiest version of your life does not happen by accident. Lewis 
 
 **Section title:** Built for families who want a *different relationship* with medicine.
 
-**Body:** Lewis Select is for Hill Country families who want their physician to know them by name, who expect their time to be respected as much as their health, and who believe their best decade has not happened yet. Membership is by invitation, and limited each year.
+**Body:** Lewis Select is for Hill Country families who want their physician to know them by name, who expect their time to be respected as much as their health, and who believe their best decade has not happened yet. Membership is limited each year.
 
 **CTA:** → Join The Inaugural  [/inaugural]  *(reverts to "Start a conversation" → /inaugural after 2026-07-01)*
 

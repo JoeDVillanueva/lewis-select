@@ -62,44 +62,52 @@ export const home = {
   },
   philosophy: {
     quote:
-      "Stewardship is an old word. It used to describe what a physician did for a family — kept watch, year after year, knowing the children, the parents, the parents' parents. Lewis Select is built around getting it back.",
+      "We've lost the concept of stewardship in modern medicine. Lewis Select is built around getting it back.",
     attribution: "Dr. Kevin Lewis",
   },
+  /* v3.7: two parallel Hook + body pairs, problem → promise. */
   empathy: {
-    hook: "Does this sound familiar?",
-    paragraphs: [
-      "You wait three weeks for an appointment. The visit is fifteen minutes. The person who answers your call is not your doctor. A specialist referral takes another month. Your records are scattered across six portals. Modern medicine treats your time like the cheapest part of your life.",
-      "There is another way — one that begins by treating your time, and the relationship with your physician, as the things that matter most.",
-    ],
+    pairs: [
+      {
+        hook: "Does this sound familiar?",
+        body:
+          "You wait 3 weeks for an appointment. The visit lasts only 15 minutes long. A specialist referral takes a month. Your medical records are scattered across 6 portals. Modern medicine treats your time like the cheapest part of your life.",
+      },
+      {
+        hook: "There is a better way.",
+        body:
+          "We treat your time and your relationship with your physician as the things that matter most.",
+      },
+    ] as const,
   },
   differentiators: {
-    eyebrow: "Care of a different shape",
+    eyebrow: "Care shaped differently",
     intro:
-      "Most private practices give you a longer appointment and a phone number. Lewis Select gives you four things you won't find anywhere else.",
+      "Most concierge practices give you a longer appointment, a portal, and a phone number. Lewis Select offers four things you won't find anywhere else.",
     items: [
       {
         n: "01",
-        title: "Your physician practices in the Hill Country.",
+        title: "Your physician practices here in Hill Country.",
         body:
-          "Most private medicine in central Texas is in Westlake or downtown Austin — a thirty- to forty-minute drive from your driveway in good traffic. Lewis Select is in Dripping Springs. Dr. Lewis lives where you live, sees you in the same places you go, and is closer to your home than your nearest emergency room. Your medicine should not require a commute.",
+          "Your medicine should not require a commute. Most private medicine in central Texas is in Westlake or downtown Austin — a 30-40 minute drive from home. Lewis Select is based in Dripping Springs. Dr. Lewis lives where you live.",
       },
       {
         n: "02",
         title: "Skip the waiting line. Get a personal referral.",
         body:
-          "When you need a cardiologist or an oncologist, the standard wait is weeks. With Lewis Select, you do not wait. Dr. Lewis picks up the phone and calls a specialist by name — someone he has personally worked with for twenty-five years. Same-day or next-day placement is the norm, not the exception. That alone changes your relationship to time.",
+          "When you need a cardiologist or an oncologist, you usually wait for weeks. With Lewis Select, you skip the line. Dr. Lewis picks up the phone and calls the specialist you need. Same-day or next-day placement is the norm, not the exception.",
       },
       {
         n: "03",
         title: "See your own doctor — not a “panel.”",
         body:
-          "Direct text or call to Dr. Lewis — any day, any hour. The doctor who knows your family on Tuesday is the doctor who answers on Sunday at nine. Not an answering service. Not a covering physician. Not a name you have never met before. The fastest medicine in the world is the medicine that already knows you.",
+          "Direct contact with Dr. Lewis — during the day or after-hours. The doctor who sees you on Tuesday is the same doctor who responds to a call from the golf course on Sunday afternoon.",
       },
       {
         n: "04",
         title: "Get a personal plan for your future health.",
         body:
-          "You leave most doctor appointments with a vague impression and a list of things to remember. Lewis Select sends you home with a Health Blueprint — a bound document that lays out exactly what your year of health should look like, in plain language, for every member of your family. Your spouse can read it. You can come back to it. You do not have to remember anything. Most practices send you home with a prescription. Lewis Select sends you home with a plan.",
+          "You leave most doctor appointments with a vague impression and a list of things to remember. Lewis Select helps you manage your long-term health progress with a living Health Blueprint — a personal gameplan baselining your health today, which health levers you need to pull next, and clarity around the most important health outcomes to shooting for over the long haul.",
       },
     ],
   },
@@ -112,19 +120,19 @@ export const home = {
         n: "01",
         title: "Direct 24/7 access to your doctor.",
         body:
-          "Text or call Dr. Lewis directly, any day, any hour. The doctor who knows your family on Tuesday is the doctor who answers on Sunday at nine. No answering service. No covering physician.",
+          "Get in contact with Dr. Lewis directly, any day, any hour. The doctor who knows your family on Tuesday is the doctor who answers on Sunday at nine.",
       },
       {
         n: "02",
         title: "Same-day acute response, with care coordination and advocacy.",
         body:
-          "When something serious happens, you make one phone call. Dr. Lewis is on the phone within minutes — calling specialists by name from a network he has personally worked with for twenty-five years, coordinating with the hospital, advocating for you. Same-day or next-day specialist placement is the norm, not the exception.",
+          "When something serious happens, you make one phone call and Dr. Lewis quarterbacks the whole diagnosis and medical response activities from there. Calling specialists, coordinating with the hospital, advocating for you.",
       },
       {
         n: "03",
         title: "Vision and stewardship of your long-term health.",
         body:
-          "The longest, healthiest version of your life does not happen by accident. Lewis Select gives you the plan: a 100+ biomarker panel twice a year, ninety unhurried minutes for an annual executive physical, continuous wearable monitoring, and a written, bound Health Blueprint Dr. Lewis writes for each member of your family every year — tying your data, your history, and your conversations together into a clear plan for the year ahead.",
+          "The longest, healthiest version of your life does not happen by accident. It's intentional and it's proactive. Lewis Select helps you and your family create a personal plan that ties your data, your history, your goals, and your conversations together into a clear, high-leverage plan for the future.",
       },
     ],
     cta: { label: "Read the full approach", href: "/approach" },
@@ -137,14 +145,14 @@ export const home = {
   about: {
     eyebrow: "The physician",
     body:
-      "Fifth-generation Texan. Third-generation physician — his grandfather practiced in Lockhart, his father in Austin. Dr. Lewis trained in Dallas, completed Level 1 trauma residency, and returned to the Hill Country to build the kind of practice his grandfather would recognize. He runs a primary care practice in Dripping Springs, serves as Medical Director of a private community in Driftwood, and has built a twenty-five-year specialist network across Austin.",
+      "Fifth-generation Texan. Third-generation physician. Level 1 trauma-trained. Dr. Lewis runs a primary care practice in Dripping Springs, serves as Medical Director of a private community in Driftwood. He has built a twenty-five-year specialist network across Austin.",
     sigLine: "Lewis Select is the practice he has wanted to build for a long time.",
     cta: { label: "Read more about Dr. Lewis", href: "/about" },
   },
   whoItsFor: {
     eyebrow: "Membership",
     body:
-      "Lewis Select is for Hill Country families who want their physician to know them by name, who expect their time to be respected as much as their health, and who believe their best decade has not happened yet. Membership is by invitation, and limited each year.",
+      "Lewis Select is for Hill Country families who want their physician to know them by name, who expect their time to be respected as much as their health, and who believe their best decade has not happened yet. Membership is limited each year.",
     /** v3.6 — label resolved at render time. */
     ctaHref: PRIMARY_CTA_HREF,
   },

@@ -1,15 +1,30 @@
+/* v3.7: two parallel Hook + body pairs.
+   - Hook → body gap: 12px (Hook primitive carries its own bottom rhythm,
+     so we tighten via the pair container's grid gap)
+   - Body 1 → Hook 2 gap: 32px (the "turn" — problem-to-promise pivot)
+   Reading column max-width is preserved; layout collapses cleanly on mobile. */
+
 .inner {
-  display: grid;
-  grid-template-columns: 1fr 1.4fr;
-  gap: 80px;
-  align-items: start;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
   max-width: var(--container-max);
 }
 
-.body p {
-  max-width: 540px;
+.pair {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 680px;
+}
+
+/* Hook primitive defaults carry their own bottom margin; collapse it within
+   the pair so the 12px hook→body gap is exact. */
+.pair > p:first-child {
+  margin-bottom: 0;
 }
 
 @media (max-width: 720px) {
-  .inner { grid-template-columns: 1fr; gap: 32px; }
+  .inner { gap: 28px; }
+  .pair { gap: 10px; }
 }

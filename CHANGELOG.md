@@ -4,6 +4,43 @@ All notable changes to the Lewis Select marketing site. The build spec
 (`BUILD_SPEC.md`) is the canonical source for design and IA decisions; this file
 captures what shipped and when.
 
+## v3.7 — 2026-05-09
+
+Empathy block restructure + homepage copy pass. No design tokens, no IA
+changes; Approach, About, Inaugural, Nav, and Footer untouched.
+
+### `<EmpathyBlock />` — two parallel Hook + body pairs
+- Restructured from one `<Hook />` + two body paragraphs to a clean
+  problem → promise contrast: **Hook 1 + Body 1 → 32px "turn" → Hook 2 +
+  Body 2.** Both hooks use the existing `<Hook />` UI primitive (gold
+  italic Cormorant, `--text-hook`, weight 400).
+- Vertical rhythm: ~12px between each hook and its body; ~32px between
+  Body 1 and Hook 2.
+- Component prop shape changed from `{ hook?, paragraphs }` →
+  `{ pairs: readonly [Pair, Pair] }`.
+
+### Homepage copy pass
+Every body / heading / eyebrow string on the Homepage replaced verbatim
+with the canonical text from `CONTENT.md` §01:
+- **Hero body** tightened to "For Hill Country families. Direct 24/7 access.
+  Same-day specialist placement. Personal planning for your long-term health."
+- **Philosophy quote** rewritten to "We've lost the concept of stewardship
+  in modern medicine. Lewis Select is built around getting it back."
+- **Empathy** body 1 uses numerals (3 / 15 / 6) instead of spelled-out;
+  hook 2 / body 2 promise pivots to "There is a better way." +
+  one-sentence promise.
+- **Differentiators** eyebrow ("Care of a different shape" → "Care shaped
+  differently") + intro ("…concierge practices…portal, and a phone number…")
+  + items 01–04 bodies tightened.
+- **Three Pillars** 01–03 bodies tightened.
+- **Your physician** body and section title (italic phrase
+  "*second-generation Central Texas physician.*" →
+  "*third-generation Central Texas physician.*").
+- **Who it's for** body — "Membership is by invitation, and limited
+  each year." → "Membership is limited each year."
+
+`BUILD_SPEC.md` and `CONTENT.md` synced verbatim from canonical.
+
 ## v3.6 — 2026-05-08
 
 Inaugural page polish (post first review). Eight targeted changes against the
