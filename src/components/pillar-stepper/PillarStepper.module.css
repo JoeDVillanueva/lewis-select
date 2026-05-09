@@ -12,13 +12,13 @@
 }
 
 /* v3.9 amendment: left-aligned to the section's content column.
-   margin: 0 (not 0 auto), max-width 900px. */
+   margin: 0 (not 0 auto), max-width 800px. */
 .stepper {
   position: relative;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0;
-  max-width: 900px;
+  max-width: 800px;
   margin: 0 0 56px;
   border-bottom: 0.5px solid var(--color-rule);
 }
@@ -85,12 +85,12 @@
   transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Detail panel: 900px wide, 320px min-height so the page does not reflow
+/* Detail panel: 800px wide, 320px min-height so the page does not reflow
    as the user clicks through steps.
    v3.9 amendment: left-aligned to the section's content column
    (margin: 0, not 0 auto). */
 .detailWrap {
-  max-width: 900px;
+  max-width: 800px;
   margin: 0;
   min-height: 320px;
 }
