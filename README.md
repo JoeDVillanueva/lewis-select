@@ -4,7 +4,7 @@ Marketing site for Lewis Select — a private concierge medical practice in Drip
 
 See `BUILD_SPEC.md` for the full build specification, `CONTENT.md` for all user-facing copy, and `CHANGELOG.md` for what shipped when.
 
-Currently on **v3.8** — homepage `<Pillars />` becomes three tiles in a single row (white surface, 0.5px gold-on-hover border, 4px radius, 36×28 padding). Each tile renders only the number + title; body paragraphs are intentionally hidden on `/` (the full pillar copy lives on `/approach` in `<PillarFull />`, which is unchanged). No design tokens, no IA changes.
+Currently on **v3.9** — Approach pillars become a hairline stepper. The three stacked `<PillarFull />` blocks on `/approach` are replaced by a single `<PillarStepper />`: a horizontal three-step header (italic Cormorant numerals + DM Sans labels, single sliding gold underline driven by step index) above one 320px-min detail panel that crossfades between pillars. Mobile collapses to a vertical accordion. Pillar 02 + Pillar 03 copy tightened per CONTENT.md §02. No design tokens, no IA changes; Home, About, Inaugural, Nav, and Footer untouched.
 
 ## Stack
 

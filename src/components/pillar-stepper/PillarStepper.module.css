@@ -1,0 +1,254 @@
+/* v3.9 — <PillarStepper />: hairline stepper above one detail panel.
+   Visual reference: Lewis_Select_Accordion_Concepts.html, Option 2. */
+
+.wrap {
+  width: 100%;
+}
+
+/* ── Desktop: horizontal stepper + sliding gold indicator ─────────────── */
+
+.desktop {
+  display: block;
+}
+
+.stepper {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  max-width: 720px;
+  margin: 0 auto 56px;
+  border-bottom: 0.5px solid var(--color-rule);
+}
+
+.step {
+  position: relative;
+  background: none;
+  border: none;
+  text-align: center;
+  cursor: pointer;
+  padding: 22px 12px 28px;
+  transition: color 300ms ease;
+  /* Override the default :focus outline so the gold indicator carries the
+     focus signal; reapply a visible ring on keyboard nav only. */
+  outline: none;
+}
+
+.step:focus-visible {
+  outline: 1px solid var(--color-gold);
+  outline-offset: -1px;
+}
+
+.stepActive {
+  cursor: default;
+}
+
+.num {
+  display: block;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: var(--weight-regular);
+  font-size: 42px;
+  line-height: 1;
+  margin-bottom: 8px;
+  color: var(--color-rule);
+  transition: color 300ms ease;
+}
+
+.label {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: var(--weight-regular);
+  letter-spacing: 0.30em;
+  text-transform: uppercase;
+  color: var(--color-warm-gray);
+  transition: color 300ms ease;
+}
+
+.stepActive .num { color: var(--color-gold); }
+.stepActive .label { color: var(--color-navy); }
+
+/* ONE sliding indicator — driven by step index via transform.
+   Sits flush with the bottom hairline of the stepper. */
+.indicator {
+  position: absolute;
+  left: 0;
+  bottom: -0.5px;
+  height: 1px;
+  background: var(--color-gold);
+  pointer-events: none;
+  transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Detail panel: 720px wide, 320px min-height so the page does not reflow
+   as the user clicks through steps. */
+.detailWrap {
+  max-width: 720px;
+  margin: 0 auto;
+  min-height: 320px;
+}
+
+.fade {
+  transition: opacity 300ms ease;
+  opacity: 1;
+}
+
+.fade.fading {
+  opacity: 0;
+}
+
+/* ── Pillar content (shared by desktop panel + mobile rows) ───────────── */
+
+.title {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--color-navy);
+  margin-bottom: 12px;
+}
+
+.subhead {
+  display: block;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 1.3;
+  color: var(--color-navy);
+  margin-bottom: 14px;
+}
+
+.body {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: var(--weight-light);
+  line-height: 1.65;
+  color: var(--color-text);
+}
+
+.body + .body {
+  margin-top: 14px;
+}
+
+.replacesBanner {
+  margin-top: 28px;
+  padding: 20px 24px;
+  background: var(--color-cream-dark);
+  border-left: 2px solid var(--color-gold);
+}
+
+.replacesLabel {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 8px;
+}
+
+.replacesBody {
+  font-family: var(--font-body);
+  font-size: var(--text-replaces);
+  font-style: italic;
+  font-weight: var(--weight-light);
+  line-height: 1.55;
+  color: var(--color-text);
+}
+
+/* ── Mobile: vertical accordion (≤720px) ──────────────────────────────── */
+
+.mobile { display: none; }
+
+@media (max-width: 720px) {
+  .desktop { display: none; }
+  .mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 0.5px solid var(--color-rule);
+  }
+
+  .mRow {
+    border-bottom: 0.5px solid var(--color-rule);
+  }
+
+  .mHeader {
+    width: 100%;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 18px;
+    padding: 22px 4px;
+    text-align: left;
+    color: var(--color-navy);
+    transition: color 200ms ease;
+  }
+
+  .mHeader:focus-visible {
+    outline: 1px solid var(--color-gold);
+    outline-offset: -1px;
+  }
+
+  .mNum {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: var(--weight-regular);
+    font-size: 28px;
+    line-height: 1;
+    color: var(--color-gold);
+  }
+
+  .mLabel {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: var(--weight-regular);
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--color-warm-gray);
+  }
+
+  .mHeaderOpen .mLabel {
+    color: var(--color-navy);
+  }
+
+  .mChevron {
+    width: 20px;
+    height: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-body);
+    font-size: 22px;
+    font-weight: var(--weight-light);
+    line-height: 1;
+    color: var(--color-gold);
+  }
+
+  .mPanel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 400ms ease;
+  }
+
+  .mPanelOpen {
+    /* Generous cap; copy fits comfortably under it. */
+    max-height: 1400px;
+  }
+
+  .mInner {
+    padding: 8px 4px 28px;
+  }
+
+  .mInner .title { font-size: 24px; }
+  .mInner .subhead { font-size: 19px; margin-bottom: 12px; }
+}

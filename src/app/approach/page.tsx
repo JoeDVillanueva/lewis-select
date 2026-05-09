@@ -3,7 +3,7 @@ import { Hero } from "@/components/hero/Hero";
 import { Band, Section } from "@/components/layout";
 import { Body, Eyebrow } from "@/components/ui";
 import { ClosingCTA } from "@/components/closing-cta/ClosingCTA";
-import { PillarFull } from "@/components/pillar-full/PillarFull";
+import { PillarStepper } from "@/components/pillar-stepper/PillarStepper";
 import { approach } from "@/lib/content";
 import { siteMetadata } from "@/lib/seo";
 
@@ -42,7 +42,7 @@ export default function ApproachPage() {
               {approach.pillars.intro}
             </Body>
           </div>
-          <PillarFull items={approach.pillars.items} />
+          <PillarStepper items={approach.pillars.items} />
         </Section>
       </Band>
 

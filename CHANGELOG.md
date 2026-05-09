@@ -4,6 +4,66 @@ All notable changes to the Lewis Select marketing site. The build spec
 (`BUILD_SPEC.md`) is the canonical source for design and IA decisions; this file
 captures what shipped and when.
 
+## v3.9 — 2026-05-09
+
+Approach pillars become a hairline stepper. No design tokens, no IA changes;
+Home, About, Inaugural, Nav, and Footer untouched.
+
+### `<PillarStepper />` — new component on `/approach`
+- Replaces the stacked three-`<PillarFull />` layout with a single
+  horizontal stepper above one full-width detail panel. Reference:
+  `Lewis_Select_Accordion_Concepts.html` Option 2.
+- **Stepper:** three equal-width steps in a 720px-max grid centered.
+  Italic Cormorant numeral 42px (rule → gold when active); DM Sans label
+  11px / 0.30em uppercase (warm-gray → navy active). Step labels:
+  *24 / 7 Access · Acute Response · Long-term Stewardship.* 0.5px hairline
+  beneath the row.
+- **Sliding active indicator:** ONE absolutely-positioned 1px gold bar,
+  width = `100/n%`, `transform: translateX(active * 100%)` with
+  `transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1)`. Implemented
+  as a single element driven by step index — not three separate underlines
+  toggling.
+- **Detail panel:** max-width 720px, **min-height: 320px** so the page
+  doesn't reflow as the user steps through. Renders the active pillar's
+  title (Cormorant 32px navy weight 500), subhead (italic Cormorant 22px
+  navy weight 500, block + 14px bottom), body paragraphs (`--text-body`
+  17px line-height 1.65), and the unchanged "What this replaces" banner
+  (label 13px / 600 / 0.18em as a block; body `--text-replaces` italic).
+- **Content swap:** opacity fade-out (300ms) → swap rendered pillar →
+  fade-in (300ms). Two state vars (`active` + `displayed`) so the indicator
+  starts moving immediately while the panel finishes fading.
+- **Mobile (<720px):** stepper collapses to a vertical accordion. Three
+  full-width rows with numeral + label + gold +/− chevron. Tap to expand
+  height beneath, 400ms ease, single-open. The desktop horizontal stepper
+  isn't rendered on mobile (CSS-toggled via `@media`).
+- **Keyboard:** native `<button>` handles Tab + Enter/Space; ←/→ also step
+  through. `role="tab"` / `role="tabpanel"` / `aria-selected` /
+  `aria-controls` for screen readers. Cursor pointer on inactive steps,
+  default on active.
+
+### Approach Pillar 02 + Pillar 03 copy (CONTENT.md §02)
+- **Pillar 02 Body 1** shortens: "…you make one phone call to Dr. Lewis."
+  (drops the "Dr. Lewis is on the phone within minutes." sentence).
+- **Pillar 02 Body 2** first sentence rewrites: "He will contact the needed
+  specialists and hospitalist personally from his network on your behalf,
+  getting you the care you need fast — same-day or next-day is the norm,
+  not the exception." Remainder of paragraph (coordinate / advocate /
+  records / pre-travel / longitudinal) preserved.
+- **Pillar 03 collapses from three bodies into one.** New subhead: "*A
+  comprehensive plan centered around addressing your acute needs and
+  longer-term goals.*" (was "*A written plan for the years ahead.*"). New
+  single body: "Health and longevity does not happen by accident. It takes
+  clarity and intentionality. Lewis Select helps you and your family create
+  a personal plan that takes your health baseline and your goals for the
+  future to craft a clear, actionable plan for the long-haul. Longevity
+  starts now." Drops the prior 100+ biomarker panel paragraph and the
+  prior third paragraph. Pillar 03's "What this replaces" tag is unchanged.
+
+### Out of scope
+- `<PillarFull />` is no longer referenced from `/approach` but the file
+  is kept in `src/components/pillar-full/` per spec (not deleted).
+- Design tokens, Home, About, Inaugural, Nav, Footer.
+
 ## v3.8 — 2026-05-09 — copy pass follow-up
 
 Approach `<PillarFull />` copy edits + a homepage Differentiator 03 tweak.

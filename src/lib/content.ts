@@ -186,8 +186,8 @@ export const approach = {
         title: "Same-day acute response, care coordination, and advocacy.",
         subhead: "One phone call. Everything else is handled.",
         bodyParagraphs: [
-          "When something serious happens — a hospital admission, an ER visit, an injury on a trip, a specialist needed this week — you make one phone call. Dr. Lewis is on the phone within minutes.",
-          "He calls a specialist by name from a network he has personally worked with for twenty-five years; same-day or next-day placement is the norm, not the exception. He coordinates with the hospital, advocates for you with the specialists, and ensures the records flow back to your file. Pre-travel consults are part of membership. Longitudinal record-keeping — every test, every consult, every prescription — is centralized.",
+          "When something serious happens — a hospital admission, an ER visit, an injury on a trip, a specialist needed this week — you make one phone call to Dr. Lewis.",
+          "He will contact the needed specialists and hospitalist personally from his network on your behalf, getting you the care you need fast — same-day or next-day is the norm, not the exception. He coordinates with the hospital, advocates for you with the specialists, and ensures the records flow back to your file. Pre-travel consults are part of membership. Longitudinal record-keeping — every test, every consult, every prescription — is centralized.",
         ],
         replaces:
           "The three-week wait for a referral, the hours of triage and paperwork that fall on you in a moment when neither of you should be doing them, the sense that you are introducing yourself from scratch every time.",
@@ -195,12 +195,9 @@ export const approach = {
       {
         n: "03",
         title: "Vision and stewardship of your long-term health.",
-        subhead: "A written plan for the years ahead.",
-        bodyParagraphs: [
-          "The longest, healthiest version of your life does not happen by accident. It happens with a plan — drawn from real data, refined every year, acted on consistently. Lewis Select gives you that plan.",
-          "Lewis Select runs a 100+ biomarker panel — five to ten times the depth of a typical practice — measuring cardiovascular, metabolic, hormonal, nutritional, inflammatory, and early-cancer signals against the latest longevity science. Your wearable data — Apple Watch, Oura, Whoop — is watched quietly, with proactive outreach when something shifts.",
-          "The longest, healthiest version of your life does not happen by accident. It's intentional and it's proactive. Lewis Select helps you and your family create a personal plan that ties your data, your history, your goals, and your conversations together into a clear, high-leverage plan for the future.",
-        ],
+        subhead: "A comprehensive plan centered around addressing your acute needs and longer-term goals.",
+        body:
+          "Health and longevity does not happen by accident. It takes clarity and intentionality. Lewis Select helps you and your family create a personal plan that takes your health baseline and your goals for the future to craft a clear, actionable plan for the long-haul. Longevity starts now.",
         replaces:
           "The annual cholesterol screen and the assumption that \"normal\" is the same as \"optimal.\" The vague impression you leave the doctor's office with. The reactive model where the patient calls the doctor only after something is already wrong.",
       },
