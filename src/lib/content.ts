@@ -101,7 +101,7 @@ export const home = {
         n: "03",
         title: "See your own doctor — not a “panel.”",
         body:
-          "Direct contact with Dr. Lewis — during the day or after-hours. The doctor who sees you on Tuesday is the same doctor who responds to a call from the golf course on Sunday afternoon.",
+          "Direct contact with Dr. Lewis — rather than getting passed around a panel of rotating physicians and staff.",
       },
       {
         n: "04",
@@ -170,14 +170,14 @@ export const approach = {
   pillars: {
     eyebrow: "The program",
     intro:
-      "Lewis Select stands on three pillars. Two address what most families fear most about modern medicine: that you cannot reach your doctor when you need her, and that when something goes wrong the system will not act fast enough. The third addresses something most practices don't even attempt — a real plan for the long arc of your health.",
+      "Lewis Select stands on three pillars. Two address what most families fear most about modern medicine: that you can't reach your doctor when you need them, and that when something goes wrong the system can't act fast enough. The third addresses something most practices don't even attempt — a real plan for the long arc of your health.",
     items: [
       {
         n: "01",
         title: "Direct 24/7 access to your doctor.",
         subhead: "One number. Seven days. The same physician.",
         body:
-          "Membership begins with Dr. Lewis's mobile number. Text him, call him, or reach him by video — any day, any hour. There is no answering service, no triage nurse, no covering doctor. The doctor who knows your family on Tuesday is the doctor who answers on Sunday at nine. The boundary between \"office hours\" and \"after hours\" has been removed.",
+          "Get in contact with Dr. Lewis directly, any day, any hour. The doctor who sees you on Tuesday is the same doctor who responds to a call from the golf course on Sunday afternoon.",
         replaces:
           "The hold music, the Friday-evening triage line, the weekend ER trip that did not need to happen.",
       },
@@ -198,8 +198,8 @@ export const approach = {
         subhead: "A written plan for the years ahead.",
         bodyParagraphs: [
           "The longest, healthiest version of your life does not happen by accident. It happens with a plan — drawn from real data, refined every year, acted on consistently. Lewis Select gives you that plan.",
-          "Each year, you spend ninety unhurried minutes with Dr. Lewis for a full executive physical. Twice a year, we run a 100+ biomarker panel — five to ten times the depth of a typical practice — measuring cardiovascular, metabolic, hormonal, nutritional, inflammatory, and early-cancer signals against the latest longevity science. Your wearable data — Apple Watch, Oura, Whoop — is watched quietly, with proactive outreach when something shifts.",
-          "All of it synthesizes into your annual Health Blueprint: a written, bound document Dr. Lewis writes for each member of your family, every year. It says exactly what your year of health should look like, in plain language, for adults and dependents alike. You take it home. You come back to it in June. Your spouse can read it. Your specialists can read it. You do not have to remember anything.",
+          "Lewis Select runs a 100+ biomarker panel — five to ten times the depth of a typical practice — measuring cardiovascular, metabolic, hormonal, nutritional, inflammatory, and early-cancer signals against the latest longevity science. Your wearable data — Apple Watch, Oura, Whoop — is watched quietly, with proactive outreach when something shifts.",
+          "The longest, healthiest version of your life does not happen by accident. It's intentional and it's proactive. Lewis Select helps you and your family create a personal plan that ties your data, your history, your goals, and your conversations together into a clear, high-leverage plan for the future.",
         ],
         replaces:
           "The annual cholesterol screen and the assumption that \"normal\" is the same as \"optimal.\" The vague impression you leave the doctor's office with. The reactive model where the patient calls the doctor only after something is already wrong.",

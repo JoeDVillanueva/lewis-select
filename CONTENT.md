@@ -65,7 +65,7 @@ Your medicine should not require a commute. Most private medicine in central Tex
 When you need a cardiologist or an oncologist, you usually wait for weeks. With Lewis Select, you skip the line. Dr. Lewis picks up the phone and calls the specialist you need. Same-day or next-day placement is the norm, not the exception.
 
 **03 — See your own doctor — not a "panel."**
-Direct contact with Dr. Lewis — during the day or after-hours. The doctor who sees you on Tuesday is the same doctor who responds to a call from the golf course on Sunday afternoon.
+Direct contact with Dr. Lewis — rather than getting passed around a panel of rotating physicians and staff.
 
 **04 — Get a personal plan for your future health.**
 You leave most doctor appointments with a vague impression and a list of things to remember. Lewis Select helps you manage your long-term health progress with a living Health Blueprint — a personal gameplan baselining your health today, which health levers you need to pull next, and clarity around the most important health outcomes to shooting for over the long haul.
@@ -157,13 +157,13 @@ You leave most doctor appointments with a vague impression and a list of things 
 
 **Section title:** Immediate care for your health today. *Stewardship of your health for the years ahead.*
 
-**Intro body:** Lewis Select stands on three pillars. Two address what most families fear most about modern medicine: that you cannot reach your doctor when you need her, and that when something goes wrong the system will not act fast enough. The third addresses something most practices don't even attempt — a real plan for the long arc of your health.
+**Intro body:** Lewis Select stands on three pillars. Two address what most families fear most about modern medicine: that you can't reach your doctor when you need them, and that when something goes wrong the system can't act fast enough. The third addresses something most practices don't even attempt — a real plan for the long arc of your health.
 
 Each pillar is structured: number (italic Cormorant, gold), title (Cormorant), subhead (italic Cormorant, smaller), body, and a "What this replaces" tag with a gold left-edge treatment. **(v3.5: title weight 500, subhead 22px weight 500, "What this replaces." label 13px weight 600 — and subhead and label are block-level so the body that follows always begins on its own line. See `BUILD_SPEC.md` §6.3 `<PillarFull />`.)**
 
 **01 — Direct 24/7 access to your doctor.**
 *One number. Seven days. The same physician.*
-Membership begins with Dr. Lewis's mobile number. Text him, call him, or reach him by video — any day, any hour. There is no answering service, no triage nurse, no covering doctor. The doctor who knows your family on Tuesday is the doctor who answers on Sunday at nine. The boundary between "office hours" and "after hours" has been removed.
+Get in contact with Dr. Lewis directly, any day, any hour. The doctor who sees you on Tuesday is the same doctor who responds to a call from the golf course on Sunday afternoon.
 *What this replaces.* The hold music, the Friday-evening triage line, the weekend ER trip that did not need to happen.
 
 **02 — Same-day acute response, care coordination, and advocacy.**
@@ -177,9 +177,9 @@ He calls a specialist by name from a network he has personally worked with for t
 *A written plan for the years ahead.*
 The longest, healthiest version of your life does not happen by accident. It happens with a plan — drawn from real data, refined every year, acted on consistently. Lewis Select gives you that plan.
 
-Each year, you spend ninety unhurried minutes with Dr. Lewis for a full executive physical. Twice a year, we run a 100+ biomarker panel — five to ten times the depth of a typical practice — measuring cardiovascular, metabolic, hormonal, nutritional, inflammatory, and early-cancer signals against the latest longevity science. Your wearable data — Apple Watch, Oura, Whoop — is watched quietly, with proactive outreach when something shifts.
+Lewis Select runs a 100+ biomarker panel — five to ten times the depth of a typical practice — measuring cardiovascular, metabolic, hormonal, nutritional, inflammatory, and early-cancer signals against the latest longevity science. Your wearable data — Apple Watch, Oura, Whoop — is watched quietly, with proactive outreach when something shifts.
 
-All of it synthesizes into your annual Health Blueprint: a written, bound document Dr. Lewis writes for each member of your family, every year. It says exactly what your year of health should look like, in plain language, for adults and dependents alike. You take it home. You come back to it in June. Your spouse can read it. Your specialists can read it. You do not have to remember anything.
+The longest, healthiest version of your life does not happen by accident. It's intentional and it's proactive. Lewis Select helps you and your family create a personal plan that ties your data, your history, your goals, and your conversations together into a clear, high-leverage plan for the future.
 *What this replaces.* The annual cholesterol screen and the assumption that "normal" is the same as "optimal." The vague impression you leave the doctor's office with. The reactive model where the patient calls the doctor only after something is already wrong.
 
 ### Closing CTA  ·  navy surface

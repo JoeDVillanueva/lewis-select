@@ -4,6 +4,41 @@ All notable changes to the Lewis Select marketing site. The build spec
 (`BUILD_SPEC.md`) is the canonical source for design and IA decisions; this file
 captures what shipped and when.
 
+## v3.8 — 2026-05-09 — copy pass follow-up
+
+Approach `<PillarFull />` copy edits + a homepage Differentiator 03 tweak.
+No structural changes; `BUILD_SPEC.md` stays at v3.8.
+
+### Homepage Differentiator 03 body
+- "Direct contact with Dr. Lewis — during the day or after-hours. The doctor
+  who sees you on Tuesday is the same doctor who responds to a call from the
+  golf course on Sunday afternoon." → "Direct contact with Dr. Lewis —
+  rather than getting passed around a panel of rotating physicians and
+  staff."
+
+### Approach pillars (CONTENT.md §02)
+- **Pillars intro body:** *cannot* → *can't*; *her* → *them*; *will not* →
+  *can't*. ("…that you can't reach your doctor when you need them, and that
+  when something goes wrong the system can't act fast enough.")
+- **Pillar 01 body:** tightened to the Sunday-afternoon version. Old
+  "Membership begins with Dr. Lewis's mobile number…" replaced with "Get in
+  contact with Dr. Lewis directly, any day, any hour. The doctor who sees
+  you on Tuesday is the same doctor who responds to a call from the golf
+  course on Sunday afternoon."
+- **Pillar 03 Body 2:** drops the "Each year, you spend ninety unhurried
+  minutes…" framing; opens with "Lewis Select runs a 100+ biomarker panel —
+  five to ten times the depth of a typical practice…" The wearable-data
+  sentence is preserved.
+- **Pillar 03 Body 3:** rewritten as the personal-plan paragraph that ends
+  in "…a clear, high-leverage plan for the future." (Drops the bound
+  Health Blueprint paragraph here.)
+
+### Already on main from prior cuts (no-op for this PR)
+- v3.7 EmpathyBlock — two parallel Hook + body pairs (problem → promise).
+- v3.8 Home `<Pillars />` — three tiles in a single row, bodies hidden.
+
+`BUILD_SPEC.md` and `CONTENT.md` synced verbatim from canonical.
+
 ## v3.8 — 2026-05-09
 
 Home pillars become tiles, bodies hidden. Single change scoped to the
