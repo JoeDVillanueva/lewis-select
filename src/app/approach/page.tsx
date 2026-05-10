@@ -9,6 +9,21 @@ import { siteMetadata } from "@/lib/seo";
 
 import styles from "./page.module.css";
 
+/**
+ * v3.9 amendment — render the pillars-intro lead phrase ("Lewis Select stands
+ * on three pillars.") as <strong>. Falls back to the plain string if the
+ * canonical text drifts (defensive against CONTENT.md edits).
+ */
+function renderIntroWithBoldLead(intro: string, lead: string) {
+  if (!intro.startsWith(lead)) return intro;
+  return (
+    <>
+      <strong className={styles.introLead}>{lead}</strong>
+      {intro.slice(lead.length)}
+    </>
+  );
+}
+
 export const metadata: Metadata = siteMetadata({
   title: "Approach — Lewis Select",
   description:
@@ -39,7 +54,10 @@ export default function ApproachPage() {
               Immediate care for your health today. <em>Stewardship of your health for the years ahead.</em>
             </h2>
             <Body long className={styles.intro}>
-              {approach.pillars.intro}
+              {renderIntroWithBoldLead(
+                approach.pillars.intro,
+                "Lewis Select stands on three pillars.",
+              )}
             </Body>
           </div>
           <PillarStepper items={approach.pillars.items} />

@@ -11,4 +11,12 @@
 
 .intro { max-width: 640px; margin-bottom: 0; }
 
+/* v3.9 amendment: bold the lead phrase of the pillars intro
+   ("Lewis Select stands on three pillars."). Matches the site's body
+   emphasis convention (DM Sans 500), distinct from the heavier 600 used
+   on uppercase tag labels. */
+.introLead {
+  font-weight: 500;
+}
+
 .pillarsHeader { margin-bottom: 56px; max-width: 720px; }
