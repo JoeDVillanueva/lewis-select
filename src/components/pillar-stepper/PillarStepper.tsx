@@ -66,7 +66,10 @@ export function PillarStepper({ items }: Props) {
   const [active, setActive] = useState(0);
   const [displayed, setDisplayed] = useState(0);
   const [fading, setFading] = useState(false);
-  const [openMobile, setOpenMobile] = useState<number | null>(0);
+  // v3.9 amendment: mobile default state — all rows collapsed (null), so the
+  // user opts into a row before its body renders. Desktop stepper is unaffected
+  // (Pillar 01 remains the default active state via `active`/`displayed`).
+  const [openMobile, setOpenMobile] = useState<number | null>(null);
   const fadeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
